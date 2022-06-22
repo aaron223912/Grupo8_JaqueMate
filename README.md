@@ -7,7 +7,7 @@
 - Aaron Arias / 26 / Neuquen, Neuquen
 - Lucas Amaya / 24 / San Miguel, Buenos Aires
 - Benja
-- Mauro Mundanu / 24 / Lanús, Buenos Aires
+- Mauro Mundanu / 22 / Lanús, Buenos Aires
 
 # Sitios de referencia
 1. Mercado libre
