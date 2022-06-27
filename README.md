@@ -6,7 +6,7 @@
 # Integrantes del equipo
 - Aaron Arias / 26 / Neuquen, Neuquen
 - Lucas Amaya / 24 / San Miguel, Buenos Aires
-- Benja
+- Mariano Rene Benjamin Garzon Sergio/ 30 / San Miguel, Buenos Aires
 - Mauro Mundanu / 22 / Lanús, Buenos Aires
 
 # Sitios de referencia
