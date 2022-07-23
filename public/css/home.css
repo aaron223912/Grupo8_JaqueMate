@@ -317,6 +317,10 @@
 
     .banner__secundario {
         width: 45%;
+        height: 310px;
+    }
+    .banner__secundario img{
+        height: 100%;
     }
     .home__main__buscAnterior {
         justify-content: space-between;
