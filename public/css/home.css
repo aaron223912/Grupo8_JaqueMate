@@ -1,13 +1,13 @@
-.home{
+.home {
     background-color: black;
     color: white;
 }
+
 /*HEADER*/
-.home__header{
+.home__header {
     background-image: url(/images/banner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    /*background-position: right top;*/
     padding: 25px 10px;
     display: flex;
     width: 100%;
@@ -17,72 +17,88 @@
     justify-content: space-between;
     align-content: flex-start;
 }
+
 .home__header__categorias {
     display: none;
 }
 
-.home__header__nav .ingresar, .home__header__nav div{
+.home__header__nav .ingresar,
+.home__header__nav div {
     display: none;
 }
-.home__header__logo{
+
+.home__header__logo {
     width: 20%;
 }
-.home__header__logo img{
+
+.home__header__logo img {
     width: 100%;
 }
-.home__header__busqueda{
-    width: 55%;
+
+.home__header__busqueda {
+    width: 60%;
     display: flex;
     flex-direction: row;
     padding: 8px 4px;
     position: relative;
     align-items: center;
-    
+
 
 }
-.home__header__busqueda input{
+
+.home__header__busqueda input {
     width: 100%;
     border-radius: 20px;
     border: none;
-    padding: 10px ;
+    padding: 10px;
 }
-.home__header__busqueda button{
+
+.home__header__busqueda button {
     position: absolute;
     right: 8px;
     background: none;
     border: none;
     font-size: 20px;
 }
+
 .home__header__nav {
-    width: 10%;
+    width: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
 }
-.home__header__nav a{
+
+.home__header__nav a {
     color: white;
 }
+
 .home__header__burger {
-    width: 10%;
+    width: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
 }
-.home__header__promo{
+
+.home__header__promo {
     width: 100%;
     text-align: center;
     font-size: 35px;
     color: white;
     margin-top: 60px;
-    
+
 }
-.home__header__promo a{
+
+.home__header__promo a {
     border-bottom: 1px solid white;
 }
 
 /*MAIN*/
+.home__main__banner {
+    display: none;
+}
+
 .home__main__masBuscados {
     display: flex;
     flex-wrap: wrap;
@@ -91,18 +107,22 @@
     gap: 20px 0;
     text-align: center;
 }
-.home__main__masBuscados h4{
+
+.home__main__masBuscados h4 {
     width: 100%;
     font-size: 20px;
     font-weight: 400;
 }
+
 .home__main__masBuscados article {
     width: 45%;
 }
-.home__main__masBuscados article div{
+
+.home__main__masBuscados article div {
     background-color: white;
     color: black;
 }
+
 .home__main__buscAnterior {
     display: flex;
     flex-wrap: wrap;
@@ -111,13 +131,19 @@
     text-align: center;
     gap: 5px 0;
 }
-.home__main__buscAnterior h4{
+
+.home__main__buscAnterior h4 {
     width: 100%;
     margin-bottom: 15px;
     font-weight: 300;
     font-size: 20px;
 }
-.home__main__buscAnterior article a{
+
+.home__main__buscAnterior article {
+    width: 100%;
+}
+
+.home__main__buscAnterior article a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -126,23 +152,31 @@
     width: 100%;
     border-radius: 10px;
 }
-.home__main__buscAnterior .img_product{
+
+.home__main__buscAnterior .img_product {
     width: 20%;
     padding: 5px;
 }
-.home__main__buscAnterior .descrip{
+
+.home__main__buscAnterior .descrip {
     width: 75%;
 }
+
 /*FOOTER*/
-.home__footer{
+.home__footer {
     background-color: #4F7F3F;
     text-align: left;
     color: white;
 }
-.home__footer section{
-    padding: 10px ;
+.footer__help{
+    display: none;
 }
-.home__footer__redes{
+
+.home__footer section {
+    padding: 10px;
+}
+
+.home__footer__redes {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -150,7 +184,8 @@
     width: 90%;
     justify-content: space-between;
 }
-.home__footer__redes__icono{
+
+.home__footer__redes__icono {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -158,6 +193,173 @@
     color: black;
     width: 40%;
 }
-.footer__venta, .footer__telefono, .footer__copy{
+
+.footer__venta,
+.footer__telefono,
+.footer__copy {
     width: 75%;
+}
+
+
+/*TABLET*/
+/*HEADER*/
+@media (min-width: 768px) {
+    .home__header__logo {
+        width: 15%;
+    }
+
+    .home__header__busqueda {
+        width: 70%;
+    }
+
+    /*MAIN*/
+    .home__main__masBuscados {
+        margin: 15px 30px;
+    }
+
+    .home__main__masBuscados article {
+        width: 20%;
+    }
+
+    /*FOOTER*/
+    .home__footer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px 0;
+        padding: 20px;
+    }
+
+    .footer__venta,
+    .footer__telefono,
+    .footer__copy,
+    .home__footer__redes {
+        width: 40%;
+
+    }
+}
+
+/*DESKTOP*/
+@media (min-width: 1024px) {
+
+    /*HEADER*/
+    .home__header {
+        background-image: none;
+        padding: 10px 0;
+        height: auto;
+        justify-content: space-around;
+    }
+
+    .home__header__nav .ingresar,
+    .home__header__nav div {
+        display: inline-block;
+    }
+
+    .home__header__burger,
+    .home__header__promo {
+        display: none;
+    }
+
+    .home__header__nav {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+    }
+
+    .home__header__busqueda {
+        width: 30%;
+
+    }
+
+    .home__header__nav__foto {
+        width: 30px;
+        height: 30px;
+        background-color: gray;
+        border-radius: 50%;
+    }
+
+
+    .home__header__categorias {
+        display: inline-block;
+        width: 100%;
+        background-color: #4F7F3F;
+        margin-top: 10px;
+    }
+
+    .home__header__categorias ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+
+    /*MAIN*/
+    .home__main__banner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 15px 0;
+    }
+
+    .banner_principal {
+        width: 100%;
+        height: 450px;
+        background-image: url(/images/mate2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0 -50px;
+    }
+
+    .banner__secundario {
+        width: 45%;
+    }
+    .home__main__buscAnterior {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .home__main__buscAnterior article {
+        margin: 15px;
+        gap: 20px 0;
+        width: 20%;
+    }
+    .home__main__buscAnterior article a {
+        text-align: center;
+        border-radius: 0%;
+    }
+    .home__main__buscAnterior .descrip {
+        width: 100%;
+    }
+    
+       .home__main__buscAnterior .img_product {
+        width: auto
+    }
+
+    /*FOOTER*/
+    .footer__help{
+        display: inline-block;
+    }
+    .footer__help div{
+        background-color: black;
+        border-radius: 20px;
+        text-align: center;
+        width: 80%;
+        padding: 3px 0;
+    }
+    .footer__venta,
+    .footer__telefono,
+    .home__footer__redes,
+    .footer__help {
+        width: 25%;
+        text-align: center;
+    }
+    .footer__copy{
+        width: 100%;
+    }
+    
 }
