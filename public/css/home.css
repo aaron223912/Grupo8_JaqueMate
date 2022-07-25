@@ -19,6 +19,7 @@
 }
 
 .home__header__categorias {
+    text-transform: capitalize;
     display: none;
 }
 
@@ -242,7 +243,10 @@
 
 /*DESKTOP*/
 @media (min-width: 1024px) {
-
+     .home{
+        max-width: 1024px;
+        margin: auto;
+     }
     /*HEADER*/
     .home__header {
         background-image: none;
