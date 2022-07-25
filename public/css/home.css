@@ -19,6 +19,7 @@
 }
 
 .home__header__categorias {
+    text-transform: capitalize;
     display: none;
 }
 
