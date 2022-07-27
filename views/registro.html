@@ -9,10 +9,32 @@
     <script src="https://kit.fontawesome.com/ae7c764a16.js" crossorigin="anonymous"></script>
 </head>
 <body class="registro">
-    <header>
-        <div>
-            <a href="/"><img src="/public/images/" alt=""></a>
+    <header class="registro__header">
+        <div class="registro__header__logo">
+            <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
         </div>
     </header>
+    <main class="registro__main">
+        <h1>Registro</h1>
+        <p>Completá los siguientes datos</p>
+
+        <form action="" class="registro__main__formulario">
+            <label for="nombreApellido">Nombre y Apellido</label>
+            <input type="text" name="nombreApellido">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" >
+
+            <label for="password">Cntraseña</label>
+            <input type="password" name="password">
+
+            <div class="registro__main__formulario__confirmar">
+            <button type="submit">Crear cuenta</button>
+            <p>¿Ya tenés cuenta? <a href="/login">inicia sesión</a></p>
+            </div>
+        </form>
+        
+
+    </main>
 </body>
 </html>

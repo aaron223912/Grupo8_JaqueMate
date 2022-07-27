@@ -12,3 +12,7 @@ a{
 ul, li{
     list-style: none;
 }
+:root{
+    --verde: #4F7F3F;
+    --grisOscuro:#3D3F41;
+}

@@ -1,0 +1,95 @@
+/*HEADER*/
+.registro{
+    background-color: black;
+    color: white;
+}
+.registro__header{
+   margin-bottom: 20px;
+}
+.registro__header__logo{
+    width: 20%;
+    background-color: var(--verde);
+    padding: 2px;
+    margin: 3px;
+    border-radius: 5px;
+}
+/*MAIN*/
+.registro__main{
+    width: 85%;
+    margin: auto;
+}
+.registro__main h1{
+    margin-bottom: 10px;
+}
+.registro__main p{
+    margin-bottom: 10px;
+}
+.registro__main__formulario{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.registro__main__formulario label{
+  margin-bottom: 15px;
+}
+.registro__main__formulario input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid var(--verde);
+    border-radius: 5px;
+    background-color: var(--grisOscuro);
+    color: white;
+}
+.registro__main__formulario__confirmar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.registro__main__formulario__confirmar button{
+    width: 60%;
+    background-color: var(--verde);
+    padding: 10px;
+    border: 0;
+    color: white;
+    margin: 10px;
+    border-radius: 5px;
+}
+.registro__main__formulario__confirmar a {
+    color: white;
+    font-weight: 900;
+}
+/*TABLET*/
+@media (min-width: 768px) {
+    .registro__header{
+        background-image: url(/images/portada-registro.jpg);
+         background-repeat: no-repeat;
+         background-size: cover;
+         height: 200px;
+         background-position-y: -180px;
+     }
+     .registro__main p{
+        margin-left: 10px;
+    }
+}
+/*DESKTOP*/
+@media (min-width:1024px) {
+    
+.registro__header{
+    background-image:none;
+    height: auto;
+}
+.registro__header__logo{
+    width: 85px
+}
+.registro{
+    background-image: url(/images/fondoBodyRegistro.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    
+}
+.registro__main{
+    width: 40%;
+    margin-right: 20px;
+}
+}
