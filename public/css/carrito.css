@@ -1,0 +1,36 @@
+.main__carrito{
+    background-color: black;
+    width: 100%;
+    
+
+}
+.main__carrito__cantidad__productos{
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+
+
+
+
+
+ }   
+ .main__carrito__seccion{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.carrito__seccion__productos{
+    width: 90%;
+    text-align: center;
+    
+}
+
+
+.carrito__seccion__productos__articulos{
+    background-color: #ffffff;
+    margin: 10px 0;
+}
