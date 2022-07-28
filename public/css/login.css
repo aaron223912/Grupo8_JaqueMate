@@ -1,0 +1,100 @@
+.login{
+    background-color: black;
+    color: white;
+}
+.login__header{
+   margin-bottom: 20px;
+   background-image: url(/images/mateYTermo2.jpg);
+         background-repeat: no-repeat;
+         background-size: cover;
+         height: 200px;
+         background-position: center;
+}
+.login__header__logo{
+    width: 20%;
+    background-color: var(--verde);
+    padding: 2px;
+    margin: 3px;
+    border-radius: 5px;
+}
+/*MAIN*/
+.login__main{
+    width: 85%;
+    margin: auto;
+}
+.login__main h1{
+    margin-bottom: 10px;
+}
+.login__main p{
+    margin-bottom: 10px;
+}
+.login__main__formulario{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.login__main__formulario label{
+  margin-bottom: 15px;
+}
+.login__main__formulario input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid var(--verde);
+    border-radius: 5px;
+    background-color: var(--grisOscuro);
+    color: white;
+}
+.login__main__formulario p{
+    text-align: center;
+}
+.login__main__formulario__confirmar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.login__main__formulario__confirmar button{
+    width: 60%;
+    background-color: var(--verde);
+    padding: 10px;
+    border: 0;
+    color: white;
+    margin: 10px;
+    border-radius: 5px;
+}
+.login__main__formulario__confirmar a,  .login__main__formulario p a{
+    color: white;
+    font-weight: 900;
+}
+/*TABLET*/
+@media (min-width: 768px) {
+    .login__header{
+              height: 300px;
+     }
+     .login__main p{
+        margin-left: 10px;
+    }
+}
+/*DESKTOP*/
+@media (min-width:1024px) {
+    
+.login__header{
+    background-image:none;
+    height: auto;
+}
+.login__header__logo{
+    width: 85px
+}
+.login{
+    background-image: url(/images/mateYTermo3.jpg);
+    background-repeat: no-repeat;
+    background-size: 50% ;
+    
+    
+}
+.login__main{
+    width: 40%;
+    margin-right: 20px;
+}
+}
