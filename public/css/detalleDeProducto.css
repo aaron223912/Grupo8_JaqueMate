@@ -182,6 +182,11 @@ align-items: center;
     }
 }
 @media (min-width: 1024px) {
+    .detalle{
+        max-width: 1024px;
+        margin: auto;
+       
+    }
     .contenedor__carrucel{
         display: flex;
         flex-wrap: wrap;
