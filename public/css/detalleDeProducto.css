@@ -13,7 +13,7 @@
 }
 
 .detalle__main__section{
-    background-color: #000000;
+    background-color: #1d1c1c;
     padding: 10px;
 }
 
@@ -61,6 +61,8 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 padding: 10px 0;
+flex-direction: column;
+align-items: center;
 
 }
 .detalle__main__section__article__button button{
