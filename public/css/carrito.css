@@ -133,6 +133,14 @@
 .carrito__seccion__productos__articulos{
     background-color: #ffffff;
     margin: 10px 0;
+    position: relative;
+}
+.carrito__seccion__productos__articulos a i{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 30px;
+    color: var(--verde);
 }
 .precio__descripcion{
     color: black;
