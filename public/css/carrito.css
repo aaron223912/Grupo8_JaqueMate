@@ -1,19 +1,16 @@
 .carrito{
-    background-color:   #1d1c1c;;
+    background-color:   #1d1c1c;
 }
 /*header*/
+
 .carrito__header{
-   
-    
-}
-.carrito__header__seccion{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-content: flex-start;
-    padding: 25px 15px;
+    padding: 25px 10px;
 }
 
 .carrito__header__categorias {
