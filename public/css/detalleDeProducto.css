@@ -42,6 +42,8 @@
 }
 .detalle__main__section__article__imagenes__secundaria img{
     width: 80px;
+    height: 110px;
+    margin-right: 10px;
 
 }
 .detalle__main__section__descripcion{
