@@ -1,0 +1,206 @@
+
+.detalle__main{
+    width: 100%;
+    background-color: #99A799;
+    padding-bottom: 10px;
+    
+
+}
+.detalle__main__section h3{
+   color: #ffffff;
+   text-transform: uppercase;
+
+}
+
+.detalle__main__section{
+    background-color: #1d1c1c;
+    padding: 10px;
+}
+
+.detalle__main__section__article__imagenes{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.detalle__main__section__article__imagenes__prinsipal{
+    width: 100%;
+    text-align: center;
+    
+}
+.detalle__main__section__article__imagenes__prinsipal img{
+    width:300px;
+    
+    
+}
+.detalle__main__section__article__imagenes__secundaria{
+    width:100%;
+    
+    
+    
+    
+}
+.detalle__main__section__article__imagenes__secundaria img{
+    width: 80px;
+    height: 110px;
+    margin-right: 10px;
+
+}
+.detalle__main__section__descripcion{
+    padding: 10px;
+    color: #ffffff;
+}
+.detalle__main__section__descripcion h4{
+    font-size: 25px;
+}
+.detalle__main__section__descripcion h6{
+    font-size: 20px;
+    margin: 10px 0;
+}
+.detalle__main__section__article__button{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding: 10px 0;
+flex-direction: column;
+align-items: center;
+
+}
+.detalle__main__section__article__button button{
+    width: 250px;
+    display: block;
+    margin: 10px 0;
+    padding: 15px 0;
+    background-color: #4F7F3F;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+}
+.detalle__main__section__descripcion p{
+    font-size: 12px;
+
+}
+.detalle__main__section__article__imagenes__miniaturas{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.detalle__main__section__article__imagenes__miniaturas img{
+    width: 80px;
+    border: 1px solid #666666;
+}
+.detalle__main__section__article__pagos i{
+    color: #000000;
+    font-size: 30px;
+}
+.detalle__main__section__article__pagos img{
+    width: 35px;
+}
+.carrucel{
+    width: 100%;
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.carrucel__2{
+   display: none;
+}
+.detalle__main__section__article__pagos__producto{
+    width: 50%;
+    border: 1px solid #666666;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.detalle__main__section__article__pagos__producto__imagencarrucel{
+    width: 100%;
+    
+}
+.detalle__main__section__article__pagos__producto__imagencarrucel img{
+    width: 100%;
+    background-color: #ffffff;
+    
+}
+
+/*tablet*/
+
+@media (min-width: 768px) {
+    .detalle__main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+    .detalle__main__section{
+        width: 50%;
+    }
+    .detalle__main__section__descripcion{
+        width: 50%;
+    }
+    .contenedor__carrucel{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 50%;
+    }
+    .carrucel{
+        width: 50%;
+     }
+    .carrucel__3{
+        display: block;
+     }
+     .detalle__main__section__article__pagos__producto{
+        width: 90%;
+      
+    }
+
+    .detalle__main__section__article__imagenes{
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    
+    }
+    .detalle__main__section__article__imagenes__prinsipal{
+        width: 75%;
+   
+    }
+    .detalle__main__section__article__imagenes__prinsipal img{
+        width:250px;
+ 
+    }
+    .detalle__main__section__article__imagenes__secundaria{
+        width:15%;
+    }
+    .detalle__main__section__article__imagenes__secundaria img{
+      margin:0 0 10px 0;
+    
+    }
+}
+@media (min-width: 1024px) {
+    .contenedor__carrucel{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 50%;
+    }
+    .carrucel{
+        width: 33%;
+     }
+    .carrucel__3{
+        display: block;
+     }
+     .carrucel__2{
+        display: block;
+     }
+     .detalle__main__section__article__pagos__producto{
+        width: 90%;
+      
+    }
+
+
+}

@@ -18,3 +18,7 @@
 
 #### Detalles y seleccion de sitios de referencias:
 Se eligieron como principales sitios web de referencia, mercado libre y che mate. del primer sitio se saco el formarto de la tienda, carrito de compras y el boton para confirmar la misma. Del segundo sitio, se copio el color y formato de pie. los demas sitios 2,3,4 fueron estudiados para ver el formate de una tienda exclusiva de mastes ya que mercado libre posee mucha variedad de productos.
+
+
+Repositorio github: Grupo 8 "Jaque Mate"
+https://github.com/aaron223912/Grupo8_JaqueMate.git
