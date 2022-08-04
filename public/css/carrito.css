@@ -11,13 +11,11 @@
     justify-content: space-around;
     align-content: flex-start;
     padding: 25px 10px;
+    background-color: var(--verde);
 }
 
 .carrito__header__categorias {
-    display: block;
-    background-color: #4F7F3F;
-    width: 100%;
-    padding: 10px 0;
+    display: none;
 }
 .carrito__header__categorias ul{
     display: flex;
@@ -200,6 +198,15 @@
             max-width: 1024px;
             margin: auto;
          
+    }
+    .carrito__header{
+        background-color:   #1d1c1c;
+    }
+    .carrito__header__categorias {
+        display: block;
+        background-color: #4F7F3F;
+        width: 100%;
+        padding: 10px 0;
     }
     .carrito__seccion__productos__articulos{
         background-color: #ffffff;
