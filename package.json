@@ -1,23 +1,16 @@
 {
-  "name": "grupo8_jaquemate",
-  "version": "1.0.0",
-  "description": "- Aaron Arias / 26 / Neuquen, Neuquen\r - Lucas Amaya / 24 / San Miguel, Buenos Aires\r - Mariano Rene Benjamin Garzon Sergio/ 30 / San Miguel, Buenos Aires\r - Mauro Mundanu / 22 / Lanús, Buenos Aires",
-  "main": "app.js",
+  "name": "grupo8-jaquemate",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aaron223912/Grupo8_JaqueMate.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aaron223912/Grupo8_JaqueMate/issues"
-  },
-  "homepage": "https://github.com/aaron223912/Grupo8_JaqueMate#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
   }
 }
