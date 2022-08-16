@@ -1,0 +1,32 @@
+[
+    {
+       "id": 1,
+       "name": "Bombilla",
+       "price": 500,
+       "image": "bombilla_produc.jpg",
+       "category": "bombillas"
+    },
+    {
+        "id": 2,
+        "name": "Mate",
+        "price": 1500,
+        "image": "mate_produc.png",
+        "category": "mates"
+     },
+     {
+        "id": 3,
+        "name": "Termo",
+        "price": 2500,
+        "image": "termo_produc.jpg",
+        "category": "termos"
+     },
+     {
+        "id": 4,
+        "name": "Termo Stanley",
+        "price": 3500,
+        "image": "/images/termo_produc2.jpg",
+        "category": "termos"
+     }
+     
+     
+]
