@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head', { title : 'editar' }) %>
+
+</head>
+</head>
+
+<body class="editar">
+  <header class="carrito__header">
+
+    <div class="carrito__header__logo">
+      <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
+    </div>
+    <div class="carrito__header__busqueda">
+      <input type="text" value="¿Que producto buscas?"><br>
+      <button>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+
+    <nav class="home__header__nav">
+      <a href="/users/login" class="ingresar">
+        <p>ingresar</p>
+      </a>
+      <p><a href="/products/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+      <div class="home__header__nav__foto"></div>
+    </nav>
+
+    <div class="home__header__burger">
+      <i class="fas fa-bars">
+      </i>
+    </div>
+
+    <nav class="carrito__header__categorias">
+      <ul>
+        <li><a href=""></a>Mates</li>
+        <li><a href=""></a>Bombillas</li>
+        <li><a href=""></a>Termos</li>
+        <li><a href=""></a>Yerberos</li>
+        <li><a href=""></a>Pavas</li>
+      </ul>
+    </nav>
+
+
+
+
+
+  </header>
+  <main>
+    <h1 class="titulo-form">Edita tu producto</h1>
+    <section class="form">
+      <form action="">
+        <div>
+          <label for="name" class="form-label">Nombre del producto</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+        <div>
+          <label for="description" class="form-label">Descripcion</label>
+          <input type="text" class="form-control" id="description">
+        </div>
+        <div class="conteiner-relative">
+          <label for="imagen" class="form-label">Imagen</label>
+          <div class="relative">
+            <label for="" class="label-imagen form-label">Ingresar imagen</label>
+            <input type="file" name="imagen" class="form-imagen">
+          </div>
+        </div>
+        <div>
+          <label for="category" class="form-label">Categoria</label>
+
+          <select name="category" class="categoria">
+
+            <option selected value="mate">Mate</option>
+
+            <option value="bombilla">Bombilla</option>
+
+            <option value="termo">Termo</option>
+
+            <option value="yerbero">Yerbero</option>
+
+            <option value="pava">Pava</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label for="price" class="form-label">Precio</label>
+          <input type="number" class="form-control" id="price">
+        </div>
+        <input type="submit" name="confirm" value="Confirmar">
+      </form>
+    </section>
+  </main>
+  <footer class="home__footer">
+    <%- include('./partials/footer') %>
+  </footer>
+
+</body>
+
+</html>

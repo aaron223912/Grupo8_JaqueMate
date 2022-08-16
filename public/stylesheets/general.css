@@ -16,3 +16,22 @@ ul, li{
     --verde: #4F7F3F;
     --grisOscuro:#3D3F41;
 }
+
+.form{
+    width: 90%;
+    margin: auto;
+}
+.editar {
+    max-width: 1024px;
+    background-color: #1d1c1c;
+}
+.titulo-form{
+    text-align: center;
+    color: white;
+}
+.form-label{
+    color: white;
+}
+.form input{
+    color: var(--verde);
+}
