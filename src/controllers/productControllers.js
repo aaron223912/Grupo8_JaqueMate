@@ -2,6 +2,6 @@
 
 module.exports = {
     detalle : (req, res) => {
-        return res.render('detalleDeProducto')
+        return res.render('detalleDeProducto.ejs')
     }
 }

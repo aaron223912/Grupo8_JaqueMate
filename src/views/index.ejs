@@ -1,54 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaque Mate</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="https://kit.fontawesome.com/ae7c764a16.js" crossorigin="anonymous"></script>
-</head>
+<%- include("./partials/head") %> 
 
 <body class="home">
-    <header class="home__header">
-        <div class="home__header__logo">
-            <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
-        </div>
-        <div class="home__header__busqueda">
-            <input type="text" value="¿Que producto buscas?"><br>
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-
-
-        <nav class="home__header__nav">
-            <a href="/login" class="ingresar"><p >ingresar</p></a>
-            <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
-            <div class="home__header__nav__foto"></div>
-        </nav>
-
-        <div class="home__header__burger">
-            <i class="fas fa-bars">
-            </i>
-        </div>
-        <nav class="home__header__categorias">
-            <ul>
-                <li><a href=""></a>mates</li>
-                <li><a href=""></a>bombillas</li>
-                <li><a href=""></a>termos</li>
-                <li><a href=""></a>yerberos</li>
-                <li><a href=""></a>pavas</li>
-            </ul>
-        </nav>
-        <div class="home__header__promo">
-            <a>Promociones</a>
-        </div>
-
-
-
-    </header>
+    <%- include("./partials/header") %> 
     <main class="home__main">
         <section class="home__main__banner">
             <div class="banner_principal"></div>
@@ -57,138 +13,16 @@
         </section>
         <section class="home__main__masBuscados">
             <h4>Mas Buscados</h4>
-            <article> <a href="/detalleDeProducto">
-                    <div>
-                        <img src="/images/mate_produc.png" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article> <a href="/detalleDeProducto">
-                    <div>
-                        <img src="/images/termo_produc.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article><a href="/detalleDeProducto">
-                    <div>
-                        <img src="/images/termo_produc2.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article><a href="/detalleDeProducto">
-                    <div>
-                        <img src="/images/bombilla_produc.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-
-        </section>
+            <%- include("./partials/productos") %> 
         <section class="home__main__buscAnterior">
             <h4>Con Relacion a Busquedas Anteriores</h4>
-            <article><a href="/detalleDeProducto">
-                    <div class="img_product">
-                        <img src="/images/mate_produc.png" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article><a href="/detalleDeProducto">
-                    <div class="img_product">
-                        <img src="/images/termo_produc.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article><a href="/detalleDeProducto">
-                    <div class="img_product">
-                        <img src="/images/termo_produc2.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
-            <article><a href="/detalleDeProducto">
-                    <div class="img_product">
-                        <img src="/images/bombilla_produc.jpg" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p>Producto</p>
-                        <p>$1000</p>
-                    </div>
-                </a>
-            </article>
+            <%- include("./partials/productos") %>
 
         </section>
 
 
     </main>
-    <footer class="home__footer">
-        <section class="home__footer__redes">
-            <h5>JAQUE MATE</h5>
-            <div class="home__footer__redes__icono">
-                <p><i class="fa-brands fa-instagram"></i></p>
-                <p><i class="fa-brands fa-facebook"></i></p>
-                <p><i class="fa-brands fa-whatsapp"></i></p>
-            </div>
-        </section>
-        <section class="footer__venta">
-            <p>Venta telefónica:
-                0810 333 8700
-                LU-VI de 8:00 a 20:00
-                SA-DO-Feriados 9:00 a
-                21:00</p>
-        </section>
-        <section class="footer__telefono">
-            <p>
-                Atención al cliente:
-                0810 999 3728
-                LU-VI de 09:00 a 18:00
-                SA de 9:00 a 13:00
-
-            </p>
-        </section>
-        <section class="footer__help">
-            <div>
-                <p>¿Necesitas ayuda?</p>
-            </div>
-        </section>
-        <section class="footer__copy">
-            <p>
-                Copyright 2021 | Todos
-                los derechos
-                reservados
-                JaqueMate.com. Peron
-                1425 San Miguel |
-                Buenos Aires |
-                Argentina
-            </p>
-        </section>
-
-    </footer>
+    <%- include("./partials/footer") %> 
 </body>
 
 </html>
