@@ -24,7 +24,7 @@
         "id": 4,
         "name": "Termo Stanley",
         "price": 3500,
-        "image": "/images/termo_produc2.jpg",
+        "image": "termo_produc2.jpg",
         "category": "termos"
      }
      
