@@ -1,3 +1,4 @@
+const {loadProducts,loadCategorys} = require('../data/db_moduls');
 
 
 module.exports = {
@@ -8,7 +9,10 @@ module.exports = {
         return res.render('editarProducto')
     },
     crear : (req, res) => {
-        return res.render('crearProducto')
+        const categorys = loadCategorys();
+        return res.render('crearProducto', {
+            categorys :categorys.sort()
+        })
     },
     store : (req, res) => {
         return res.send(req.body)

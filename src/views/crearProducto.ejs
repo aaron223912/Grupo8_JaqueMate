@@ -34,15 +34,14 @@
     
               <select name="category" class="categoria">
     
-                <option selected value="mate">Mate</option>
+                <option selected value="">seleccione...</option>
+
+                <% categorys.forEach(category => { %>
+                  <option value="<%= category %> "><%= category %> </option>
+                <% }) %>
+                
     
-                <option value="bombilla">Bombilla</option>
-    
-                <option value="termo">Termo</option>
-    
-                <option value="yerbero">Yerbero</option>
-    
-                <option value="pava">Pava</option>
+                
     
               </select>
             </div>
