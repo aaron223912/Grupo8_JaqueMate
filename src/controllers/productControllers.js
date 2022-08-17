@@ -9,5 +9,9 @@ module.exports = {
     },
     crear : (req, res) => {
         return res.render('crearProducto')
+    },
+    store : (req, res) => {
+        return res.send(req.body)
     }
+    
 }
