@@ -14,43 +14,37 @@
   <main>
     <h1 class="titulo-form">Edita tu producto</h1>
     <section class="form">
-      <form action="">
+      <form method="post" action="/products/update/<%= product.id %>?_method=PUT">
         <div>
           <label for="name" class="form-label">Nombre del producto</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>">
         </div>
         <div>
           <label for="description" class="form-label">Descripcion</label>
-          <input type="text" class="form-control" id="description">
+          <input type="text" class="form-control" id="description" name="description" value="<%= product.description %>">
         </div>
         <div class="conteiner-relative">
           <label for="imagen" class="form-label">Imagen</label>
           <div class="relative">
             <label for="" class="label-imagen form-label">Ingresar imagen</label>
-            <input type="file" name="imagen" class="form-imagen">
+            <input type="file"  class="form-imagen">
           </div>
         </div>
         <div>
-          <label for="category" class="form-label">Categoria</label>
+          <label for="category" class="form-label" >Categoria</label>
 
           <select name="category" class="categoria">
 
-            <option selected value="mate">Mate</option>
-
-            <option value="bombilla">Bombilla</option>
-
-            <option value="termo">Termo</option>
-
-            <option value="yerbero">Yerbero</option>
-
-            <option value="pava">Pava</option>
+            <% categories.forEach(categorie => { %>
+              <option value="<%= categorie %>" <%=  categorie === product.category ? 'selected' : null %> ><%= categorie %> </option>
+            <% }) %>
 
           </select>
         </div>
 
         <div>
           <label for="price" class="form-label">Precio</label>
-          <input type="number" class="form-control" id="price">
+          <input type="number" class="form-control" id="price" name="price" value="<%= product.price %>">
         </div>
         <input type="submit" name="confirm" value="Confirmar">
       </form>

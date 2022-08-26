@@ -19,7 +19,7 @@ ul, li{
 
 .form{
     width: 90%;
-    margin: auto;
+    margin: 20px auto;
 }
 .editar {
     max-width: 1024px;
@@ -32,6 +32,11 @@ ul, li{
 .form-label{
     color: white;
 }
-.form input{
-    color: var(--verde);
+.form button{
+    background-color: var(--verde);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    
 }

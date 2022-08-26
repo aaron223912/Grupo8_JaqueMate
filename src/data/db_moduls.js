@@ -5,8 +5,8 @@ const loadProducts = () => {
     return JSON.parse(fs.readFileSync(path.join(__dirname, 'products.json'), 'utf-8'))
 }
 
-const loadCategorys = () => {
-    return JSON.parse(fs.readFileSync(path.join(__dirname, 'categorys.json'),'utf-8'))
+const loadCategories = () => {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'categories.json'),'utf-8'))
 
 }
 
@@ -16,6 +16,6 @@ const storeProduct = (products) => {
 
 module.exports = {
     loadProducts,
-    loadCategorys,
+    loadCategories,
     storeProduct
 }
