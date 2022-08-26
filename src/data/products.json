@@ -4,28 +4,32 @@
        "name": "Bombilla",
        "price": 500,
        "image": "bombilla_produc.jpg",
-       "category": "bombillas"
+       "category": "bombillas",
+       "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
     },
     {
         "id": 2,
         "name": "Mate",
         "price": 1500,
         "image": "mate_produc.png",
-        "category": "mates"
+        "category": "mates",
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
      },
      {
         "id": 3,
         "name": "Termo",
         "price": 2500,
         "image": "termo_produc.jpg",
-        "category": "termos"
+        "category": "termos",
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
      },
      {
         "id": 4,
         "name": "Termo Stanley",
         "price": 3500,
         "image": "termo_produc2.jpg",
-        "category": "termos"
+        "category": "termos",
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
      }
      
      

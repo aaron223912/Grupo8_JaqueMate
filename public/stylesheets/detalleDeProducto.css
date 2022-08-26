@@ -69,7 +69,7 @@ flex-direction: column;
 align-items: center;
 
 }
-.detalle__main__section__article__button button{
+.detalle__main__section__article__button button, .detalle__main__section__article__button .a-button{
     width: 250px;
     display: block;
     margin: 10px 0;
@@ -79,6 +79,8 @@ align-items: center;
     font-size: 15px;
     border-radius: 15px;
     border: none;
+    text-decoration: none;
+    text-align: center;
 }
 .detalle__main__section__descripcion p{
     font-size: 12px;

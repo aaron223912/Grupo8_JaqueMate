@@ -13,16 +13,17 @@
 
     <main class="detalle__main">
         
-        <section class="detalle__main__section">
-            <h3>Jaque Mate > Mates</h3>
+        <section class="detalle__main__section">            
+            <h3>Jaque Mate > <%= product.category %> </h3>
+            
             <article class="detalle__main__section__article">
                 <div class="detalle__main__section__article__imagenes">
                     <div class="detalle__main__section__article__imagenes__prinsipal">
-                        <img src="/images/mate_produc2.jpg" alt="">
+                        <img src="/images/<%= product.image %>" alt="">
                     </div>
                    <div class="detalle__main__section__article__imagenes__secundaria">
-                    <img src="/images/mate rojo.jpeg" alt="">
-                    <img src="/images/mate marron claro.jpeg" alt="">
+                    <img src="/images/<%= product.image %>" alt="">
+                    <img src="/images/<%= product.image %>" alt="">
                    </div> 
                 </div>
             </article> 
@@ -30,9 +31,9 @@
             <section class="detalle__main__section__descripcion">
                 
                 <div class="detalle__main__section__article__imagenes__titulo">
-                    <h4>Mate Imperial Borde alpaca. Classic .</h4>
-                    <h4>  $ 3500</h4>
-                    <h6>Color:</h6>
+                    <h4><%= product.name %>.</h4>
+                    <h4>  $ <%= product.price %> </h4>
+                    
                     <div class="detalle__main__section__article__imagenes__miniaturas">
                          
                         <img src="/images/mate negro.jpeg" alt="">
@@ -45,12 +46,12 @@
                 <div class="detalle__main__section__article__button">
                     <button>Comprar</button>
                     <button>Agregar Al Carrito</button>
+                    <a href="/products/editarProducto/<%= product.id %>" class="a-button">Editar Producto</a>
                 </div> 
             </section>
                 <section class="detalle__main__section__descripcion"><div class="detalle__main__section__article__descripcion">
                     <h6>Descripcion</h6>
-                    <p>Mate Imperial Borde alpaca. Classic. 
-                        180 ml 30 Min Caliente -</p>
+                    <p><%= product.description %> </p>
                     <h6>Caracteristicas</h6>
                     <ul>
                         <li>Mantiene el calor 30 minutos despues empieza a bajar su temperatura</li>
@@ -127,3 +128,4 @@
 </body>
 
 </html>
+
