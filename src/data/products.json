@@ -10,15 +10,15 @@
    {
       "id": 2,
       "name": "Mate",
-      "price": 150,
+      "price": 3600,
       "image": "mate_produc.png",
-      "category": "mate",
+      "category": "mates",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
       "id": 3,
       "name": "Termo",
-      "price": 2500,
+      "price": 4000,
       "image": "termo_produc.jpg",
       "category": "termos",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"

@@ -47,14 +47,44 @@ module.exports = {
         storeProduct(productStringify);
         return res.redirect('/products/detalle/' + req.params.id)
     },
+    
     crear : (req, res) => {
-        const categories = loadCategories();
-        return res.render('crearProducto', {
-            categories :categories.sort()
-        })
+            const categories = loadCategories();
+            return res.render('crearProducto', {
+                categories :categories.sort()
+            })
     },
     store : (req, res) => {
-        return res.send(req.body)
-    }
+        //return res.send(req.body)
+
+        const {name,price,image,category,description}=req.body;
+        let products = loadProducts();
+        const newProducts = {
+            id: products[products.length - 1].id +1,
+            name: name.trim(),
+            price: +price,
+            image: req.file.filename,
+            category,
+            description:description.trim(),
+         }
+         productsModify = [...products,newProducts];
+         storeProduct(productsModify);
+         return res.redirect("/products");
+    },
+    remove : (req,res)=>{
+        //  return res.send()
+  
+        let productsModify= loadProducts().filter(product=>product.id !== +req.params.id);
+        storeProduct(productsModify);
+        return res.redirect("/products")
+      },
+
+    index: (req, res) => {
+		// Do the magic
+		let products = loadProducts();
+		return res.render("products",{
+			products,
+		})
+	},
     
 }

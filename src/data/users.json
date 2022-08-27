@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "nombre": "Jacynth",
+        "apellido": "Palomba",
+        "email": "jpalomba0@cbslocal.com",
+        "contraseña": "I6M7X3ye",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/voluptatesquositaque.bmp?size=50x50&set=set1"
+    }
+    {
+        "id": 2,
+        "nombre": "Kori",
+        "apellido": "Medd",
+        "email": "kmedd1@shareasale.com",
+        "contraseña": "B7FTviu",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/doloremnequeut.png?size=50x50&set=set1"
+    }
+    {
+        "id": 3,
+        "nombre": "Nikola",
+        "apellido": "Chadney",
+        "email": "nchadney2@home.pl",
+        "contraseña": "rXrwWZZE6",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/quiadebitisut.png?size=50x50&set=set1"
+    }
+    {
+        "id": 4,
+        "nombre": "Franklin",
+        "apellido": "Trump",
+        "email": "ftrump3@amazonaws.com",
+        "contraseña": "hFaE6dt",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/sitlaboreest.png?size=50x50&set=set1"
+    }
+    {
+        "id": 5,
+        "nombre": "Elisabetta",
+        "apellido": "Fassbindler",
+        "email": "efassbindler4@nba.com",
+        "contraseña": "9hzP2drDTTVF",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/errorrationesoluta.bmp?size=50x50&set=set1"
+    }
+    {
+        "id": 6,
+        "nombre": "Thayne",
+        "apellido": "De Avenell",
+        "email": "tdeavenell5@barnesandnoble.com",
+        "contraseña": "Sq9XyDfwgaM",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/accusamussedillum.png?size=50x50&set=set1"
+    }
+    {
+        "id": 7,
+        "nombre": "Nelli",
+        "apellido": "Filyakov",
+        "email": "nfilyakov6@nhs.uk",
+        "contraseña": "lYjBqE3k",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/odioeumeaque.bmp?size=50x50&set=set1"
+    }
+    {
+        "id": 8,
+        "nombre": "Hyacinthia",
+        "apellido": "Paolini",
+        "email": "hpaolini7@altervista.org",
+        "contraseña": "gwgTqeLE",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/eosundeet.bmp?size=50x50&set=set1"
+    }
+    {
+        "id": 9,
+        "nombre": "Astrid",
+        "apellido": "Pandey",
+        "email": "apandey8@go.com",
+        "contraseña": "bQMRW4jw4",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/doloremoptiodebitis.jpg?size=50x50&set=set1"
+    }
+    {
+        "id": 10,
+        "nombre": "Julieta",
+        "apellido": "Wallington",
+        "email": "jwallington9@godaddy.com",
+        "contraseña": "vY4NqJeCvC6",
+        "categoria": "Administrador",
+        "avatar": "https://robohash.org/velnequeodit.png?size=50x50&set=set1"
+    }
+ ]

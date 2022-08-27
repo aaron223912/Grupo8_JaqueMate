@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <%- include('./partials/head', { title : 'crear' }) %> 
-
-  </head>
 </head>
+
 <body class="crear">
-     <header class="carrito__header">
+  <header class="carrito__header">
         <%- include('./partials/header') %> 
   </header>
-    </header>
+
     <main>
         <h1 class="titulo-form">Crea tu puclicación</h1>
         <section class="form">
-          <form action="" method="post">
+
+
+
+          <form action="/products/store" method="post" enctype="multipart/form-data">
             <div>
               <label for="name" class="form-label">Nombre del producto</label>
               <input type="text" class="form-control" id="name" name="name">
@@ -25,8 +27,8 @@
             <div class="conteiner-relative">
               <label for="imagen" class="form-label">Imagen</label>
               <div class="relative">
-                <label for="" class="label-imagen form-label">Ingresar imagen</label>
-                <input type="file" name="imagen" class="form-imagen">
+                <label for="imagen" class="label-imagen form-label">Ingresar imagen</label>
+                <input type="file" name="imagen" class="form-imagen" required>
               </div>
             </div>
             <div>
@@ -36,12 +38,9 @@
     
                 <option selected value="">seleccione...</option>
 
-                <% categorys.forEach(category => { %>
+                <% categories.forEach(category => { %>
                   <option value="<%= category %> "><%= category %> </option>
                 <% }) %>
-                
-    
-                
     
               </select>
             </div>
@@ -50,8 +49,13 @@
               <label for="price" class="form-label">Precio</label>
               <input type="number" class="form-control" id="price" name="price">
             </div>
-            <input type="submit" name="confirm" value="Confirmar">
+            <div>
+              <button type="submit" class="a-button">Crear</button>
+            </div>
           </form>
+
+
+
         </section>
       </main>
     <footer class="home__footer"> <%- include('./partials/footer') %>  </footer>
