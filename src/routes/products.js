@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {detalle,editar,crear,update,store, index, remove} = require('../controllers/productControllers');
+const {detalle,editar,crear,update,store, products, remove} = require('../controllers/productControllers');
 const uploat = require("../middlewares/subirArchivos")
 
 router
@@ -9,7 +9,7 @@ router
     .put('/update/:id', update)
     .get('/crearProducto', crear)
     .post('/store',uploat.single("imagen"), store)
-    .get("/", index)
+    .get("/", products)
     .delete("/remove/:id", remove)
 
 module.exports = router;

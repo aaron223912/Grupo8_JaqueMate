@@ -79,7 +79,7 @@ module.exports = {
         return res.redirect("/products")
       },
 
-    index: (req, res) => {
+    products: (req, res) => {
 		// Do the magic
 		let products = loadProducts();
 		return res.render("products",{
