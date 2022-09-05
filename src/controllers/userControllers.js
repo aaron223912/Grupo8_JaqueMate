@@ -6,5 +6,9 @@ module.exports = {
     },
     registro : (req, res) => {
         return res.render('registro')
-    }
+    },
+   storeUsers : (req,res)=>{
+        return res.send(req.body)
+   }
+
 }
