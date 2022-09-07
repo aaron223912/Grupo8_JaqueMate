@@ -104,5 +104,18 @@
       "email": null,
       "contraseña": null,
       "categoria": null
+   },
+   {
+      "id": 13,
+      "nombre": "mariano",
+      "apellido": "garzon",
+      "email": "bemja28091991@gmail.com",
+      "password": "$2a$10$W4ybDu6Han2Da8p6oUtDiO3qQSmCz8vNwBGDhw0YhiWpXW4IQWc5m",
+      "categoria": null,
+      "avatar": null,
+      "genero": null,
+      "ciudad": null,
+      "provincia": null,
+      "about": null
    }
 ]

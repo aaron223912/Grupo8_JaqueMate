@@ -1,5 +1,6 @@
 const {loadUsers,storeUsers} = require('../data/db_moduls');
-const {validationResult}= require("express-validator")
+const {validationResult}= require("express-validator");
+const bcriptjs = require("bcryptjs")
 
 module.exports = {
     login : (req, res) => {
@@ -15,17 +16,17 @@ module.exports = {
         //return res.send(errors)
         if (errors.isEmpty()) {
             
-            const {id,nombre,apellido,email,contraseña,categoria,avatar}=req.body;
+            const {id,nombre,apellido,email,password,avatar}=req.body;
         let users =loadUsers();
 
         const newUsers = {
             id: users[users.length -1] ? users[users.length -1].id +1: 1,
             nombre: nombre.trim(),
             apellido:apellido.trim(),
-            email:null,
-            password,
+            email:email.trim(),
+            password: bcriptjs.hashSync(password.trim(),10),
             categoria:null,
-            avatar:req.file.filename,
+            avatar:null,
             genero: null,
             ciudad:null,
             provincia:null,
