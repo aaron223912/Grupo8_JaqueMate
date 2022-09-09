@@ -82,35 +82,10 @@
    },
    {
       "id": 10,
-      "nombre": "Julieta",
-      "apellido": "Wallington",
-      "email": "jwallington9@godaddy.com",
-      "contraseña": "vY4NqJeCvC6",
-      "categoria": "Administrador",
-      "avatar": "https://robohash.org/velnequeodit.png?size=50x50&set=set1"
-   },
-   {
-      "id": 11,
       "nombre": "Mariano",
-      "apellido": "Garzon Sergio",
-      "email": null,
-      "contraseña": null,
-      "categoria": null
-   },
-   {
-      "id": 12,
-      "nombre": "Mariano",
-      "apellido": "Garzon Sergio",
-      "email": null,
-      "contraseña": null,
-      "categoria": null
-   },
-   {
-      "id": 13,
-      "nombre": "mariano",
-      "apellido": "garzon",
+      "apellido": "Garzon",
       "email": "bemja28091991@gmail.com",
-      "password": "$2a$10$W4ybDu6Han2Da8p6oUtDiO3qQSmCz8vNwBGDhw0YhiWpXW4IQWc5m",
+      "password": "$2a$10$hyM0jLlL73NPmb.XZ/89L.jOAekkJOOWvXJ12/v4hzQJMtA8/5yh6",
       "categoria": null,
       "avatar": null,
       "genero": null,

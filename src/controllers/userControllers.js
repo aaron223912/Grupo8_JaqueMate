@@ -3,9 +3,7 @@ const {validationResult}= require("express-validator");
 const bcriptjs = require("bcryptjs")
 
 module.exports = {
-    login : (req, res) => {
-        return res.render('login')
-    },
+    
     registro : (req, res) => {
         return res.render('registro')
     },
@@ -30,6 +28,8 @@ module.exports = {
             genero: null,
             ciudad:null,
             provincia:null,
+            fechaNacimiento:null,
+            pasatiempo:null,
             about:null
         }
 
@@ -44,6 +44,48 @@ module.exports = {
             })
         }
 
-   }
+   },
 
+   login : (req, res) => {
+    return res.render('login')
+},
+
+processLogin: (req,res) => {
+    let errors = validationResult(req)
+    //return res.send(errors)
+    if(errors.isEmpty()){
+
+        let {id, nombre, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
+
+        req.session.userLogin = {
+            id,
+            nombre,
+            categoria,
+            avatar
+        }
+
+        return res.redirect("/")
+    }else{
+        return res.render("login",{
+            errors:errors.mapped()
+        })
+    }
+    
+},
+
+profile: (req,res)=>{
+    let user = loadUsers().find(user => user.id === req.session.userLogin.id);
+    return res.render("profile", {
+        user
+    })
+},
+
+logout: (req,res)=>{
+    req.session.destroy()
+    return res.redirect("/")
+},
+updateUser: (req,res)=>{
+
+    return res.redirect("/")
+},
 }

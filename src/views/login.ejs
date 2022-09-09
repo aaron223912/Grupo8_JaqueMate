@@ -14,14 +14,19 @@
         <h1>Iniciar sesion</h1>
         <p>Iniciar sesion a jaqueMate</p>
 
-        <form action="" class="login__main__formulario">
+        <form action="" class="login__main__formulario" method="post">
             <label for="email">Email</label>
-            <input type="email" name="email" >
+            <input type="email" name="email" id="email">
+            <small><%= locals.errors && errors.email?errors.email.msg : null %></small>
 
             <label for="password">Contraseña</label>
-            <input type="password" name="password">
+            <input type="password" name="password" id="password">
+            <%= locals.errors && errors.password?errors.password.msg : null %>
 
             <p>¿Olvidaste tu <a href="">contraseña</a>?</p>
+
+            <label for="remember">Recordame</label>
+            <input type="checkbox" name="remember" id="remember">
 
             <div class="login__main__formulario__confirmar">
             <button type="submit">Iniciar sesion</button>

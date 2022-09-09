@@ -17,12 +17,27 @@
             </button>
         </div>
 
-
-        <nav class="home__header__nav">
-            <a href="/users/login" class="ingresar"><p >ingresar</p></a>
-            <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
-            <div class="home__header__nav__foto"></div>
-        </nav>
+        <% if (locals.userLogin) { %>
+            <nav class="home__header__nav">
+                <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+                <a href="/users/profile" class="ingresar"><p >Mi perfil</p></a>
+                <a href="/users/logout" class="ingresar"><p >Salir</p></a>
+            </nav>
+            <% if (userLogin.categoria === "admin") { %>
+             
+                <nav class="home__header__nav">
+                    <a href="/users/crearProducto" class="ingresar"><p >Agregar</p></a>
+                </nav>
+            <% } %>
+      
+      
+          <% }else{ %>
+            <nav class="home__header__nav">
+                <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+                <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
+                <a href="/users/registro" class="ingresar"><p >Registro</p></a>
+            </nav>
+          <% } %>
 
         <div class="home__header__burger">
             <i class="fas fa-bars">

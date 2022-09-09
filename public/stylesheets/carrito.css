@@ -201,6 +201,7 @@
     }
     .carrito__header{
         background-color:   #1d1c1c;
+        align-items: center;
     }
     .carrito__header__categorias {
         display: block;
