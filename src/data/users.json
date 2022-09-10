@@ -82,15 +82,17 @@
    },
    {
       "id": 10,
-      "nombre": "Mariano",
+      "nombre": "Benjamin",
       "apellido": "Garzon",
       "email": "bemja28091991@gmail.com",
       "password": "$2a$10$hyM0jLlL73NPmb.XZ/89L.jOAekkJOOWvXJ12/v4hzQJMtA8/5yh6",
       "categoria": null,
       "avatar": null,
-      "genero": null,
-      "ciudad": null,
-      "provincia": null,
-      "about": null
+      "genero": "m",
+      "ciudad": "",
+      "provincia": "",
+      "about": "",
+      "fechaNacimiento": "",
+      "pasatiempo": "BASQUE"
    }
 ]

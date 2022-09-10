@@ -1,6 +1,8 @@
 const {loadUsers,storeUsers} = require('../data/db_moduls');
 const {validationResult}= require("express-validator");
-const bcriptjs = require("bcryptjs")
+const bcriptjs = require("bcryptjs");
+const provincias = require("../data/provincias");
+const ciudades = require("../data/ciudades");
 
 module.exports = {
     
@@ -76,7 +78,9 @@ processLogin: (req,res) => {
 profile: (req,res)=>{
     let user = loadUsers().find(user => user.id === req.session.userLogin.id);
     return res.render("profile", {
-        user
+        user,
+        ciudades,
+        provincias
     })
 },
 
@@ -86,6 +90,25 @@ logout: (req,res)=>{
 },
 updateUser: (req,res)=>{
 
-    return res.redirect("/")
-},
+    //return res.send(req.body)
+
+    const {nombre,apellido,avatar,genero,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
+
+    let usersModify = loadUsers().map(user =>{
+        if (user.id === +req.params.id) {
+            return{
+                ...user,
+                ...req.body
+
+            }
+        }
+        return user
+    });
+    req.session.userLogin={
+        ...req.session.userLogin,
+        nombre
+    }
+    storeUsers(usersModify);
+    return res.redirect("/users/profile")
+}
 }

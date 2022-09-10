@@ -12,7 +12,7 @@
 
     <% if (locals.userLogin) { %>
       <a href="/users/profile" class="ingresar">
-        <p>Mi perfil</p>
+        <p><%= userLogin.nombre %></p>
       </a>
       <a href="/users/logout" class="ingresar">
         <p>Salir</p>

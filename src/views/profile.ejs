@@ -14,7 +14,7 @@
         <h1>Perfil</h1>
         <p>Edita tus datos</p>
 
-        <form action="/users/updateUser/<%= user.id %>_method=PUT" class="registro__main__formulario" enctype="multipart/form-data" method="post">
+        <form action="/users/updateUser/<%= user.id %>?_method=PUT" class="registro__main__formulario" enctype="multipart/form-data" method="POST">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" value="<%= user.nombre %>">
             
@@ -24,16 +24,34 @@
            
 
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="<%= user.email %>">
+            <input type="email" name="email" id="email" value="<%= user.email %>" readonly>
 
-            <label for="genero">Genero</label>
-            <input type="text" name="genero" id="genero" value="<%= user.genero %>">
 
-            <label for="ciudad">ciudad</label>
-            <input type="text" name="ciudad" id="ciudad" value="<%=user.ciudad  %>">
+            <div>
+                <h5>Genero</h5>
+                <label for="masculino">Masculino</label>
+                <input type="radio" name="genero" id="masculino" <%= user.genero === "m" && "checked" %> value="m">
+                <label for="femenino">Femenino</label>
+                <input type="radio" name="genero" id="femenino" <%= user.genero === "f" && "checked" %> value="f">
+                <label for="otro">Otro</label>
+                <input type="radio" name="genero" id="otro" <%= user.genero === "o" && "checked" %> value="o">
 
-            <label for="provincia">Provincia</label>
-            <input type="text" name="provincia" id="provincia" value="<%=user.provincia  %>">
+            </div>
+            
+            <select name="ciudad" id="ciudad">
+                <option hidden selected value="">Selecciona tu ciudad</option>
+                <% ciudades.forEach(ciudad => { %>
+                    <option <%= ciudad === user.ciudad && "selected" %> value=" <%= ciudad %>"><%= ciudad %></option>
+                <% }) %>
+            </select>
+            
+
+            <select name="provincia" id="provincia">
+                <option hidden selected value="">Selecciona tu provincia</option>
+                <% provincias.forEach(provincia => { %>
+                    <option <%= provincia === user.provincia && "selected" %> value=" <%= provincia %>"><%= provincia %></option>
+                <% }) %>
+            </select>
 
             <label for="fechaNacimiento">Fecha de nacimiento</label>
             <input type="date" name="fechaNacimiento" id="fechaNacimiento" value="<%=user.fechaNacimiento  %>">
@@ -47,6 +65,11 @@
 
             <label for="avatar">Avatar</label>
             <input type="file" name="avatar" id="avatar" value="<%=user.avatar  %>">
+
+            
+            <div class="login__main__formulario__confirmar">
+                <button type="submit">Guardar</button>
+            </div>
 
             
         </form>
