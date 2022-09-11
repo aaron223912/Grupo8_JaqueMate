@@ -85,14 +85,14 @@
       "nombre": "Benjamin",
       "apellido": "Garzon",
       "email": "bemja28091991@gmail.com",
-      "password": "$2a$10$hyM0jLlL73NPmb.XZ/89L.jOAekkJOOWvXJ12/v4hzQJMtA8/5yh6",
+      "password": "$2a$10$buAGWEs8xf9CjXrLHblgeOksm5SPLxrOWlzepp0dzHmDitwNTYgB6",
       "categoria": null,
-      "avatar": null,
-      "genero": "m",
-      "ciudad": "",
-      "provincia": "",
-      "about": "",
-      "fechaNacimiento": "",
-      "pasatiempo": "BASQUE"
+      "avatar": "avatarDefault.png",
+      "genero": null,
+      "ciudad": null,
+      "provincia": null,
+      "fechaNacimiento": null,
+      "pasatiempo": null,
+      "about": null
    }
 ]

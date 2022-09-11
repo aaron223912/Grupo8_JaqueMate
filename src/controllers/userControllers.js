@@ -3,6 +3,8 @@ const {validationResult}= require("express-validator");
 const bcriptjs = require("bcryptjs");
 const provincias = require("../data/provincias");
 const ciudades = require("../data/ciudades");
+const fs = require("fs");
+const path = require("path")
 
 module.exports = {
     
@@ -26,13 +28,13 @@ module.exports = {
             email:email.trim(),
             password: bcriptjs.hashSync(password.trim(),10),
             categoria:null,
-            avatar:null,
+            avatar:req.filename?req.filename: "avatarDefault.png",
             genero: null,
             ciudad:null,
             provincia:null,
             fechaNacimiento:null,
             pasatiempo:null,
-            about:null
+            about:null,
         }
 
         usersModify = [...users,newUsers];
@@ -98,15 +100,27 @@ updateUser: (req,res)=>{
         if (user.id === +req.params.id) {
             return{
                 ...user,
-                ...req.body
+                ...req.body,
+                avatar: req.file? req.file.filename: req.session.userLogin.avatar
 
             }
         }
         return user
     });
+    if (req.file && req.session.userLogin.avatar) {
+        if (fs.existsSync(path.resolve(__dirname,"..","public","images","users", req.session.userLogin.avatar))){
+
+            fs.unlinkSync(path.resolve(__dirname,"..","public","images","users", req.session.userLogin.avatar))
+        }
+
+    }
+    
+
+
     req.session.userLogin={
         ...req.session.userLogin,
-        nombre
+        nombre,
+        avatar: req.file? req.file.filename: req.session.userLogin.avatar
     }
     storeUsers(usersModify);
     return res.redirect("/users/profile")
