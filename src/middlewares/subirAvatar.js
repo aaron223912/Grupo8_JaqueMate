@@ -7,12 +7,13 @@ const storageUsers = multer.diskStorage({
         cb(null, "./public/images/users")
     },
     filename : (req, file, cb) =>{
-        cb(null, file.fieldname + 'avatar' + Date.now() + path.extname(file.originalname))
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+       // cb(null, "avatar" + Date.now()
 
     }
 })
 
 const uploatAvatar= multer({
-    storageUsers:storageUsers
+    storageUsers
 })
-module.exports = uploatAvatar;
+module.exports = uploatAvatar

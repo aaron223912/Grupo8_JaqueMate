@@ -13,7 +13,7 @@
     <main class="registro__main">
         <div class="home__header__nav__foto__profile">
 
-            <img src="/images/users/<%= user.avatar? user.avatar:"avatarDefault.png" %> " alt="">
+            <img src="/images/users/<%= user.avatar? user.avatar:"avatarDefault.png" %> ">
         </div>
         
         
@@ -25,7 +25,7 @@
         
         
 
-        <form action="/users/updateUser/<%= user.id %>?_method=PUT" class="registro__main__formulario" enctype="multipart/form-data" method="POST">
+        <form action="/users/updateUser/<%= user.id %>?_method=put" class="registro__main__formulario"  enctype="multipart/form-data" method="post">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" value="<%= user.nombre %>">
             
@@ -73,9 +73,12 @@
             <label for="about">Acerca de mi</label>
             <input type="text" name="about" id="about" value="<%=user.about  %>">
 
+            <div>
 
-            <label for="avatar">Avatar</label>
-            <input type="file" name="avatar" id="avatar" value="<%=user.avatar  %>">
+                <label for="">Avatar</label>
+                <input type="file" name="avatar" id="avatar" value="<%=user.avatar  %>">
+            </div>
+                    
 
             
             <div class="login__main__formulario__confirmar">
