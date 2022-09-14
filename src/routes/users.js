@@ -5,12 +5,13 @@ const uploatAvatar = require("../middlewares/subirAvatar");
 const loginValidation = require('../validations/loginValidation');
 const usersRegisterValidator = require('../validations/usersRegisterValidator');
 const chequeadorSession = require("../middlewares/chequeadorSession")
+const checkInicioSession = require('../middlewares/checkInicionSession')
 /* GET users listing. */
 router
-    .get('/login', login)
-    .post("/login",loginValidation ,processLogin)
+    .get('/login', checkInicioSession, login)
+    .post("/login",loginValidation, processLogin)
     .get("/profile", chequeadorSession,profile)
-    .get('/registro', registro)
+    .get('/registro', checkInicioSession, registro)
     .post("/storeUsers",uploatAvatar.single("avatar"),usersRegisterValidator, storeUsersController)
     .get("/logout",logout)
     .put("/updateUser/:id",uploatAvatar.single("avatar"), updateUser)

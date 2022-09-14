@@ -94,5 +94,20 @@
       "about": "",
       "fechaNacimiento": "",
       "pasatiempo": "BASQUE"
+   },
+   {
+      "id": 11,
+      "nombre": "Mauro",
+      "apellido": "Mundanu",
+      "email": "mmundanu@yahoo.com",
+      "password": "$2a$10$aDtcPX6GsEuazmnzFD8KCOzssOJerJr8Y/5e9.vD18W4Q83CF0lGm",
+      "categoria": null,
+      "avatar": null,
+      "genero": null,
+      "ciudad": "",
+      "provincia": "",
+      "fechaNacimiento": "",
+      "pasatiempo": "",
+      "about": ""
    }
 ]

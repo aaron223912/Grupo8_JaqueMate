@@ -7,6 +7,8 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 const session = require("express-session");
 const localUsers = require("./middlewares/localUsers");
+var cookieCheck = require('./middlewares/cookieCheck');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,7 +22,9 @@ app.use(session({
   resave : false,
   saveUninitialized : true
 }));
-app.use(localUsers)
+app.use(cookieCheck);
+app.use(localUsers);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,3 +59,4 @@ module.exports = app;
 
 
 console.log('http://localhost:3000/');
+

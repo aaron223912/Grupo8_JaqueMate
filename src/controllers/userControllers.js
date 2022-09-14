@@ -66,6 +66,12 @@ processLogin: (req,res) => {
             avatar
         }
 
+        if(req.body.remember){
+            res.cookie('jaquemate',req.session.userLogin,{
+                maxAge : 1000 * 120
+            })
+        }
+
         return res.redirect("/")
     }else{
         return res.render("login",{
