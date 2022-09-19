@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var methodOverride = require('method-override');
-const session = require("express-session");
+const session = require('express-session');
 const localUsers = require("./middlewares/localUsers");
 var cookieCheck = require('./middlewares/cookieCheck');
 
@@ -15,14 +15,13 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
 
 var app = express();
-
 app.use(methodOverride('_method'))
 app.use(session({
-  secret : "jaquemate",
+  secret : 'jaquemate',
   resave : false,
   saveUninitialized : true
 }));
-app.use(cookieCheck);
+//app.use(cookieCheck);
 app.use(localUsers);
 
 
@@ -59,4 +58,5 @@ module.exports = app;
 
 
 console.log('http://localhost:3000/');
+
 

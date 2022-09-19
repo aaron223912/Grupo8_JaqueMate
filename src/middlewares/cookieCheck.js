@@ -1,6 +1,6 @@
-module.exports = (req,res,next) => {
-    if(req.cookies.jaquemate){
+module.exports = (req, res, next) => {
+    if(req.cookies.jaquemate) {
         req.session.userLogin = req.cookies.jaquemate
     }
-    next();
+    next()
 }
