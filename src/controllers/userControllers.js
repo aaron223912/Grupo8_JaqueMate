@@ -57,11 +57,12 @@ processLogin: (req,res) => {
     //return res.send(errors)
     if(errors.isEmpty()){
 
-        let {id, nombre, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
+        let {id, nombre,rol, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
 
         req.session.userLogin = {
             id,
             nombre,
+            rol,
             categoria,
             avatar
         }
