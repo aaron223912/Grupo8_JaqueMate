@@ -15,13 +15,14 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
 
 var app = express();
+app.use(cookieParser());
 app.use(methodOverride('_method'))
 app.use(session({
   secret : 'jaquemate',
   resave : false,
   saveUninitialized : true
 }));
-//app.use(cookieCheck);
+app.use(cookieCheck);
 app.use(localUsers);
 
 
