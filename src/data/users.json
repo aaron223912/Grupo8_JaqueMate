@@ -87,12 +87,12 @@
       "email": "bemja28091991@gmail.com",
       "password": "$2a$10$lMijvVwLTIbLSm7GhyZAruvE0X2NZsEPQik2KNmZX6I1gkfzXOUHG",
       "categoria": null,
-      "avatar": null,
+      "avatar": "avatar1664051706658.jpg",
       "genero": null,
-      "ciudad": null,
-      "provincia": null,
-      "fechaNacimiento": null,
-      "pasatiempo": null,
-      "about": null
+      "ciudad": "",
+      "provincia": "",
+      "fechaNacimiento": "",
+      "pasatiempo": "",
+      "about": ""
    }
 ]

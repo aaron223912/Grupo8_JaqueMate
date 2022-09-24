@@ -290,14 +290,13 @@
     }
 
     .home__header__nav__foto__profile {
-        width: 80px;
-        height: 80px;
-        border-color: #4F7F3F;
+        width: 100px; 
+    }
+    .home__header__nav__foto__profile figure {
+        width: 90%;
         border-radius: 50%;
     }
-    .home__header__nav__foto__profile img {
-        width: 100%;
-    }
+    
 
 
     .home__header__categorias {
