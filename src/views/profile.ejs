@@ -13,7 +13,8 @@
     <main class="registro__main">
         <div class="home__header__nav__foto__profile">
 
-            <img src="/images/users/<%= user.avatar? user.avatar:"avatarDefault.png" %> "> 
+           <figure class="home__header__nav__foto__profile__figure">
+            <img src="/images/users/<%= user.avatar? user.avatar:"avatarDefault.png" %> "> </figure>
         </div>
         
         
@@ -76,7 +77,8 @@
             <div>
 
                 <label for="">Avatar</label>
-                <input type="file" name="avatar" id="avatar" value="<%=user.avatar  %>">
+                <input type="file" name="avatar" id="avatar" value="<%=user.avatar  %>"
+                accept="image/gif, image/png, image/jpeg">
             </div>
                     
 
