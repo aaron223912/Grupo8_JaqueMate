@@ -106,8 +106,8 @@ updateUser: (req,res)=>{
         }
         return user
     });
-    if (req.file && req.session.userLogin.avatar) {
-        if (fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
+    if(req.file && req.session.userLogin.avatar){
+        if(fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
 
             fs.unlinkSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))
         }
