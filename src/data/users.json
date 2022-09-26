@@ -94,5 +94,35 @@
       "fechaNacimiento": "1991-09-28",
       "pasatiempo": "basque",
       "about": "nbfvhgvufhydfvu"
+   },
+   {
+      "id": 11,
+      "nombre": "benja",
+      "apellido": "gomes",
+      "email": "bemja@gmail.com",
+      "password": "$2a$10$1xkpT7M1v79TX7cRajeSUOd1Q6s/fgTt/1E1OzWf9ZyUn.HxNsOV.",
+      "categoria": null,
+      "avatar": "avatar1664223624194.jpg",
+      "genero": null,
+      "ciudad": "",
+      "provincia": "",
+      "fechaNacimiento": "1993-02-12",
+      "pasatiempo": "basque",
+      "about": "asdfsgfsdxfg"
+   },
+   {
+      "id": 12,
+      "nombre": "mariano",
+      "apellido": "sergio",
+      "email": "bemja1212@gmail.com",
+      "password": "$2a$10$VG9ApTUylzFo1dqUPXRXYO9OSagFU6f8MC.sM5JQUx8CfzwWKQW1i",
+      "categoria": null,
+      "avatar": "avatar1664216089564.png",
+      "genero": null,
+      "ciudad": "",
+      "provincia": "",
+      "fechaNacimiento": "1993-12-12",
+      "pasatiempo": "basque",
+      "about": "gbhydgjbv"
    }
 ]

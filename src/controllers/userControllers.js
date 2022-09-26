@@ -130,6 +130,10 @@ updateUser: (req,res)=>{
 },
 logout: (req,res)=>{
     req.session.destroy()
+    res.cookie('jaquemate', null, {
+        maxAge : -1 
+    })
     return res.redirect("/")
+
 }
 }

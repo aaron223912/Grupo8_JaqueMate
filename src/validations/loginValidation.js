@@ -10,7 +10,7 @@ module.exports = [
         
 
     body("password")
-        .notEmpty().withMessage("La contraseña es obligatorio").bail()
+        .notEmpty().withMessage("La contraseña es obligatoria").bail()
         .custom((value, {req})=>{
             let user = loadUsers().find(user => user.email === req.body.email && bcryptjs.compareSync(value, user.password) );
             return user?true:false

@@ -14,5 +14,11 @@ const storageUsers = multer.diskStorage({
 
 const uploatAvatar = multer({
     storage : storageUsers
+    // limits: {fileSize: 3145728},
+    // fileFilter: (req,file,cb)=>{
+    //     let type = file.mimetype.startsWith("image/PNG","image/JPG","image/JPEG","image/GIF","image/TIF");
+    //     type?cb(null, true):cb(new Error ("No es un archivo de tipo imagen"))
+    // }
+
 });
 module.exports = uploatAvatar
