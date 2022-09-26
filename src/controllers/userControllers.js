@@ -3,6 +3,8 @@ const {validationResult}= require("express-validator");
 const bcriptjs = require("bcryptjs");
 const provincias = require("../data/provincias");
 const ciudades = require("../data/ciudades");
+const fs = require("fs");
+const path = require("path")
 
 module.exports = {
     
@@ -90,31 +92,44 @@ profile: (req,res)=>{
     })
 },
 
-logout: (req,res)=>{
-    req.session.destroy()
-    return res.redirect("/")
-},
+
 updateUser: (req,res)=>{
 
-    //return res.send(req.body)
+    // return res.send(req.body)
+    console.log(req.file);
+    console.log(req.body);
 
-    const {nombre,apellido,avatar,genero,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
+    const {nombre,apellido,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
 
     let usersModify = loadUsers().map(user =>{
         if (user.id === +req.params.id) {
             return{
                 ...user,
-                ...req.body
-
+                ...req.body,
+                avatar: req.file ? req.file.filename : req.session.userLogin.avatar
             }
         }
         return user
     });
-    req.session.userLogin={
-        ...req.session.userLogin,
-        nombre
+    if(req.file && req.session.userLogin.avatar){
+        if(fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
+
+            fs.unlinkSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))
+        }
+
     }
+    
+    req.session.userLogin = {
+        ...req.session.userLogin,
+        nombre,
+        avatar: req.file ? req.file.filename : req.session.userLogin.avatar
+    }
+
     storeUsers(usersModify);
     return res.redirect("/users/profile")
+},
+logout: (req,res)=>{
+    req.session.destroy()
+    return res.redirect("/")
 }
 }

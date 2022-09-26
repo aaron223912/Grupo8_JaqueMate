@@ -295,7 +295,16 @@
         background-color: gray;
         border-radius: 50%;
     }
-
+    .home__header__nav__foto__profile {
+        width: 100px; 
+    }
+    
+    .home__header__nav__foto__profile__figure img { 
+        width:100px;
+        height:100px;
+        border-radius:50px;
+        object-fit: cover;
+    }
 
     .home__header__categorias {
         display: inline-block;

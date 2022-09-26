@@ -12,7 +12,7 @@ router
     .post("/login",loginValidation, processLogin)
     .get("/profile", chequeadorSession,profile)
     .get('/registro', checkInicioSession, registro)
-    .post("/storeUsers",uploatAvatar.single("avatar"),usersRegisterValidator, storeUsersController)
+    .post("/storeUsers",usersRegisterValidator, storeUsersController)
     .get("/logout",logout)
     .put("/updateUser/:id",uploatAvatar.single("avatar"), updateUser)
 
