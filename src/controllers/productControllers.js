@@ -56,8 +56,9 @@ module.exports = {
     },
     store : (req, res) => {
         //return res.send(req.body)
-
-        const {name,price,image,category,description}=req.body;
+        //return res.send(req.file)
+        
+        const {name,price,category,description}=req.body;
         let products = loadProducts();
         const newProducts = {
             id: products[products.length - 1].id +1,
@@ -67,6 +68,7 @@ module.exports = {
             category,
             description:description.trim(),
          }
+         
          productsModify = [...products,newProducts];
          storeProduct(productsModify);
          return res.redirect("/products");
