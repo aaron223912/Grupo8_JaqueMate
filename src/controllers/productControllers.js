@@ -1,3 +1,4 @@
+const db= require("../database/models")
 const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
 
 
@@ -83,10 +84,17 @@ module.exports = {
 
     products: (req, res) => {
 		// Do the magic
-		let products = loadProducts();
-		return res.render("products",{
-			products,
-		})
+
+        db.Product.findAll()
+        .then(products => res.render("products",{
+            products
+        }))
+        .catch(error=> console.log(error));
+
+		// let products = loadProducts();
+		// return res.render("products",{
+		// 	products,
+		// })
 	},
     
 }
