@@ -4,7 +4,9 @@ const bcriptjs = require("bcryptjs");
 const provincias = require("../data/provincias");
 const ciudades = require("../data/ciudades");
 const fs = require("fs");
-const path = require("path")
+const path = require("path");
+const { promiseImpl } = require('ejs');
+const db = require('../database/models');
 
 module.exports = {
     
@@ -12,10 +14,8 @@ module.exports = {
         return res.render('registro')
     },
    storeUsersController : (req,res)=>{
-        //return res.send(req.body)
-        
+    /*
         const errors = validationResult(req);
-        //return res.send(errors)
         if (errors.isEmpty()) {
             
             const {id,nombre,apellido,email,password,avatar}=req.body;
@@ -46,7 +46,30 @@ module.exports = {
                 errors:errors.mapped(),
                 old: req.body
             })
-        }
+        }*/
+        let gender = db.Gender.findAll();
+
+        let rol = db.Rol.findAll();
+
+        let userStore = db.User.create({
+            name: nombre.trim(),
+            surname: apellido.trim(),
+            password: bcriptjs.hashSync(password.trim(),10),
+            email,
+            birthday,
+            genderId,
+            rolId
+        })
+
+        Promise.all([gender, rol, userStore])
+         .then(([gender, rol, userStore]) => {
+            return res.redirect("/users/login", {
+                gender,
+                rol
+            })
+         })
+         .catch(error => console.log(error))
+
 
    },
 
@@ -55,16 +78,15 @@ module.exports = {
 },
 
 processLogin: (req,res) => {
-    let errors = validationResult(req)
-    //return res.send(errors)
+   /* let errors = validationResult(req)
     if(errors.isEmpty()){
 
-        let {id, nombre, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
+        let {id, nombre, rol, avatar} = loadUsers().find(user => user.email === req.body.email);
 
         req.session.userLogin = {
             id,
             nombre,
-            categoria,
+            rol,
             avatar
         }
 
@@ -80,15 +102,42 @@ processLogin: (req,res) => {
             errors:errors.mapped()
         })
     }
+    */
+
+    db.User.findAll({
+        where: {email: req.body.email}
+    })
+    .then(user => {
+        req.session.userLogin = {
+            id,
+            nombre,
+            rol 
+        }
+
+        if(req.body.remember){
+            res.cookie('jaquemate',req.session.userLogin,{
+                maxAge : 1000 * 120
+            })
+        }
+
+        return res.redirect("/")
+    })
+    .catch(error => console.log(error))
     
 },
 
 profile: (req,res)=>{
-    let user = loadUsers().find(user => user.id === req.session.userLogin.id);
+   /* let user = loadUsers().find(user => user.id === req.session.userLogin.id);
     return res.render("profile", {
         user,
         ciudades,
         provincias
+    })
+    */
+
+    db.User.findByPk(req.params.id === req.session.userLogin.id)
+    .then((user) => {
+        res.render('profile',{user})
     })
 },
 
@@ -96,7 +145,7 @@ profile: (req,res)=>{
 updateUser: (req,res)=>{
 
     // return res.send(req.body)
-    console.log(req.file);
+   /* console.log(req.file);
     console.log(req.body);
 
     const {nombre,apellido,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
@@ -126,7 +175,31 @@ updateUser: (req,res)=>{
     }
 
     storeUsers(usersModify);
-    return res.redirect("/users/profile")
+    return res.redirect("/users/profile")*/
+
+    db.User.update({
+        name: nombre.trim(),
+        surname: apellido.trim(),
+        email,
+        birthday,
+        genderId,
+        rolId
+    },
+    {
+        where: {id: req.params.id}
+    })
+    then((response, user) => {
+        console.log(response);
+        req.session.userLogin = {
+            ...req.session.userLogin,
+            nombre
+        }
+        res.redirect('users/profle',{
+            user
+        })
+    })
+
+
 },
 logout: (req,res)=>{
     req.session.destroy()
