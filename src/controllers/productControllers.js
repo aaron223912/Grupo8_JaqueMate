@@ -4,12 +4,34 @@ const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
 
 module.exports = {
     detalle : (req, res) => {
-        const products = loadProducts();
-        const product = products.find(product => product.id === +req.params.id);
+        // const products = loadProducts();
+        // const product = products.find(product => product.id === +req.params.id);
         
-        return res.render('detalleDeProducto',{
-            product
+        // return res.render('detalleDeProducto',{
+        //     product
+        // })
+        db.Product.findByPk(req.params.id,{
+            // include:[{
+            //     all:true
+            // }]
+            
+                include:[
+    
+                    {
+                        association:"category"
+                    },
+                    {association:"images"}
+                ]
+            
         })
+        .then(product =>{
+            // return res.send(product)
+            return res.render("detalleDeProducto",{
+                product
+            })
+        })
+        .catch(error => console.log(error))
+
     },
     editar : (req, res) => {
         const products = loadProducts();
@@ -50,11 +72,31 @@ module.exports = {
     },
     
     crear : (req, res) => {
-            const categories = loadCategories();
-            return res.render('crearProducto', {
-                categories :categories.sort()
+            // const categories = loadCategories();
+            // return res.render('crearProducto', {
+            //     categories :categories.sort()
+            // })
+            const{name,price,discount,description,categoryId}= req.body;
+            db.Product.Create({
+                ...req.body,
+                name: name.trim(),
+            },
+            {include:[
+    
+                {
+                    association:"category"
+                },
+                {association:"images"}
+            ]})
+            .then(product=>{
+                return res.send(req.body)
+                return res.redirect("/products/detalle/" + product.id)
             })
-    },
+            .catch(error => console.log(error))
+    
+    
+    
+        },
     store : (req, res) => {
         //return res.send(req.body)
         //return res.send(req.file)
@@ -85,10 +127,22 @@ module.exports = {
     products: (req, res) => {
 		// Do the magic
 
-        db.Product.findAll()
-        .then(products => res.render("products",{
+        db.Product.findAll({
+            include:[
+
+                {
+                    association:"category"
+                },
+                {association:"images"}
+            ]
+        })
+
+        .then(products => {
+            //  return res.send(products)
+            res.render("products",{
             products
-        }))
+
+        })})
         .catch(error=> console.log(error));
 
 		// let products = loadProducts();

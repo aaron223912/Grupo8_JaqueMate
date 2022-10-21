@@ -1,3 +1,4 @@
+const db = require("../database/models")
 const {loadUsers,storeUsers} = require('../data/db_moduls');
 const {validationResult}= require("express-validator");
 const bcriptjs = require("bcryptjs");
@@ -84,12 +85,17 @@ processLogin: (req,res) => {
 },
 
 profile: (req,res)=>{
-    let user = loadUsers().find(user => user.id === req.session.userLogin.id);
-    return res.render("profile", {
-        user,
-        ciudades,
-        provincias
+    // let user = loadUsers().find(user => user.id === req.session.userLogin.id);
+    // return res.render("profile", {
+    //     user,
+    //     ciudades,
+    //     provincias
+    // })
+    db.User.findByPk(req.session.userLogin.id)
+    .then((user) => {
+        res.render('profile',{user})
     })
+    .catch(error => console.log(error))
 },
 
 

@@ -14,16 +14,16 @@
     <main class="detalle__main">
         
         <section class="detalle__main__section">            
-            <h3>Jaque Mate > <%= product.category %>  </h3>
+            <h3>Jaque Mate > <%= product.category.name %>  </h3>
             
             <article class="detalle__main__section__article">
                 <div class="detalle__main__section__article__imagenes">
                     <div class="detalle__main__section__article__imagenes__prinsipal">
-                        <img src="/images/<%= product.image %>" alt="">
+                        <img src="/images/<%= product.images[0].file %>" alt="">
                     </div>
                    <div class="detalle__main__section__article__imagenes__secundaria">
-                    <img src="/images/<%= product.image %>" alt="">
-                    <img src="/images/<%= product.image %>" alt="">
+                    <img src="/images/<%= product.images[0].file %>" alt="">
+                    <img src="/images/<%= product.images[0].file %>" alt="">
                    </div> 
                 </div>
             </article> 
