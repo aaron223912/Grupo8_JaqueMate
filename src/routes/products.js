@@ -9,7 +9,7 @@ router
     .get('/editarProducto/:id', editar)
     .put('/update/:id', update)
     .get('/crearProducto', crear)
-    .post('/store',uploat.single("imageProduct"), store)
+    .post('/store', uploat.array("file"), store)
     .get("/", products)
     .delete("/remove/:id", remove)
 
