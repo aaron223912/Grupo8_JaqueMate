@@ -11,16 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Address.belongsTo(models.User,{
+    }
+  }
+  Address.associate = (models) =>{
+    Address.belongsTo(models.User,{
       as: "adresses",
       foreignKey: "userId"
 
     });
-    }
   }
-  
-    
-  
   Address.init({
     street: DataTypes.STRING,
     city: DataTypes.STRING,

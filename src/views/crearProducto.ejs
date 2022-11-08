@@ -27,8 +27,8 @@
             <div class="conteiner-relative">
               <label for="imagen" class="form-label">Imagen</label>
               <div class="relative">
-                <label for="file" class="label-imagen form-label">Ingresar imagen</label>
-                <input type="file" name="file" id="file" class="form-imagen" multiple>
+                <label for="imageProduct" class="label-imagen form-label">Ingresar imagen</label>
+                <input type="file" name="imageProduct" id="imageProduct" class="form-imagen">
               </div>
             </div>
             <div>
@@ -38,8 +38,8 @@
     
                 <option selected value="">seleccione...</option>
 
-                <% categories.forEach(({id, name}) => { %>
-                  <option value="<%= id %> "><%= name %> </option>
+                <% categories.forEach(category => { %>
+                  <option value="<%= category %> "><%= category %> </option>
                 <% }) %>
     
               </select>

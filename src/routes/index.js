@@ -6,6 +6,7 @@ const {index, carrito} = require('../controllers/indexControllers')
 router
      .get('/', index)
      .get('/carrito', carrito)
+     
 
 
 module.exports = router;

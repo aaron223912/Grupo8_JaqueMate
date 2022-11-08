@@ -44,11 +44,15 @@
 
     <nav class="carrito__header__categorias">
       <ul>
-        <li><a href=""></a>Mates</li>
+<% categories.forEach(category => { %>
+  <li><a href="/products/category/<%=category.id %>"><%= category.name %> </a></li>
+<% }) %>
+
+        <!-- <li><a href=""></a>Mates</li>
         <li><a href=""></a>Bombillas</li>
         <li><a href=""></a>Termos</li>
         <li><a href=""></a>Yerberos</li>
-        <li><a href=""></a>Pavas</li>
+        <li><a href=""></a>Pavas</li> -->
       </ul>
     </nav>
 
