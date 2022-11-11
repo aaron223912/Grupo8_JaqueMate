@@ -10,7 +10,7 @@ module.exports = {
         // return res.render('detalleDeProducto',{
         //     product
         // })
-        db.Product.findByPk(req.params.id,{
+        let product = db.Product.findByPk(req.params.id,{
             // include:[{
             //     all:true
             // }]
@@ -24,13 +24,23 @@ module.exports = {
                 ]
             
         })
-        .then(product =>{
-            // return res.send(product)
+        let categories = db.Category.findAll()
+        Promise.all([product,categories])
+        .then(([product,categories]) => {
+            //return res.send(categories)
             return res.render("detalleDeProducto",{
-                product
-            })
-        })
-        .catch(error => console.log(error))
+            product,
+            categories
+
+        })})
+        .catch(error=> console.log(error));
+        // .then(product =>{
+        //     // return res.send(product)
+        //     return res.render("detalleDeProducto",{
+        //         product
+        //     })
+        // })
+        // .catch(error => console.log(error))
 
     },
     editar : (req, res) => {
@@ -72,14 +82,57 @@ module.exports = {
     },
     
     crear : (req, res) => {
+        
+
             // const categories = loadCategories();
-            // return res.render('crearProducto', {
+            categories = db.Category.findAll()
+
+            .then((categories) => {
+                return res.render("crearProducto",{
+                    categories
+                })
+            })
+                    //     return res.redirect("/products/detalle/" + product.id)
+                    // })
+            
+                
             //     categories :categories.sort()
             // })
-            const{name,price,discount,description,categoryId}= req.body;
-            db.Product.Create({
+            // const{name,price,discount,description,categoryId,file}= req.body;
+            // db.Product.Create({
+            //     ...req.body,
+            //     name: name,
+            // },
+            // {include:[
+    
+            //     {
+            //         association:"category"
+            //     },
+            //     {association:"images"}
+            // ]})
+
+            // .then(product=>{
+            //     return res.send(req.body)
+            //     return res.redirect("/products/detalle/" + product.id)
+            // })
+             .catch(error => console.log(error))
+    
+    
+    
+        },
+    store : (req, res) => {
+        //return res.send(req.body)
+        //return res.send(req.file)
+            
+            const{name,price,discount,description,category,file}= req.body;
+            newProduct=db.Product.create({
                 ...req.body,
-                name: name.trim(),
+                name: name,
+                price,
+                discount,
+                description,
+                categoryId:category
+
             },
             {include:[
     
@@ -88,33 +141,37 @@ module.exports = {
                 },
                 {association:"images"}
             ]})
-            .then(product=>{
-                return res.send(req.body)
-                return res.redirect("/products/detalle/" + product.id)
+
+
+
+            
+
+            let imageProduct = db.Image.create({
+                file:file.filename
+            })
+            Promise.all([newProduct,imageProduct])
+            .then(newProduct,imageProduct=>{
+                //return res.send(req.body)
+                return res.redirect("/products",{
+                    newProduct,imageProduct
+                })
             })
             .catch(error => console.log(error))
-    
-    
-    
-        },
-    store : (req, res) => {
-        //return res.send(req.body)
-        //return res.send(req.file)
-        
-        const {name,price,category,description}=req.body;
-        let products = loadProducts();
-        const newProducts = {
-            id: products[products.length - 1].id +1,
-            name: name.trim(),
-            price: +price,
-            image: req.file.filename,
-            category,
-            description:description.trim(),
-         }
+
+        // const {name,price,category,description}=req.body;
+        // let products = loadProducts();
+        // const newProducts = {
+        //     id: products[products.length - 1].id +1,
+        //     name: name.trim(),
+        //     price: +price,
+        //     image: req.file.filename,
+        //     category,
+        //     description:description.trim(),
+        //  }
          
-         productsModify = [...products,newProducts];
-         storeProduct(productsModify);
-         return res.redirect("/products");
+        //  productsModify = [...products,newProducts];
+        //  storeProduct(productsModify);
+        //  return res.redirect("/products");
     },
     remove : (req,res)=>{
         //  return res.send()

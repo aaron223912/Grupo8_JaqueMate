@@ -34,14 +34,14 @@
             <div>
               <label for="category" class="form-label">Categoria</label>
     
-              <select name="category" class="categoria">
+              <select name="category" class="categoria" >
     
-                <option selected value="">seleccione...</option>
+                
 
                 <% categories.forEach(category => { %>
-                  <option value="<%= category %> "><%= category %> </option>
+                  <option value="<%= category.name %> "><%= category.name %> </option>
                 <% }) %>
-    
+                
               </select>
             </div>
     
