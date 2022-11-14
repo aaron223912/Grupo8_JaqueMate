@@ -219,27 +219,26 @@ module.exports = {
     products: (req, res) => {
 		// Do the magic
 
-        let products = db.Product.findAll({
+        let products= db.Product.findAll({
             attributes:["id","name","price","discount","description"],
             include:[
 
                 {
                     association:"category",
                     attributes:["id","name"],
-
                 },
                  {association:"images"}
             ]
         })
-        let categories = db.Category.findAll({
-            attributes:["name"]
-        })
+        let categories = db.Category.findAll()
+
         Promise.all([products,categories])
         .then(([products,categories]) => {
-            //return res.send(categories)
+              //return res.send(products)
             res.render("products",{
             products,
             categories
+            
 
         })})
         .catch(error=> console.log(error));

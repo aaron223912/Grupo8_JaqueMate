@@ -45,11 +45,9 @@
         </div>
         <nav class="home__header__categorias">
             <ul>
-                <li><a href=""></a>mates</li>
-                <li><a href=""></a>bombillas</li>
-                <li><a href=""></a>termos</li>
-                <li><a href=""></a>yerberos</li>
-                <li><a href=""></a>pavas</li>
+                <% categories.forEach(category => { %>
+                    <li><a href="/products/category/<%=category.id %>"><%= category.name %></a></li>
+                  <% }) %>
             </ul>
         </nav>
         <div class="home__header__promo">

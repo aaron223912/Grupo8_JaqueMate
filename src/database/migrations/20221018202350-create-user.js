@@ -23,6 +23,12 @@ module.exports = {
       birthday: {
         type: Sequelize.DATE
       },
+      hobbies: {
+        type: Sequelize.STRING
+      },
+      about: {
+        type: Sequelize.STRING
+      },
       avatar:{
         type: Sequelize.STRING
       },
