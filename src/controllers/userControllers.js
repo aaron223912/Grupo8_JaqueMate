@@ -16,58 +16,40 @@ module.exports = {
     },
    storeUsersController : (req,res)=>{
         //return res.send(req.body)
-        /*
+        
         const errors = validationResult(req);
         //return res.send(errors)
         if (errors.isEmpty()) {
-            
-            const {id,nombre,apellido,email,password,avatar}=req.body;
-        let users =loadUsers();
 
-        const newUsers = {
-            id: users[users.length -1] ? users[users.length -1].id +1: 1,
-            nombre: nombre.trim(),
-            apellido:apellido.trim(),
-            email:email.trim(),
-            password: bcriptjs.hashSync(password.trim(),10),
-            categoria:null,
-            avatar:null,
-            genero: null,
-            ciudad:null,
-            provincia:null,
-            fechaNacimiento:null,
-            pasatiempo:null,
-            about:null
-        }
+            let {nombre, apellido, email, password}= req.body;
 
-        usersModify = [...users,newUsers];
-        storeUsers(usersModify);
-        return res.redirect("/users/login")
+            db.User.create(
+                {name: nombre.trim(),
+                surname: apellido.trim(),
+                email,
+                password: bcriptjs.hashSync(password.trim(),10),
+                rolId : 3,
+                avatar : 'avatarDefault.png'
+            }
+            )
+            .then(user => {
+                return res.redirect("/users/login")
+            })
+    
+            .catch(error => console.log(error));
+    
+        
 
         }else{
             return res.render("registro",{
                 errors:errors.mapped(),
                 old: req.body
             })
-        }*/
+        }
 
         
 
-        let {nombre, apellido, email, password}= req.body;
-
-        db.User.create(
-            {nombre: nombre.trim(),
-            apellido: apellido.trim(),
-            email,
-            password: bcriptjs.hashSync(password.trim(),10)
-        }
-        )
-        .then(user => {
-            return res.redirect("/users/login")
-        })
-
-        .catch(error => console.log(error));
-
+       
    },
 
    login : (req, res) => {
@@ -75,67 +57,42 @@ module.exports = {
 },
 
 processLogin: (req,res) => {
-    /*let errors = validationResult(req)
+    let errors = validationResult(req)
     //return res.send(errors)
     if(errors.isEmpty()){
 
-        let {id, nombre, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
+        db.User.findOne({
+            where:{
+                email: req.body.email,
+            },
+            include : [
+                {
+                    association: "rol"
+                }
+            ]
+        }).then((user) => {
+            req.session.userLogin = {
+                id : user.id,
+                nombre : user.name,
+                categoria: user.rol.name,
+                avatar : user.avatar
+            }
+    
+            if(req.body.remember){
+                res.cookie('jaquemate',req.session.userLogin,{
+                    maxAge : 1000 * 120
+                })
+            }
+    
+            return res.redirect("/")
+        }).catch(error => console.log(error))
 
-        req.session.userLogin = {
-            id,
-            nombre,
-            categoria,
-            avatar
-        }
-
-        if(req.body.remember){
-            res.cookie('jaquemate',req.session.userLogin,{
-                maxAge : 1000 * 120
-            })
-        }
-
-        return res.redirect("/")
+      
     }else{
         return res.render("login",{
             errors:errors.mapped()
         })
-    }*/
-
-    db.User.findOne({
-        where:{
-            email: req.body.email,
-        },
-        Imclude : [
-            {
-                association: "rol"
-            }
-        ]
-    })
-    .then(user => {
-        if(!user){
-            return res.redirect("/users/login")
-        }else{
-            if (bcryptjs.compareSync(req.body.password, user.password)) {
-                req.session.userLogin = {
-                    id: user.id,
-                    nombre: user.name,
-                    categoria: user.rol,
-                    //avatar
-                }
-        
-                if(req.body.remember){
-                    res.cookie('jaquemate',req.session.userLogin,{
-                        maxAge : 1000 * 120
-                    })
-                }
-        
-                return res.redirect("/")
-            }else{
-                return res.redirect("/users/login")
-            }
-        }})
-    .catch(error => {console.log(error)})
-    
+    }
 },
 
 profile: (req,res)=>{
