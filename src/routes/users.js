@@ -10,7 +10,7 @@ const checkInicioSession = require('../middlewares/checkInicionSession')
 router
     .get('/login', checkInicioSession, login)
     .post("/login",loginValidation, processLogin)
-    .get("/profile", chequeadorSession,profile)
+    .get("/profile/:id", chequeadorSession,profile)
     .get('/registro', checkInicioSession, registro)
     .post("/storeUsers",usersRegisterValidator, storeUsersController)
     .get("/logout",logout)

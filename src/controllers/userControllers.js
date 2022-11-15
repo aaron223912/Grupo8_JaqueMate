@@ -28,8 +28,7 @@ module.exports = {
                 surname: apellido.trim(),
                 email,
                 password: bcriptjs.hashSync(password.trim(),10),
-                rolId : 3,
-                avatar : 'avatarDefault.png'
+                rolId : 3
             }
             )
             .then(user => {
@@ -107,16 +106,10 @@ profile: (req,res)=>{
             association: 'genders'
         }]
     })
-   /* let genders = db.Gender.findAll(
-        {Include : [{
-            attributes: ['id', 'name']
-        }]}
-    )*/
-
-    Promise.all([user])
     .then((user) => {
-        res.render('profile',{
-            user       
+        //return res.send(user)
+        return res.render('profile',{
+            user 
         })
     })
     .catch(error => console.log(error))
@@ -124,7 +117,6 @@ profile: (req,res)=>{
 
 
 updateUser: (req,res)=>{
-
     // return res.send(req.body)
     /*console.log(req.file);
     console.log(req.body);
@@ -158,6 +150,7 @@ updateUser: (req,res)=>{
     storeUsers(usersModify);
     return res.redirect("/users/profile")
     */
+
     const {nombre,apellido,fechaNacimiento,pasatiempo,about} = req.body
 
     db.User.update({
@@ -165,12 +158,26 @@ updateUser: (req,res)=>{
       surname: apellido.trim(),
       brithday: fechaNacimiento,
       hobbies: pasatiempo,
-      about: about
+      about: about,
+      avatar: req.file ? req.file.filename : req.session.userLogin.avatar
     },{
         where: {id: req.session.userLogin.id}
     })
-    .then(result =>{
-        console.log(result);
+    .then(user =>{
+        if(req.file && req.session.userLogin.avatar){
+            if(fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
+    
+                fs.unlinkSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))
+            }
+    
+        }
+        req.session.userLogin = {
+            ...req.session.userLogin,
+            nombre,
+            avatar: req.file ? req.file.filename : req.session.userLogin.avatar
+        }
+         console.log(user);
+        return res.send(user)
     })
     .catch(error => console.log(error))
 },
@@ -179,7 +186,7 @@ logout: (req,res)=>{
     res.cookie('jaquemate', null, {
         maxAge : -1 
     })
-    return res.redirect("/")
+    return res.redirect("/users/profile/" + userLogin.id)
 
 }
 

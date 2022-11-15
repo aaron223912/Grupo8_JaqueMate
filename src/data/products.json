@@ -1,29 +1,34 @@
 [
    {
       "id": 1,
-      "name": "Mate",
-      "price": 1090,
-      "discount": 15,
-      "image": "mate_produc.png",
-      "categoryId": 1,
+      "name": "Bombilla de Acero",
+      "price": 500,
+      "image": "bombilla_produc.jpg",
+      "category": "bombillas",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
       "id": 2,
-      "name": "Termo",
-      "price": 4000,
-      "discount": 15,
-      "image": "termo_produc.jpg",
-      "categoryId": 3,
+      "name": "Mate",
+      "price": 1090,
+      "image": "mate_produc.png",
+      "category": "mates",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
       "id": 3,
+      "name": "Termo",
+      "price": 4000,
+      "image": "termo_produc.jpg",
+      "category": "termos",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
+   },
+   {
+      "id": 4,
       "name": "Termo Stanley",
       "price": 3500,
-      "discount": 15,
       "image": "termo_produc2.jpg",
-      "categoryId": 3,
+      "category": "termos",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    }
 ]
