@@ -39,7 +39,7 @@
                 
 
                 <% categories.forEach(category => { %>
-                  <option value="<%= category.name %> "><%= category.name %> </option>
+                  <option value="<%=category.name%>"><%=category.name%></option>
                 <% }) %>
                 
               </select>
@@ -48,6 +48,10 @@
             <div>
               <label for="price" class="form-label">Precio</label>
               <input type="number" class="form-control" id="price" name="price">
+            </div>
+            <div>
+              <label for="discount" class="form-label">Descuento</label>
+              <input type="number" class="form-control" id="discount" name="discount">
             </div>
             <div>
               <button type="submit" class="a-button">Crear</button>

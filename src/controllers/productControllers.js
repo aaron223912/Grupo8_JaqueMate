@@ -120,43 +120,54 @@ module.exports = {
     
     
         },
-    store : (req, res) => {
+    store :async (req, res) => {
         //return res.send(req.body)
         //return res.send(req.file)
-            
-            const{name,price,discount,description,category,file}= req.body;
-            newProduct=db.Product.create({
-                ...req.body,
+            try {
+                const{name,price,discount,description,category,imageProduct}= req.body;
+            product = await db.Product.create({
+                
                 name: name,
-                price,
-                discount,
+                price: +price,
+                discount: +discount,
                 description,
                 categoryId:category
 
-            },
-            {include:[
-    
-                {
-                    association:"category"
-                },
-                {association:"images"}
-            ]})
+            }
+            );
+            if(req.files && req.files.length){
+                    
+                const fileProduct = req.files.push(file => {
+                        return{
+                            file: file.filename,
+                            productId : product.id
+                        }
+                    });
+                await db.Image.bulkCreate(fileProduct,{
+                    validate:true
+                })
+                }
+               Product.save
+            return res.send(req.body)
+            return res.redirect("/products")
+            // Promise.all([newProduct,image])
+            // .then(newProduct,image=>{
+            //     return res.send(req.body)
+            //     return res.redirect("/products",{
+            //         newProduct,image
+            //     })
+            // })
+            } catch (error) {
+                console.log(error)
+            }
+            
 
 
 
             
-
-            let imageProduct = db.Image.create({
-                file:file.filename
-            })
-            Promise.all([newProduct,imageProduct])
-            .then(newProduct,imageProduct=>{
-                //return res.send(req.body)
-                return res.redirect("/products",{
-                    newProduct,imageProduct
-                })
-            })
-            .catch(error => console.log(error))
+            
+                
+            // .catch(error => console.log(error))
 
         // const {name,price,category,description}=req.body;
         // let products = loadProducts();
@@ -232,7 +243,7 @@ module.exports = {
             ]
         })
         let categories = db.Category.findAll({
-            attributes:["name"]
+            attributes:["id","name"]
         })
         Promise.all([products,categories])
         .then(([products,categories]) => {
