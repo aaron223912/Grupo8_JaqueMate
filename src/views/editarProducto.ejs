@@ -27,17 +27,25 @@
           <label for="imagen" class="form-label">Imagen</label>
           <div class="relative">
             <label for="" class="label-imagen form-label">Ingresar imagen</label>
-            <input type="file"  class="form-imagen">
+            <input type="file"  class="form-imagen" name="imageProduct" value="<%= product.images[0].file %> ">
           </div>
         </div>
         <div>
           <label for="category" class="form-label" >Categoria</label>
 
           <select name="category" class="categoria">
+            
+             
+            <% categories.forEach(category => { %>
+              <% if (category.id == product.category.id) { %>
+               <option value="<%=category.id%>" selected><%=category.name%></option>
+              <% }else{ %>
+                <option value="<%=category.id%>"><%=category.name%></option>
+              <% } %>
+              
 
-            <% categories.forEach(categorie => { %>
-              <option value="<%= categorie %>" <%=  categorie === product.category ? 'selected' : null %> ><%= categorie %> </option>
             <% }) %>
+             
 
           </select>
         </div>
@@ -46,6 +54,11 @@
           <label for="price" class="form-label">Precio</label>
           <input type="number" class="form-control" id="price" name="price" value="<%= product.price %>">
         </div>
+        <div>
+          <label for="discount" class="form-label">Descuento</label>
+          <input type="number" class="form-control" id="discount" name="discount" value="<%= product.discount %> ">
+        </div>
+
         <input type="submit" name="confirm" value="Confirmar">
       </form>
     </section>

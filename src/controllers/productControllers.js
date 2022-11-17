@@ -44,41 +44,62 @@ module.exports = {
 
     },
     editar : (req, res) => {
-        const products = loadProducts();
-        const categories = loadCategories();
+        categories = db.Category.findAll()
 
-        const product = products.find(product => product.id === +req.params.id);
+            .then((categories) => {
+                return res.render("editarProducto",{
+                    categories
+                })
+            })
+            .catch(error=> console.log(error));
+        // const products = loadProducts();
+        // const categories = loadCategories();
+
+        // const product = products.find(product => product.id === +req.params.id);
 
 
-        return res.render('editarProducto', {
-            product,
-            categories
-        })
+        // return res.render('editarProducto', {
+        //     product,
+        //     categories
+        // })
         
     },
     update : (req, res) => {
-        const products = loadProducts();
-        
-        const {id} = req.params;
-        const {name, price, image, category, description} = req.body;
-
-        const productStringify = products.map(product => {
-            if(product.id === +req.params.id){
-                return{
-                    id,
-                    ...product,
-                    name : name,
-                    price : +price,
-                    category,
-                    description : description,
-                    image : product.image
-                }
+        db.Product.update({
+          name: req.body.name,
+          price: req.body.price,
+          discount: req.body.discount,
+          description: req.body.description,
+          categoryId: req.body.category,
+        },{
+            where:{
+                id:req.params.id
             }
-            return product 
+        });
+        res.redirect("/products/detalle/" + req.params.id)
+
+        // const products = loadProducts();
+        
+        // const {id} = req.params;
+        // const {name, price, image, category, description} = req.body;
+
+        // const productStringify = products.map(product => {
+        //     if(product.id === +req.params.id){
+        //         return{
+        //             id,
+        //             ...product,
+        //             name : name,
+        //             price : +price,
+        //             category,
+        //             description : description,
+        //             image : product.image
+        //         }
+        //     }
+        //     return product 
             
-        })
-        storeProduct(productStringify);
-        return res.redirect('/products/detalle/' + req.params.id)
+        // })
+        // storeProduct(productStringify);
+        // return res.redirect('/products/detalle/' + req.params.id)
     },
     
     crear : (req, res) => {
