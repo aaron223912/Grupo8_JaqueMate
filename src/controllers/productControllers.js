@@ -120,46 +120,81 @@ module.exports = {
     
     
         },
-    store :async (req, res) => {
+    store : (req, res) => {
         //return res.send(req.body)
         //return res.send(req.file)
-            try {
-                const{name,price,discount,description,category,imageProduct}= req.body;
-            product = await db.Product.create({
-                
-                name: name,
-                price: +price,
-                discount: +discount,
-                description,
-                categoryId:category
 
-            }
-            );
-            if(req.files && req.files.length){
+        let product=db.Product.create({
                     
-                const fileProduct = req.files.push(file => {
-                        return{
-                            file: file.filename,
-                            productId : product.id
-                        }
-                    });
-                await db.Image.bulkCreate(fileProduct,{
-                    validate:true
+                    name: req.body.name,
+                    price: req.body.price,
+                    discount: req.body.discount,
+                    description:req.body.description,
+                    categoryId:req.body.category
+    
                 })
+             
+                if (req.files && req.body.imageProduct) {
+                    
                 }
-               Product.save
-            return res.send(req.body)
-            return res.redirect("/products")
-            // Promise.all([newProduct,image])
-            // .then(newProduct,image=>{
-            //     return res.send(req.body)
-            //     return res.redirect("/products",{
-            //         newProduct,image
-            //     })
-            // })
-            } catch (error) {
-                console.log(error)
-            }
+                let image =db.Image.create({
+
+                    file:req.files.filename,
+                    productId:product.id
+                    
+                })
+                Promise.all([product,image])
+        .then(([product,image]) => {
+              return res.send(req.body)
+              //return res.send(category)
+            res.render("products",{
+            product,
+            image
+
+        })
+      })
+        .catch(error=> console.log(error));
+
+
+
+
+        //     try {
+        //         const{name,price,discount,description,category,imageProduct}= req.body;
+        //     product = await db.Product.create({
+                
+        //         name: name,
+        //         price: +price,
+        //         discount: +discount,
+        //         description,
+        //         categoryId:category
+
+        //     }
+        //     );
+        //     if(req.files && req.files.length){
+                    
+        //         const fileProduct = req.files.push(file => {
+        //                 return{
+        //                     file: file.filename,
+        //                     productId : product.id
+        //                 }
+        //             });
+        //         await db.Image.bulkCreate(fileProduct,{
+        //             validate:true
+        //         })
+        //         }
+        //        Product.save
+        //     return res.send(req.body)
+        //     return res.redirect("/products")
+        //     // Promise.all([newProduct,image])
+        //     // .then(newProduct,image=>{
+        //     //     return res.send(req.body)
+        //     //     return res.redirect("/products",{
+        //     //         newProduct,image
+        //     //     })
+        //     // })
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
             
 
 
@@ -167,22 +202,22 @@ module.exports = {
             
             
                 
-            // .catch(error => console.log(error))
+        //     // .catch(error => console.log(error))
 
-        // const {name,price,category,description}=req.body;
-        // let products = loadProducts();
-        // const newProducts = {
-        //     id: products[products.length - 1].id +1,
-        //     name: name.trim(),
-        //     price: +price,
-        //     image: req.file.filename,
-        //     category,
-        //     description:description.trim(),
-        //  }
+        // // const {name,price,category,description}=req.body;
+        // // let products = loadProducts();
+        // // const newProducts = {
+        // //     id: products[products.length - 1].id +1,
+        // //     name: name.trim(),
+        // //     price: +price,
+        // //     image: req.file.filename,
+        // //     category,
+        // //     description:description.trim(),
+        // //  }
          
-        //  productsModify = [...products,newProducts];
-        //  storeProduct(productsModify);
-        //  return res.redirect("/products");
+        // //  productsModify = [...products,newProducts];
+        // //  storeProduct(productsModify);
+        // //  return res.redirect("/products");
     },
     remove : (req,res)=>{
         //  return res.send()

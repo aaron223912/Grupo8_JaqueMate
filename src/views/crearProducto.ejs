@@ -28,7 +28,7 @@
               <label for="imagen" class="form-label">Imagen</label>
               <div class="relative">
                 <label for="imageProduct" class="label-imagen form-label">Ingresar imagen</label>
-                <input type="file" name="imageProduct" id="imageProduct" class="form-imagen">
+                <input type="file" name="imageProduct" value="" id="imageProduct" class="form-imagen" multiple>
               </div>
             </div>
             <div>
@@ -39,7 +39,7 @@
                 
 
                 <% categories.forEach(category => { %>
-                  <option value="<%=category.name%>"><%=category.name%></option>
+                  <option value="<%=category.id%>"><%=category.name%></option>
                 <% }) %>
                 
               </select>
