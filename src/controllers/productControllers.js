@@ -145,7 +145,7 @@ module.exports = {
         //return res.send(req.body)
         //return res.send(req.file)
 
-        let product=db.Product.create({
+        db.Product.create({
                     
                     name: req.body.name,
                     price: req.body.price,
@@ -154,27 +154,27 @@ module.exports = {
                     categoryId:req.body.category
     
                 })
-             
-                if (req.files && req.body.imageProduct) {
-                    
-                }
-                let image =db.Image.create({
-
-                    file:req.files.filename,
-                    productId:product.id
-                    
+                .then(async(product)=>{
+                  if (req.files.length) {
+                    let images = req.files.map(file=>({
+                        file:file.filename,
+                        productId:product.id,
+                        createdAt:new Date()
+                    }))
+                   await db.Image.bulkCreate(images,{
+                                validate:true
+                            })
+                            
+                }  
+                return res.redirect("/products")
                 })
-                Promise.all([product,image])
-        .then(([product,image]) => {
-              return res.send(req.body)
-              //return res.send(category)
-            res.render("products",{
-            product,
-            image
+             
+                
+               
 
-        })
-      })
-        .catch(error=> console.log(error));
+                
+        
+        
 
 
 
@@ -303,7 +303,7 @@ module.exports = {
         })
         Promise.all([products,categories])
         .then(([products,categories]) => {
-            //return res.send(categories)
+            // return res.send(products)
             res.render("products",{
             products,
             categories
