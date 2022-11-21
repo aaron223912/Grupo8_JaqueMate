@@ -14,7 +14,7 @@
   <main>
     <h1 class="titulo-form">Edita tu producto</h1>
     <section class="form">
-      <form method="post" action="/products/update/<%= product.id %>?_method=PUT">
+      <form method="post" action="/products/update/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
         <div>
           <label for="name" class="form-label">Nombre del producto</label>
           <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>">
@@ -26,8 +26,9 @@
         <div class="conteiner-relative">
           <label for="imagen" class="form-label">Imagen</label>
           <div class="relative">
+
             <label for="" class="label-imagen form-label">Ingresar imagen</label>
-            <input type="file"  class="form-imagen" name="imageProduct" value="<%= product.images[0].file %> ">
+            <input type="file"  class="form-imagen" name="imageProduct" >
           </div>
         </div>
         <div>
@@ -35,18 +36,12 @@
 
           <select name="category" class="categoria">
             
-             
-            <% categories.forEach(category => { %>
-              <% if (category.id == product.category.id) { %>
-               <option value="<%=category.id%>" selected><%=category.name%></option>
-              <% }else{ %>
-                <option value="<%=category.id%>"><%=category.name%></option>
-              <% } %>
-              
+          
+            <% categories.forEach(({id, name}) => { %>
+              <option value="<%= id %>" <%= id === product.categoryId && 'selected' %>><%= name %></option>
+             <% }) %>
 
-            <% }) %>
-             
-
+            
           </select>
         </div>
 

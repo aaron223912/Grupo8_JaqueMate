@@ -4,16 +4,9 @@ const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
 
 module.exports = {
     detalle : (req, res) => {
-        // const products = loadProducts();
-        // const product = products.find(product => product.id === +req.params.id);
-        
-        // return res.render('detalleDeProducto',{
-        //     product
-        // })
+
         let product = db.Product.findByPk(req.params.id,{
-            // include:[{
-            //     all:true
-            // }]
+           
             
                 include:[
     
@@ -34,72 +27,72 @@ module.exports = {
 
         })})
         .catch(error=> console.log(error));
-        // .then(product =>{
-        //     // return res.send(product)
-        //     return res.render("detalleDeProducto",{
-        //         product
-        //     })
-        // })
-        // .catch(error => console.log(error))
 
     },
     editar : (req, res) => {
-        categories = db.Category.findAll()
 
-            .then((categories) => {
-                return res.render("editarProducto",{
-                    categories
+        let product = db.Product.findByPk(req.params.id);
+
+        let categories = db.Category.findAll({
+            attributes : ['id','name'],
+			order : ['name']
+        });
+
+        Promise.all([product, categories])
+            .then(([product,categories])=>{
+                res.render("editarProducto",{
+                    product:product, categories:categories
                 })
             })
             .catch(error=> console.log(error));
-        // const products = loadProducts();
-        // const categories = loadCategories();
 
-        // const product = products.find(product => product.id === +req.params.id);
+//             <% categories.forEach(category => { %>
+//                 <% if (category.id == product.category.id) { %>
+//      <option value="<%=category.id%>" selected><%=category.name%></option>
+   
+//      <% }else{ %> 
+//        <option value="<%=category.id%>"><%=category.name%></option>
+//    <% } %>
+   
+//                <%}) %>
 
 
-        // return res.render('editarProducto', {
-        //     product,
-        //     categories
-        // })
+        // categories = db.Category.findAll()
+
+        //     .then((categories) => {
+        //         return res.render("editarProducto",{
+        //             categories
+        //         })
+        //     })
+        //     .catch(error=> console.log(error));
         
     },
     update : (req, res) => {
         db.Product.update({
-          name: req.body.name,
-          price: req.body.price,
-          discount: req.body.discount,
-          description: req.body.description,
-          categoryId: req.body.category,
-        },{
-            where:{
-                id:req.params.id
-            }
-        });
-        res.redirect("/products/detalle/" + req.params.id)
 
-        // const products = loadProducts();
-        
-        // const {id} = req.params;
-        // const {name, price, image, category, description} = req.body;
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            description:req.body.description,
+            categoryId:req.body.category
 
-        // const productStringify = products.map(product => {
-        //     if(product.id === +req.params.id){
-        //         return{
-        //             id,
-        //             ...product,
-        //             name : name,
-        //             price : +price,
-        //             category,
-        //             description : description,
-        //             image : product.image
-        //         }
-        //     }
-        //     return product 
-            
-        // })
-        // storeProduct(productStringify);
-        // return res.redirect('/products/detalle/' + req.params.id)
+        })
+        .then(async(product)=>{
+          if (req.files.length) {
+            let images = req.files.map(file=>({
+                file:file.filename,
+                productId:product.id,
+                createdAt:new Date()
+            }))
+           await db.Image.bulkCreate(images,{
+                        validate:true
+                    })
+                    
+        }  
+        return res.redirect("/products")
+        })
+
+       
     },
     
     crear : (req, res) => {
@@ -113,33 +106,8 @@ module.exports = {
                     categories
                 })
             })
-                    //     return res.redirect("/products/detalle/" + product.id)
-                    // })
-            
-                
-            //     categories :categories.sort()
-            // })
-            // const{name,price,discount,description,categoryId,file}= req.body;
-            // db.Product.Create({
-            //     ...req.body,
-            //     name: name,
-            // },
-            // {include:[
-    
-            //     {
-            //         association:"category"
-            //     },
-            //     {association:"images"}
-            // ]})
-
-            // .then(product=>{
-            //     return res.send(req.body)
-            //     return res.redirect("/products/detalle/" + product.id)
-            // })
+                    
              .catch(error => console.log(error))
-    
-    
-    
         },
     store : (req, res) => {
         //return res.send(req.body)
@@ -169,76 +137,7 @@ module.exports = {
                 return res.redirect("/products")
                 })
              
-                
-               
-
-                
-        
-        
-
-
-
-
-        //     try {
-        //         const{name,price,discount,description,category,imageProduct}= req.body;
-        //     product = await db.Product.create({
-                
-        //         name: name,
-        //         price: +price,
-        //         discount: +discount,
-        //         description,
-        //         categoryId:category
-
-        //     }
-        //     );
-        //     if(req.files && req.files.length){
-                    
-        //         const fileProduct = req.files.push(file => {
-        //                 return{
-        //                     file: file.filename,
-        //                     productId : product.id
-        //                 }
-        //             });
-        //         await db.Image.bulkCreate(fileProduct,{
-        //             validate:true
-        //         })
-        //         }
-        //        Product.save
-        //     return res.send(req.body)
-        //     return res.redirect("/products")
-        //     // Promise.all([newProduct,image])
-        //     // .then(newProduct,image=>{
-        //     //     return res.send(req.body)
-        //     //     return res.redirect("/products",{
-        //     //         newProduct,image
-        //     //     })
-        //     // })
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-            
-
-
-
-            
-            
-                
-        //     // .catch(error => console.log(error))
-
-        // // const {name,price,category,description}=req.body;
-        // // let products = loadProducts();
-        // // const newProducts = {
-        // //     id: products[products.length - 1].id +1,
-        // //     name: name.trim(),
-        // //     price: +price,
-        // //     image: req.file.filename,
-        // //     category,
-        // //     description:description.trim(),
-        // //  }
-         
-        // //  productsModify = [...products,newProducts];
-        // //  storeProduct(productsModify);
-        // //  return res.redirect("/products");
+     
     },
     remove : (req,res)=>{
         //  return res.send()
@@ -249,14 +148,6 @@ module.exports = {
       },
       gooCategory : (req,res)=>{
 
-        // let products= db.Product.findAll({
-        //     where: {
-        //         categoryId : req.params.id
-        //     },
-
-        //     include:[ "images", "category"
-        //     ]
-        // })
         let category= db.Category.findByPk(req.params.id,{
 
             include:[
@@ -310,11 +201,6 @@ module.exports = {
 
         })})
         .catch(error=> console.log(error));
-
-		// let products = loadProducts();
-		// return res.render("products",{
-		// 	products,
-		// })
 	},
     
 }

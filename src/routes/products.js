@@ -7,7 +7,7 @@ const productValidation = require('../validations/productValidation');
 router
     .get('/detalle/:id', detalle)
     .get('/editarProducto/:id', editar)
-    .put('/update/:id', update)
+    .put('/update/:id', uploat.array('imageProduct'), update)
     .get('/crearProducto', crear)
     .post('/store',uploat.array('imageProduct'), store)
     
