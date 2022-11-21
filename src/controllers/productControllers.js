@@ -76,6 +76,10 @@ module.exports = {
             description:req.body.description,
             categoryId:req.body.category
 
+        },{
+            where : {
+                id : req.params.id
+            }
         })
         .then(async(product)=>{
           if (req.files.length) {
@@ -89,8 +93,9 @@ module.exports = {
                     })
                     
         }  
-        return res.redirect("/products")
+        return res.redirect("/products/detalle/" + req.params.id)
         })
+        .catch(error => console.log(error))
 
        
     },
@@ -136,15 +141,22 @@ module.exports = {
                 }  
                 return res.redirect("/products")
                 })
-             
+                .catch(error => console.log(error))
+
      
     },
-    remove : (req,res)=>{
+    destroy : (req,res)=>{
         //  return res.send()
-  
-        let productsModify= loadProducts().filter(product=>product.id !== +req.params.id);
-        storeProduct(productsModify);
-        return res.redirect("/products")
+        db.Product.destroy({
+            where : {
+                id : req.params.id
+            }
+        })
+        .then(()=>res.redirect("/products"))
+        .catch(error => console.log(error))
+        // let productsModify= loadProducts().filter(product=>product.id !== +req.params.id);
+        // storeProduct(productsModify);
+        // return res.redirect("/products")
       },
       gooCategory : (req,res)=>{
 
@@ -202,5 +214,6 @@ module.exports = {
         })})
         .catch(error=> console.log(error));
 	},
+
     
 }

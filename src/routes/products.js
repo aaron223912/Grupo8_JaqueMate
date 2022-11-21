@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {detalle,editar,crear,update,store, products, remove,gooCategory} = require('../controllers/productControllers');
+const {detalle,editar,crear,update,store, products,gooCategory, destroy} = require('../controllers/productControllers');
 const {uploat}= require("../middlewares/subirArchivos");
 const productValidation = require('../validations/productValidation');
 
@@ -13,6 +13,6 @@ router
     
     .get("/", products)
     .get('/category/:id', gooCategory)
-    .delete("/remove/:id", remove)
+    .delete("/remove/:id", destroy)
 
 module.exports = router;
