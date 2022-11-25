@@ -42,11 +42,11 @@
             <div>
                 <h5>Genero</h5>
                 <label for="masculino">Masculino</label>
-                <input type="radio" name="genero" id="masculino" <%= user.genero === "m" && "checked" %> value="m">
+                <input type="radio" name="genderId" id="1" <%= user.genderId == 1 && "checked" %> value="1">
                 <label for="femenino">Femenino</label>
-                <input type="radio" name="genero" id="femenino" <%= user.genero === "f" && "checked" %> value="f">
+                <input type="radio" name="genderId" id="2" <%= user.genderId == 2 && "checked" %> value="2">
                 <label for="otro">Otro</label>
-                <input type="radio" name="genero" id="otro" <%= user.genero === "o" && "checked" %> value="o">
+                <input type="radio" name="genderId" id="3" <%= user.genderId == 3 && "checked" %> value="3">
 
             </div>
             <label for="fechaNacimiento">Fecha de nacimiento</label>

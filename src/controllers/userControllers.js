@@ -151,11 +151,12 @@ updateUser: (req,res)=>{
     return res.redirect("/users/profile")
     */
 
-    const {nombre,apellido,fechaNacimiento,pasatiempo,about} = req.body
+    const {nombre,apellido,genderId, fechaNacimiento,pasatiempo,about} = req.body
 
     db.User.update({
       name: nombre.trim(),
       surname: apellido.trim(),
+      genderId: genderId,
       brithday: fechaNacimiento,
       hobbies: pasatiempo,
       about: about,
@@ -176,8 +177,8 @@ updateUser: (req,res)=>{
             nombre,
             avatar: req.file ? req.file.filename : req.session.userLogin.avatar
         }
-         console.log(user);
-        return res.send(user)
+         
+        return res.redirect("/")
     })
     .catch(error => console.log(error))
 },
