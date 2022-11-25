@@ -9,7 +9,7 @@ router
     .get('/editarProducto/:id', editar)
     .put('/update/:id', uploat.array('imageProduct'), update)
     .get('/crearProducto', crear)
-    .post('/store',uploat.array('imageProduct'), store)
+    .post('/store',uploat.array('imageProduct'),productValidation, store)
     
     .get("/", products)
     .get('/category/:id', gooCategory)

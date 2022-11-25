@@ -1,5 +1,7 @@
 const db= require("../database/models")
 const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
+const { validationResult, Result} = require("express-validator");
+const {error} = require("console")
 
 
 module.exports = {
@@ -117,33 +119,46 @@ module.exports = {
     store : (req, res) => {
         //return res.send(req.body)
         //return res.send(req.file)
-
-        db.Product.create({
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            db.Product.create({
                     
-                    name: req.body.name,
-                    price: req.body.price,
-                    discount: req.body.discount,
-                    description:req.body.description,
-                    categoryId:req.body.category
-    
-                })
-                .then(async(product)=>{
-                  if (req.files.length) {
-                    let images = req.files.map(file=>({
-                        file:file.filename,
-                        productId:product.id,
-                        createdAt:new Date()
-                    }))
-                   await db.Image.bulkCreate(images,{
-                                validate:true
-                            })
-                            
-                }  
-                return res.redirect("/products")
-                })
-                .catch(error => console.log(error))
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            description:req.body.description,
+            categoryId:req.body.category
 
-     
+        })
+        .then(async(product)=>{
+          if (req.files.length) {
+            let images = req.files.map(file=>({
+                file:file.filename,
+                productId:product.id,
+                createdAt:new Date()
+            }))
+           await db.Image.bulkCreate(images,{
+                        validate:true
+                    })
+                    
+        }  
+        return res.redirect("/products")
+        })
+        .catch(error => console.log(error))
+        }else{
+            categories = db.Category.findAll()
+
+            
+            .then((categories) => {
+                return res.render("crearProducto",{
+                    categories,
+                    errors:errors.mapped()
+                })
+            })
+            .catch(error => console.log(error))
+        }
+
+        
     },
     destroy : (req,res)=>{
         //  return res.send()
