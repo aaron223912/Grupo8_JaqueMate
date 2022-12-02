@@ -32,6 +32,7 @@
               <div class="relative">
                 <label for="imageProduct" class="label-imagen form-label">Ingresar imagen</label>
                 <input type="file" name="imageProduct" value="" id="imageProduct" class="form-imagen" multiple>
+                <small><%= locals.errors && errors.imageProduct?errors.imageProduct.msg:null %></small>
               </div>
             </div>
             <div>
