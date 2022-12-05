@@ -187,7 +187,7 @@ logout: (req,res)=>{
     res.cookie('jaquemate', null, {
         maxAge : -1 
     })
-    return res.redirect("/users/profile/" + userLogin.id)
+    return res.redirect("/")
 
 }
 
