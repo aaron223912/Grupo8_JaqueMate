@@ -11,8 +11,7 @@ const exRegs = {
     exRegMinu: /[a-z]/,
     exRegNum: /[0-9]/,
     exRegEsp: /[$@$!%*?&]/,
-    exRegMin: /.{6,}/,
-    exRegMax: /.{8}/,
+    exRegMinMax: /.{6,8}/,
   };
 
   const msgError = (element, msg, target) => {
@@ -22,18 +21,8 @@ const exRegs = {
 
   const valiField = (element, target) => {
     $(element).innerText = null;
-    target.classList.remove("invalid");
-    target.classList.add("valid");
   } 
 
-  const validPass = (element, exRegs, value) => {
-    if(!exRegs.value){
-      target.classList.add("text-invalid")
-    }else{
-      target.classList.add("text-valid")
-      target.classList.add("text-invalid")
-    }
-  }
 
   const verifyEmail = async (email) => {
     try {
@@ -100,6 +89,44 @@ const exRegs = {
         break;
       default:
         valiField(".apellidoError", target)
+        this.style.borderColor= "#4F7F3F"
+        break;
+    }
+  })
+
+  //email
+
+
+
+  $('#password').addEventListener('blur', function({target}){
+    switch (true) {
+      case !this.value.trim():
+        msgError(".passwordError", "Debes completar el campo con tu contraseña", target)
+        this.style.borderColor = "red"
+        break;
+      case !exRegs.exRegPass.test(this.value):
+        msgError(".passwordError", "La contraseña debe tener un símbolo, una número, una mayúscula, una minúscula y entre 6 y 8 caracteres", target);
+        this.style.borderColor = "red"
+        break;
+      default:
+        valiField(".passwordError", target)
+        this.style.borderColor= "#4F7F3F"
+        break;
+    }
+  })
+
+  $('#password2').addEventListener('blur', function({target}){
+    switch (true) {
+      case !this.value.trim():
+        msgError(".passwordError2", "Debes completar el campo con tu contraseña", target)
+        this.style.borderColor = "red"
+        break;
+      case this.value.trim() !== $('#password').value.trim():
+        msgError('.passwordError2', 'Las contraseñas no coinciden', target)
+        this.style.borderColor = "red"
+        break;
+      default:
+        valiField(".passwordError2", target)
         this.style.borderColor= "#4F7F3F"
         break;
     }
