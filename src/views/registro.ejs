@@ -39,11 +39,12 @@
 
             <label for="term">Terminos y Condiciones</label>
             <input type="checkbox" name="term" id="term" >
-            <small><%= locals.errors && errors.term?errors.term.msg:null %></small>
+            <small class="termError"><%= locals.errors && errors.term?errors.term.msg:null %></small>
 
             <div class="registro__main__formulario__confirmar">
-            <button type="submit">Crear cuenta</button>
+            <button type="submit" class="btn-enviar">Crear cuenta</button>
             <p>¿Ya tenés cuenta? <a href="/users/login">inicia sesión</a></p>
+            <small class="error-form"></small>
             </div>
         </form>
         

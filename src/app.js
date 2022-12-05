@@ -14,8 +14,7 @@ var cookieCheck = require('./middlewares/cookieCheck');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
-//var usersApis = require('./controllers/apis/userApis')
-
+var usersApis = require('./routes/apis/userApis')
 var app = express();
 app.use(cookieParser());
 app.use(methodOverride('_method'))
@@ -43,7 +42,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-//app.use('/api/users', usersApis);
+app.use('/api/users', usersApis);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
