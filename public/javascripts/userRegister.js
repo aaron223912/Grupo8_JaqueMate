@@ -29,7 +29,7 @@ const exRegs = {
 
   const verifyEmail = async (email) => {
     try {
-      let response = fetch("/api/users/verify-email",{
+      let response = await fetch("/api/users/verify-email",{
         method: "POST",
         body: JSON.stringify({
           email : email
@@ -38,6 +38,7 @@ const exRegs = {
           "Content-Type" : "application/json"
         }
       });
+
 
       let result = await response.json();
 
@@ -155,9 +156,9 @@ const exRegs = {
     }
   })
 
-  $('#term').addEventListener("click", function({target}) {
+  $('terms').addEventListener("click", function({target}) {
 
-    valiField('termError', target)
+    validField('errorTerms', target)
 
   })
 
@@ -175,8 +176,8 @@ $('.registro__main__formulario').addEventListener('submit', function(e){
 
 
   const elements = this.elements;
-  for (let i = 0; i < elements.length; i++) {
-    if(!this.elements[i].value.trim() || elements[i].classList.contains('is-invalid')){
+  for (let i = 0; i < elements.length - 2; i++) {
+    if(!this.elements[i].value.trim() || elements[i].style.borderColor === 'red'){
       elements[i].style.borderColor = 'red'
       $('.error-form').innerText = 'Se encontraron errores en el formulario';
       $('.error-form').style.color = 'red'

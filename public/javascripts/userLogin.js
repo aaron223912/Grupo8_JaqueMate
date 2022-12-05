@@ -26,8 +26,32 @@ const exRegs = {
     target.classList.remove('is-invalid')
   } 
 
+  const verifyEmail = async (email) => {
+    try {
+      let response = await fetch("/api/users/verify-email",{
+        method: "POST",
+        body: JSON.stringify({
+          email : email
+        }),
+        headers: {
+          "Content-Type" : "application/json"
+        }
+      });
 
-  $('#email').addEventListener('blur', function({target}){
+
+      let result = await response.json();
+
+      console.log(result);
+      
+      return result.verified
+
+    } catch (error) {
+      console.error
+    }
+  }
+
+
+  $('#email').addEventListener('blur', async function({target}){
     switch (true) {
       case !this.value.trim():
         msgError('.emailError', 'Debes completar este campo con tu email', target)
@@ -37,6 +61,10 @@ const exRegs = {
         msgError('.emailError', 'No tiene formato de email', target)
         this.style.borderColor= "red"
        break;
+       case await verifyEmail(this.value) == false:
+        msgError('.emailError', 'El email no se encuentra en la base de datos', target)
+        this.style.borderColor= "red"
+        break;
       default:
         valiField(".emailError", target)
         this.style.borderColor= "#4F7F3F"
@@ -62,8 +90,8 @@ const exRegs = {
     let error = false;
 
     const elements = this.elements;
-  for (let i = 0; i < elements.length; i++) {
-    if(!this.elements[i].value.trim() || elements[i].classList.contains('is-invalid')){
+  for (let i = 0; i < elements.length - 2; i++) {
+    if(!this.elements[i].value.trim() || elements[i].style.borderColor === 'red'){
       elements[i].style.borderColor = 'red'
       $('.error-form').innerText = 'Se encontraron errores en el formulario';
       $('.error-form').style.color = 'red'
