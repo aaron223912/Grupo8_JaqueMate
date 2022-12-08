@@ -17,11 +17,11 @@
         <form action="" class="login__main__formulario" method="post">
             <label for="email">Email</label>
             <input type="email" name="email" id="email">
-            <small><%= locals.errors && errors.email?errors.email.msg : null %></small>
+            <small class="emailError"><%= locals.errors && errors.email?errors.email.msg : null %></small>
 
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
-            <%= locals.errors && errors.password?errors.password.msg : null %>
+            <small class="passwordError"><%= locals.errors && errors.password?errors.password.msg : null %></small>
 
             <p>¿Olvidaste tu <a href="">contraseña</a>?</p>
           <div>
@@ -32,11 +32,13 @@
 
             <div class="login__main__formulario__confirmar">
             <button type="submit">Iniciar sesion</button>
+            <small class="error-form"></small>
             <p>¿No tenés cuenta? <a href="/users/registro">registrate</a></p>
             </div>
         </form>
         
 
     </main>
+    <script src="/javascripts/userLogin.js"></script>
 </body>
 </html>

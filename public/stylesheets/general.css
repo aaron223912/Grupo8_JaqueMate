@@ -41,6 +41,18 @@ ul, li{
     cursor: pointer;
     
 }
+.invalid{
+    border: red;
+}
+.valid{
+    border: blue;
+}
+.text-invalid{
+    color: red;
+}
+.text-valid{
+    color: blue;
+}
 small{
     color:var(--verde);
     font-weight:bolder;;

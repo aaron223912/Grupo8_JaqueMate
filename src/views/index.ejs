@@ -20,7 +20,7 @@
         <% if (locals.userLogin) { %>
             <nav class="home__header__nav">
                 <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
-                <a href="/users/profile" class="ingresar"><p ><%= userLogin.nombre %></p></a>
+                <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
                 <a href="/users/logout" class="ingresar"><p >Salir</p></a>
             </nav>
             <% if (userLogin.categoria === "admin") { %>
@@ -45,17 +45,10 @@
         </div>
         <nav class="home__header__categorias">
             <ul>
-               <% categories.forEach(category => { %>
-                <li><a href="/products/category/<%=category.id %>"><%= category.name %></a></li>
-              <% }) %> 
-            </ul><!-- <ul>
-                <li><a href=""></a>mates</li>
-                <li><a href=""></a>bombillas</li>
-                <li><a href=""></a>termos</li>
-                <li><a href=""></a>yerberos</li>
-                <li><a href=""></a>pavas</li>
-            </ul> -->
-            
+                <% categories.forEach(category => { %>
+                    <li><a href="/products/category/<%=category.id %>"><%= category.name %></a></li>
+                  <% }) %>
+            </ul>
         </nav>
         <div class="home__header__promo">
             <a>Promociones</a>

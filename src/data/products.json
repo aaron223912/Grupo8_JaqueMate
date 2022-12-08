@@ -5,7 +5,16 @@
       "price": 500,
       "discount": 15,
       "image": "bombilla_produc.jpg",
-      "categoryId": 2,
+      "category": "bombillas",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
+   },
+   {
+      "id": 2,
+      "name": "Mate",
+      "price": 1090,
+      "discount":15,
+      "image": "mate_produc.png",
+      "categoryId": 1,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
@@ -14,7 +23,7 @@
       "price": 4000,
       "discount": 15,
       "image": "termo_produc.jpg",
-      "categoryId": 3,
+      "category": "termos",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
@@ -23,7 +32,7 @@
       "price": 3500,
       "discount": 15,
       "image": "termo_produc2.jpg",
-      "categoryId": 3,
+      "category": "termos",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    }
 ]

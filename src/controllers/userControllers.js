@@ -1,11 +1,13 @@
 const db = require("../database/models")
 const {loadUsers,storeUsers} = require('../data/db_moduls');
-const {validationResult}= require("express-validator");
+const {validationResult, Result}= require("express-validator");
 const bcriptjs = require("bcryptjs");
 const provincias = require("../data/provincias");
 const ciudades = require("../data/ciudades");
 const fs = require("fs");
-const path = require("path")
+const path = require("path");
+const { error } = require("console");
+const { includes } = require("../data/provincias");
 
 module.exports = {
     
@@ -18,29 +20,24 @@ module.exports = {
         const errors = validationResult(req);
         //return res.send(errors)
         if (errors.isEmpty()) {
-            
-            const {id,nombre,apellido,email,password,avatar}=req.body;
-        let users =loadUsers();
 
-        const newUsers = {
-            id: users[users.length -1] ? users[users.length -1].id +1: 1,
-            nombre: nombre.trim(),
-            apellido:apellido.trim(),
-            email:email.trim(),
-            password: bcriptjs.hashSync(password.trim(),10),
-            categoria:null,
-            avatar:null,
-            genero: null,
-            ciudad:null,
-            provincia:null,
-            fechaNacimiento:null,
-            pasatiempo:null,
-            about:null
-        }
+            let {nombre, apellido, email, password}= req.body;
 
-        usersModify = [...users,newUsers];
-        storeUsers(usersModify);
-        return res.redirect("/users/login")
+            db.User.create(
+                {name: nombre.trim(),
+                surname: apellido.trim(),
+                email,
+                password: bcriptjs.hashSync(password.trim(),10),
+                rolId : 3
+            }
+            )
+            .then(user => {
+                return res.redirect("/users/login")
+            })
+    
+            .catch(error => console.log(error));
+    
+        
 
         }else{
             return res.render("registro",{
@@ -49,6 +46,9 @@ module.exports = {
             })
         }
 
+        
+
+       
    },
 
    login : (req, res) => {
@@ -60,28 +60,38 @@ processLogin: (req,res) => {
     //return res.send(errors)
     if(errors.isEmpty()){
 
-        let {id, nombre, categoria, avatar} = loadUsers().find(user => user.email === req.body.email);
+        db.User.findOne({
+            where:{
+                email: req.body.email,
+            },
+            include : [
+                {
+                    association: "rol"
+                }
+            ]
+        }).then((user) => {
+            req.session.userLogin = {
+                id : user.id,
+                nombre : user.name,
+                categoria: user.rol.name,
+                avatar : user.avatar
+            }
+    
+            if(req.body.remember){
+                res.cookie('jaquemate',req.session.userLogin,{
+                    maxAge : 1000 * 120
+                })
+            }
+    
+            return res.redirect("/")
+        }).catch(error => console.log(error))
 
-        req.session.userLogin = {
-            id,
-            nombre,
-            categoria,
-            avatar
-        }
-
-        if(req.body.remember){
-            res.cookie('jaquemate',req.session.userLogin,{
-                maxAge : 1000 * 120
-            })
-        }
-
-        return res.redirect("/")
+      
     }else{
         return res.render("login",{
             errors:errors.mapped()
         })
     }
-    
 },
 
 profile: (req,res)=>{
@@ -91,18 +101,24 @@ profile: (req,res)=>{
     //     ciudades,
     //     provincias
     // })
-    db.User.findByPk(req.session.userLogin.id)
+    let user = db.User.findByPk(req.session.userLogin.id,{
+        Include: [{
+            association: 'genders'
+        }]
+    })
     .then((user) => {
-        res.render('profile',{user})
+        //return res.send(user)
+        return res.render('profile',{
+            user 
+        })
     })
     .catch(error => console.log(error))
 },
 
 
 updateUser: (req,res)=>{
-
     // return res.send(req.body)
-    console.log(req.file);
+    /*console.log(req.file);
     console.log(req.body);
 
     const {nombre,apellido,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
@@ -133,6 +149,38 @@ updateUser: (req,res)=>{
 
     storeUsers(usersModify);
     return res.redirect("/users/profile")
+    */
+
+    const {nombre,apellido,genderId, fechaNacimiento,pasatiempo,about} = req.body
+
+    db.User.update({
+      name: nombre.trim(),
+      surname: apellido.trim(),
+      genderId: genderId,
+      brithday: fechaNacimiento,
+      hobbies: pasatiempo,
+      about: about,
+      avatar: req.file ? req.file.filename : req.session.userLogin.avatar
+    },{
+        where: {id: req.session.userLogin.id}
+    })
+    .then(user =>{
+        if(req.file && req.session.userLogin.avatar){
+            if(fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
+    
+                fs.unlinkSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))
+            }
+    
+        }
+        req.session.userLogin = {
+            ...req.session.userLogin,
+            nombre,
+            avatar: req.file ? req.file.filename : req.session.userLogin.avatar
+        }
+         
+        return res.redirect("/")
+    })
+    .catch(error => console.log(error))
 },
 logout: (req,res)=>{
     req.session.destroy()
@@ -142,4 +190,10 @@ logout: (req,res)=>{
     return res.redirect("/")
 
 }
+
+
+
+
+
+
 }
