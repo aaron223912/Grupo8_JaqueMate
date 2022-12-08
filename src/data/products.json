@@ -5,7 +5,7 @@
       "price": 500,
       "discount": 15,
       "image": "bombilla_produc.jpg",
-      "category": "bombillas",
+      "categoryId": 2,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
@@ -23,7 +23,7 @@
       "price": 4000,
       "discount": 15,
       "image": "termo_produc.jpg",
-      "category": "termos",
+      "categoryId": 3,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    },
    {
@@ -32,7 +32,7 @@
       "price": 3500,
       "discount": 15,
       "image": "termo_produc2.jpg",
-      "category": "termos",
+      "categoryId": 3,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
    }
 ]
