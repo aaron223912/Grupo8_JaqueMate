@@ -4,6 +4,7 @@ const {login, registro, storeUsersController, processLogin, profile, logout, upd
 const uploatAvatar = require("../middlewares/subirAvatar");
 const loginValidation = require('../validations/loginValidation');
 const usersRegisterValidator = require('../validations/usersRegisterValidator');
+const profileValidator = require('../validations/profileValidation')
 const chequeadorSession = require("../middlewares/chequeadorSession")
 const checkInicioSession = require('../middlewares/checkInicionSession')
 /* GET users listing. */
@@ -14,7 +15,7 @@ router
     .get('/registro', checkInicioSession, registro)
     .post("/storeUsers",usersRegisterValidator, storeUsersController)
     .get("/logout",logout)
-    .put("/updateUser/:id",uploatAvatar.single("avatar"), updateUser)
+    .put("/updateUser/:id",uploatAvatar.single("avatar"), profileValidator, updateUser)
 
 
 module.exports = router;

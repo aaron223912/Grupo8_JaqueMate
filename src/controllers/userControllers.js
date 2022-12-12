@@ -95,12 +95,8 @@ processLogin: (req,res) => {
 },
 
 profile: (req,res)=>{
-    // let user = loadUsers().find(user => user.id === req.session.userLogin.id);
-    // return res.render("profile", {
-    //     user,
-    //     ciudades,
-    //     provincias
-    // })
+    
+
     let user = db.User.findByPk(req.session.userLogin.id,{
         Include: [{
             association: 'genders'
@@ -117,39 +113,11 @@ profile: (req,res)=>{
 
 
 updateUser: (req,res)=>{
-    // return res.send(req.body)
-    /*console.log(req.file);
-    console.log(req.body);
-
-    const {nombre,apellido,ciudad,provincia,fechaNacimiento,pasatiempo,about} = req.body
-
-    let usersModify = loadUsers().map(user =>{
-        if (user.id === +req.params.id) {
-            return{
-                ...user,
-                ...req.body,
-                avatar: req.file ? req.file.filename : req.session.userLogin.avatar
-            }
-        }
-        return user
-    });
-    if(req.file && req.session.userLogin.avatar){
-        if(fs.existsSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))){
-
-            fs.unlinkSync(path.resolve(__dirname,"..","public","images","users",req.session.userLogin.avatar))
-        }
-
-    }
     
-    req.session.userLogin = {
-        ...req.session.userLogin,
-        nombre,
-        avatar: req.file ? req.file.filename : req.session.userLogin.avatar
-    }
+    const errors = validationResult(req)
 
-    storeUsers(usersModify);
-    return res.redirect("/users/profile")
-    */
+    if(errors.isEmpty()){
+
 
     const {nombre,apellido,genderId, fechaNacimiento,pasatiempo,about} = req.body
 
@@ -177,10 +145,22 @@ updateUser: (req,res)=>{
             nombre,
             avatar: req.file ? req.file.filename : req.session.userLogin.avatar
         }
-         
+        
         return res.redirect("/")
     })
     .catch(error => console.log(error))
+}else{
+
+    db.User.findByPk(req.session.userLogin.id)
+    .then(user => {
+        return res.render('profile', {
+            errors: errors.mapped(),
+            user
+        })
+    })
+    .catch(error => console.log(error))
+
+}
 },
 logout: (req,res)=>{
     req.session.destroy()

@@ -29,11 +29,12 @@
         <form method="post" action="/users/updateUser/<%= user.id %>?_method=PUT" class="registro__main__formulario"  enctype="multipart/form-data" >
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" value="<%= user.name %>">
+            <small class="errorNombre"><%= locals.errors && errors.nombre?errors.nombre.msg : null%></small>
             
 
             <label for="apellido">Apellido</label>
             <input type="text" name="apellido" id="apellido" value="<%=user.surname%>">
-           
+            <small class="errorApellido"><%= locals.errors && errors.apellido?errors.apellido.msg : null %></small>
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<%= user.email %>" readonly>
@@ -69,6 +70,7 @@
             
             <div class="login__main__formulario__confirmar">
                 <button type="submit">Guardar</button>
+                <small class="error-form"></small>
             </div>
 
             
@@ -76,5 +78,6 @@
         
 
     </main>
+    <script src="/javascripts/profile.js"></script>
 </body>
 </html>
