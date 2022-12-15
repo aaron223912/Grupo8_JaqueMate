@@ -15,15 +15,22 @@
         <p>Iniciar sesion a jaqueMate</p>
 
         <form action="" class="login__main__formulario" method="post">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <small class="emailError"><%= locals.errors && errors.email?errors.email.msg : null %></small>
-
-            <label for="password">Contraseña</label>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <small class="emailError"><%= locals.errors && errors.email?errors.email.msg : null %></small>
+            </div>
+            
+<div class="pass-container">
+    <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
-            <small class="passwordError"><%= locals.errors && errors.password?errors.password.msg : null %></small>
-
+            <span id="btn-show-pass"><i class="fa-solid fa-eye-slash" ></i></span>
+            <small class="passwordError">  <%= locals.errors && errors.password?errors.password.msg : null %></small>
             <p>¿Olvidaste tu <a href="">contraseña</a>?</p>
+</div>
+            
+
+          
           <div>
             <label for="remember">Recordame</label>
             <input type="checkbox" name="remember" id="remember">

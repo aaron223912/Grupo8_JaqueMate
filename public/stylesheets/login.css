@@ -34,10 +34,16 @@
     flex-direction: column;
 
 }
-.login__main__formulario label{
+.login__main__formulario div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.login__main__formulario div label{
   margin-bottom: 15px;
 }
-.login__main__formulario input {
+.login__main__formulario div input {
     margin-bottom: 15px;
     padding: 10px;
     border: 2px solid var(--verde);
@@ -45,7 +51,26 @@
     background-color: var(--grisOscuro);
     color: white;
 }
-.login__main__formulario p{
+.login__main__formulario .pass-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+.login__main__formulario .pass-container label{
+   width: 100%;
+}
+.login__main__formulario .pass-container input{
+    width: 100%;
+ }
+ .login__main__formulario .pass-container span{
+    position: absolute;
+    right: 7px;
+    top: 44px;
+    cursor: pointer;
+ }
+
+.login__main__formulario div p{
     text-align: center;
 }
 .login__main__formulario__confirmar {

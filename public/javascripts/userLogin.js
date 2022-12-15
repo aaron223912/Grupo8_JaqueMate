@@ -85,6 +85,8 @@ const exRegs = {
     }
   })
 
+ 
+
   $('.login__main__formulario').addEventListener('submit', function(e){
     e.preventDefault();
     let error = false;
@@ -102,4 +104,17 @@ const exRegs = {
   
 
   !error && this.submit()
+})
+
+
+
+$('#btn-show-pass').addEventListener('click', function ({target}){
+  console.log(target.childNodes);
+    if(target.localName === "i"){
+      target.classList.toggle("fa-eye");
+      $("#password").type = $("#password").type === "text" ? "password" : "text";
+    }else {
+      target.childNodes[0].classList.toggle("fa-eye");
+      $("#password").type = $("#password").type === "text" ? "password" : "text";
+    }
 })
