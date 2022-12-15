@@ -24,21 +24,40 @@
 .registro__main p{
     margin-bottom: 10px;
 }
-.registro__main__formulario{
+.registro__main__formulario div {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
-.registro__main__formulario label{
+.registro__main__formulario div label{
   margin-bottom: 15px;
 }
-.registro__main__formulario input {
+.registro__main__formulario div input {
     margin-bottom: 15px;
     padding: 10px;
     border: 2px solid var(--verde);
     border-radius: 5px;
     background-color: var(--grisOscuro);
     color: white;
+}
+.registro__main__formulario .pass-conteiner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+.registro__main__formulario .pass-conteiner label{
+    width: 100%;
+}
+.registro__main__formulario .pass-conteiner input{
+    width: 100%;
+}
+
+.registro__main__formulario .pass-conteiner span{
+    position: absolute;
+    right: 7px;
+    top: 44px;
+    cursor: pointer;
 }
 .registro__main__formulario__confirmar {
     display: flex;

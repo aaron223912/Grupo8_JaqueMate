@@ -156,7 +156,7 @@ const exRegs = {
     }
   })
 
-  $('terms').addEventListener("click", function({target}) {
+  $('#term').addEventListener("click", function({target}) {
 
     validField('errorTerms', target)
 
@@ -190,3 +190,14 @@ $('.registro__main__formulario').addEventListener('submit', function(e){
   !error && this.submit()
 })
 
+
+$('#btn-show-pass').addEventListener('click', function ({target}){
+  console.log(target.localName);
+    if(target.localName === "i"){
+      target.classList.toggle("fa-eye");
+      $("#password").type = $("#password").type === "text" ? "password" : "text";
+    }else {
+      target.childNodes[0].classList.toggle("fa-eye");
+      $("#password").type = $("#password").type === "text" ? "password" : "text";
+    }
+})
