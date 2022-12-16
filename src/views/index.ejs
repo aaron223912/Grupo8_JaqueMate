@@ -22,13 +22,12 @@
                 <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
                 <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
                 <a href="/users/logout" class="ingresar"><p >Salir</p></a>
-            </nav>
-            <% if (userLogin.categoria === "admin") { %>
+                <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
              
-                <nav class="home__header__nav">
-                    <a href="/products/crearProducto" class="ingresar"><p >Agregar</p></a>
-                </nav>
+                    <a href="/products/crearProducto" class="ingresar"><p >Agregar</p></a>     
             <% } %>
+            </nav>
+            
       
       
           <% }else{ %>
