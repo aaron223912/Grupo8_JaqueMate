@@ -15,14 +15,15 @@ module.exports = {
                     {
                         association:"category"
                     },
-                    {association:"images"}
+                    {association:"images"},
                 ]
             
         })
         let categories = db.Category.findAll()
+
+    
         Promise.all([product,categories])
         .then(([product,categories]) => {
-            //return res.send(categories)
             return res.render("detalleDeProducto",{
             product,
             categories

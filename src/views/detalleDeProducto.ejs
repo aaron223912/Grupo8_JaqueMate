@@ -14,7 +14,7 @@
     <main class="detalle__main">
         
         <section class="detalle__main__section">            
-            <h3>Jaque Mate > <%= //product.category.name %>  </h3>
+            <h3>Jaque Mate > <%= product.category.name %>  </h3>
             
             <article class="detalle__main__section__article">
                 <div class="detalle__main__section__article__imagenes">
@@ -46,7 +46,7 @@
                 <div class="detalle__main__section__article__button">
                     <button>Comprar</button>
                     <button>Agregar Al Carrito</button>
-                    <% if (locals.userLogin && userLogin.rol === "admin") { %>
+                    <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
                     <a href="/products/editarProducto/<%= product.id %>" class="a-button">Editar Producto</a>
                     <form action="/products/remove/<%= product.id %>?_method=DELETE" method="POST">
                         <button type="submit">ELIMINAR</button>
