@@ -10,19 +10,25 @@
 
     <main class="home__main">
             <section class="home__main__buscAnterior">
-                <h4>Todos los resultados</h4>
-                <% products.forEach(product => { %>
-                    <article> <a href="/products/detalle/<%= product.id %>">
-                        <div>
-                            <img src="/images/<%= product.images[0].file %>" alt="">
-                        </div>
-                        <div class="descrip">
-                            <p><%= product.name %></p>
-                            <p><%= product.price %></p>
-                        </div>
-                    </a>
-                </article>
-                <% }) %>
+                <% if (products.length > 0) { %>
+                    <h4>Todos los resultados</h4>
+                    <% products.forEach(product => { %>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div>
+                                <img src="/images/<%= product.images[0].file %>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p><%= product.name %></p>
+                                <p><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                  <% } else { %> 
+                    <h4>No se encontraron resultados</h4>
+                    <% } %>
+                 
+                
             
             
         </section>
