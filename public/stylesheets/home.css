@@ -192,6 +192,13 @@
 .home__main__buscAnterior .descrip {
     width: 75%;
 }
+.descrip{
+    padding: 3px;
+}
+
+.product_price {
+    margin-top: 5px;
+}
 
 /*FOOTER*/
 .home__footer {

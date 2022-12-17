@@ -65,15 +65,15 @@
             <div class="banner__secundario"><img src="/images/banner3.jpg" alt=""></div>
         </section>
         <section class="home__main__masBuscados">
-            <h4>Mas Buscados</h4>
-            <% products.forEach(product => { %>
+            <h4>Descuentos</h4>
+            <% productsDiscount.forEach(product => { %>
                 <article> <a href="/products/detalle/<%= product.id %>">
                     <div>
                         <img src="/images/<%= product.images[0].file%>" alt="">
                     </div>
                     <div class="descrip">
-                        <p><%= product.name %></p>
-                        <p><%= product.price %></p>
+                        <p class="product_name"><%= product.name %></p>
+                        <p class="product_price"><%= product.price %></p>
                     </div>
                 </a>
             </article>
@@ -89,8 +89,8 @@
                         <img src="/images/<%= product.images[0].file %>" alt="">
                     </div>
                     <div class="descrip">
-                        <p><%= product.name %></p>
-                        <p><%= product.price %></p>
+                        <p class="product_name"><%= product.name %></p>
+                        <p class="product_price"><%= product.price %></p>
                     </div>
                 </a>
             </article>
@@ -109,8 +109,8 @@
                         <img src="/images/<%= product.images[0].file%>" alt="">
                     </div>
                     <div class="descrip">
-                        <p><%= product.name %></p>
-                        <p><%= product.price %></p>
+                        <p class="product_name"><%= product.name %></p>
+                        <p class="product_price"><%= product.price %></p>
                     </div>
                 </a>
             </article>
