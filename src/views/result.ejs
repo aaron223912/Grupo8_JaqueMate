@@ -14,7 +14,7 @@
                     <h4>Todos los resultados</h4>
                     <% products.forEach(product => { %>
                         <article> <a href="/products/detalle/<%= product.id %>">
-                            <div>
+                            <div class="img_product">
                                 <img src="/images/<%= product.images[0].file %>" alt="">
                             </div>
                             <div class="descrip">

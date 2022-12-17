@@ -34,5 +34,186 @@
       "image": "termo_produc2.jpg",
       "categoryId": 3,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facere, repellat provident suscipit fugiat delectus aperiam voluptas possimus aut ea iste nihil. Eaque, vero sed?"
+   },
+   {
+      "id": 5,
+      "name": "Mate Pampa",
+      "price": 1990,
+      "discount": 0,
+      "image": "matePampa.jpg",
+      "categoryId": 1,
+      "description": "El mundo avanzó, los mates también. Les presentamos un nuevo concepto de mates, un verdadero éxito en todo aspecto: MATE PAMPA® + Bombilla + Packaging original. Ideal para tener siempre a mano, para compartir, para regalar."
+   },
+   {
+      "id": 6,
+      "name": "Mate Stitch Con Cuerpo",
+      "price": 1890,
+      "discount": 0,
+      "image": "mateStitch.jpg",
+      "categoryId": 1,
+      "description": "Mate realizada en impresion 3d soporta uso diario. El color de la bombilla de regalo es aleatorio puede variar de acuerdo a la disponibilidad del momento. Mates Perfectamente testeados, no pierden agua ni queman. Estan realizados en plastico PLA, un plastico no toxico ecologico de origen vegetal, con recipiente en su interior para evitar que se deterioren con el uso diario. Viene con bombilla de regalo!"
+   },
+   {
+      "id": 7,
+      "name": "Mate Térmico Waterdog Zoilo 240ml Acero Inoxidable",
+      "price": 6600,
+      "discount": 0,
+      "image": "mateWaterdog.jpg",
+      "categoryId": 1,
+      "description": "100% ACERO INOXIDABLE AISI 304 / 304 Doble pared aislante con superficie antideslizante Recubrimiento POWDER COATED Fácil de llenar, gracias a su boca ancha Sumamente sencillo de cuidar. Apto bebidas frías y calientes."
+   },
+   {
+      "id": 8,
+      "name": "Termo Lumilagro Luminox de acero inoxidable 1L acero",
+      "price": 9250,
+      "discount": 0,
+      "image": "termoLumilargo.jpg",
+      "categoryId": 3,
+      "description": "La marca argentina continúa su desarrollo como empresa líder en la fabricación de productos térmicos hace ya 75 años. El diseño y la practicidad de los productos Lumilagro demuestran una esmerada combinación entre experiencia e innovación permanente. La calidad de este termo te brinda confianza y se va a transformar en el compañero ideal de tardes de estudio o juntadas con amigos."
+   },
+   {
+      "id": 9,
+      "name": "Termo Sumate 1 Litro Acero Inoxidable Con Manija",
+      "price": 4550,
+      "discount": 0,
+      "image": "termoSumate.jpg",
+      "categoryId": 3,
+      "description": "Diseñado en tecnología de alto estándar. Combina materiales resistentes y duraderos que potencian el uso, bien sea de forma cotidiana, camping o en cualquier contexto. Resiste cualquier condición climática, conserva la temperatura de tus bebidas y es 100% portable."
+   },
+   {
+      "id": 10,
+      "name": "Termo Stanley Clasico Original 950ml Con Tapón Cebador",
+      "price": 28200,
+      "discount": 0,
+      "image": "termoStanley.jpg",
+      "categoryId": 3,
+      "description": "La construcción robusta y el aislamiento al vacío de esta botella significa que puede manejar cualquier cosa, todo mientras mantiene sus bebidas calientes calientes y frías durante un día completo. Lo suficientemente delgado como para sostenerlo con una mano, incluso tiene un tapón giratorio para un vertido más suave. La tapa aislada también sirve como taza para beber."
+   },
+   {
+      "id": 11,
+      "name": "Termo Bala Acero Inox 500ml Doble Capa Térmica 1/2 L",
+      "price": 2300,
+      "discount": 0,
+      "image": "termoBala.jpg",
+      "categoryId": 3,
+      "description": "Diseñado en tecnología de alto estándar. Combina materiales resistentes y duraderos que potencian el uso, bien sea de forma cotidiana, camping o en cualquier contexto. Resiste cualquier condición climática, conserva la temperatura de tus bebidas y es 100% portable."
+   },
+   {
+      "id": 12,
+      "name": "Bombilla Un Mate - Acero Inoxidable",
+      "price": 2300,
+      "discount": 0,
+      "image": "bombollaUnMate.jpg",
+      "categoryId": 2,
+      "description": "Bombilla de Acero Inoxidable Producto 100% artesanal. Acero Inoxidable 18/8, chata, No se tapa, Largo: 17cm"
+   },
+   {
+      "id": 13,
+      "name": "Bombillas Mate Pico Loro Acero Inox Cuchara Paleta Pack X12",
+      "price": 9000,
+      "discount": 0,
+      "image": "bombillas12.jpg",
+      "categoryId": 2,
+      "description": "PACK X 12 BOMBILLAS PICO DE LORO PALETA TIPO CUCHARA - ACERO INOXIDABLE"
+   },
+   {
+      "id": 14,
+      "name": "Bombilla Mate Autolimpiante Acero Inoxidable Loekemeyer",
+      "price": 685,
+      "discount": 0,
+      "image": "bombilla.jpg",
+      "categoryId": 2,
+      "description": "Bombilla de Acero Inoxidable"
+   },
+   {
+      "id": 15,
+      "name": "Canasta Cuero Porta Equipo Mate Premium Artesanal 100% Cuero",
+      "price": 7200,
+      "discount": 0,
+      "image": "portaMateCuero.jpg",
+      "categoryId": 4,
+      "description": "Canasta Matera 100% Cuero vaqueta natural GRUESO con detalles grabados en el cuero decorativos, costuras cosida a mano"
+   },
+   {
+      "id": 16,
+      "name": "Bolso Matero Porta Termo Equipo Para Mate Eco Cuero Matera",
+      "price": 3650,
+      "discount": 0,
+      "image": "bolsoMatero.jpg",
+      "categoryId": 4,
+      "description": "PORTA TERMO PARA KIT MATERO CON TERMO DE 1 LITRO"
+   },
+   {
+      "id": 17,
+      "name": "Canasta Matera Uruguaya Porta Termo Mate Yerbero Azucarera",
+      "price": 2250,
+      "discount": 0,
+      "image": "canastaMatera.jpg",
+      "categoryId": 4,
+      "description": "CANASTA PARA TRANSPORTAR TERMOS CON KITS MATEROS"
+   },
+   {
+      "id": 18,
+      "name": "Mochila Matera Equipo Para Mate Porta Termo Cierre Eco Cuero",
+      "price": 3200,
+      "discount": 0,
+      "image": "mochilaMatera.jpg",
+      "categoryId": 4,
+      "description": "Capacidad hasta termos Stanley de 2 litros, capacidad adicional para mate, yerbera y azucarera (no incluidos)."
+   },
+   {
+      "id": 19,
+      "name": "Bolso Matero Equipo Kit Mate Porta Termo Impermeable Lavable",
+      "price": 6800,
+      "discount": 0,
+      "image": "bolsoMateroTips.jpg",
+      "categoryId": 4,
+      "description": "Bolso Matero Equipo Kit Mate Porta Termo Impermeable Lavable"
+   },
+   {
+      "id": 20,
+      "name": "Latas Yerbera Azucarera Set Matero Ideal Obsequio Novedad",
+      "price": 1500,
+      "discount": 0,
+      "image": "yerberoMatero.jpg",
+      "categoryId": 5,
+      "description": "Tienen un diámetro de 9cm y su altura varia, una mide 10cm y la otra 13,5cm. Es un Producto Argentino de Diseño, que cumple con estándares de calidad internacional. Es practico, útil y podes usarlo como decoración. Útil para el hogar, las vacaciones y el picnic. Ideal como un hermoso y siempre bien recibido regalo. Solo disponible en color NEGRO."
+   },
+   {
+      "id": 21,
+      "name": "Tarros X2 Con Dosificador Yerbera Azucarera Ecocuero",
+      "price": 800,
+      "discount": 0,
+      "image": "tarrosYerbero.jpg",
+      "categoryId": 5,
+      "description": "Tarritos plasticos forrados en ecocuero x2 con dosificador Para yerba y azucar"
+   },
+   {
+      "id": 22,
+      "name": "Tambo Yerbero Yerbera Azucarera Lata Pico Vertedor Mate",
+      "price": 1200,
+      "discount": 0,
+      "image": "tamborYerbero.jpg",
+      "categoryId": 5,
+      "description": "JUEGO DE YERBERA Y AZUCARERA"
+   },
+   {
+      "id": 23,
+      "name": "Lata Pico Vertedor Lusqtoff 250grs Tambor Yerbera Azucarera",
+      "price": 800,
+      "discount": 0,
+      "image": "lataYerbero.jpg",
+      "categoryId": 5,
+      "description": "Lata Pico Vertedor Lusqtoff 250grs Tambor Yerbera Azucarera"
+   },
+   {
+      "id": 24,
+      "name": "Yerbera Azucarera Plástico Con Pico Vertedor Yerba Azcar",
+      "price": 300,
+      "discount": 0,
+      "image": "plasticoYerbera.jpg",
+      "categoryId": 5,
+      "description": "LYerbera Azucarera Plastica"
    }
+
 ]

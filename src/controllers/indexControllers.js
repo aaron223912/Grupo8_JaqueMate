@@ -6,6 +6,7 @@ const { Sequelize } = require("../database/models");
 module.exports = {
     index : (req, res) => {
        let products= db.Product.findAll({
+            limit: 4,
             attributes:["id","name","price","discount","description"],
             include:[
 
@@ -23,6 +24,21 @@ module.exports = {
 					[Op.gt]: 10
 				}
 			},
+            limit: 4,
+            attributes:["id","name","price","discount","description"],
+            include:[
+
+                {
+                    association:"category",
+                    attributes:["id","name"],
+                },
+                 {association:"images"}
+            ]
+        })
+
+        let productsRandom= db.Product.findAll({
+            order: Sequelize.literal('rand()'),
+            limit: 4,
             attributes:["id","name","price","discount","description"],
             include:[
 
@@ -54,15 +70,16 @@ module.exports = {
         
 
        
-        Promise.all([products,categories,  productsDiscount, categoryRandom ])
-        .then(([products,categories,  productsDiscount, categoryRandom]) => {
+        Promise.all([products,categories,  productsDiscount, categoryRandom, productsRandom ])
+        .then(([products,categories,  productsDiscount, categoryRandom, productsRandom]) => {
             console.log('------------------------');
             //return res.send(productsCategoryRandom)
             res.render("index",{
             products,
             categories,
             productsDiscount,
-            categoryRandom
+            categoryRandom,
+            productsRandom
             
 
         })})
