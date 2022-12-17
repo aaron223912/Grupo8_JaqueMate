@@ -46,6 +46,9 @@
 
 
 }
+.home__header__busqueda form{
+    width: 100%;
+}
 
 .home__header__busqueda input {
     width: 100%;
@@ -57,6 +60,15 @@
 .home__header__busqueda button {
     position: absolute;
     right: 8px;
+    top: 45px;
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+.home__header__busqueda .button-search {
+    position: absolute;
+    right: 8px;
+    top: 15px;
     background: none;
     border: none;
     font-size: 20px;
