@@ -4,38 +4,33 @@
       <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
     </div>
     <div class="carrito__header__busqueda">
-      <input type="text" value="¿Que producto buscas?"><br>
-      <button>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+      <form action="/search" method="GET" class="search-form">
+        <input type="text" name="keywords" placeholder="Buscar productos, marcas y más"><br>
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
     </div>
 
     <% if (locals.userLogin) { %>
-      <a href="/users/profile" class="ingresar">
-        <p><%= userLogin.nombre %></p>
-      </a>
-      <a href="/users/logout" class="ingresar">
-        <p>Salir</p>
-      </a>
-      <% if (userLogin.categoria === "admin") { %>
+      <nav class="home__header__nav">
+          <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+          <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
+          <a href="/users/logout" class="ingresar"><p >Salir</p></a>
+          <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
        
-        <a href="/products/crearProducto" class="ingresar">
-          <p>Agregar</p>
-        </a>
+              <a href="/products/crearProducto" class="ingresar"><p >Agregar</p></a>     
       <% } %>
+      </nav>
+      
 
 
     <% }else{ %>
-    <nav class="home__header__nav">
-      <a href="/users/login" class="ingresar">
-        <p>Ingresar</p>
-      </a>
-      <a href="/users/registro" class="ingresar">
-        <p>Registro</p>
-      </a>
-      <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
-      <div class="home__header__nav__foto"></div>
-    </nav>
+      <nav class="home__header__nav">
+          <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+          <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
+          <a href="/users/registro" class="ingresar"><p >Registro</p></a>
+      </nav>
     <% } %>
     <div class="home__header__burger">
       <i class="fas fa-bars">

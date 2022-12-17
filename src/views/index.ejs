@@ -11,10 +11,12 @@
             <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
         </div>
         <div class="home__header__busqueda">
-            <input type="text" value="¿Que producto buscas?"><br>
-            <button>
+            <form action="/search" method="GET" class="search-form">
+            <input type="text" name="keywords" placeholder="Buscar productos, marcas y más"><br>
+            <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
+        </form>
         </div>
 
         <% if (locals.userLogin) { %>
@@ -93,6 +95,27 @@
                 </a>
             </article>
             <% }) %>
+            
+        </section>
+
+        <section class="home__main__masBuscados">
+            <% categoryRandom.forEach(category => { %>
+                <h4><%= category.name %></h4>
+            <% }) %>
+            
+            <% products.forEach(product => { %>
+                <article> <a href="/products/detalle/<%= product.id %>">
+                    <div>
+                        <img src="/images/<%= product.images[0].file%>" alt="">
+                    </div>
+                    <div class="descrip">
+                        <p><%= product.name %></p>
+                        <p><%= product.price %></p>
+                    </div>
+                </a>
+            </article>
+            <% }) %>
+            
             
         </section>
 
