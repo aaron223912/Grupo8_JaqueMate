@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head',{ title : 'todos los productos' }) %> 
+</head>
+<body class="home">
+    <header class="carrito__header">
+        <%- include('./partials/header') %> 
+    </header>
+
+    <main class="home__main">
+            <section class="home__main__buscAnterior">
+                <h4>Todos los resultados</h4>
+                <% products.forEach(product => { %>
+                    <article> <a href="/products/detalle/<%= product.id %>">
+                        <div>
+                            <img src="/images/<%= product.images[0].file %>" alt="">
+                        </div>
+                        <div class="descrip">
+                            <p><%= product.name %></p>
+                            <p><%= product.price %></p>
+                        </div>
+                    </a>
+                </article>
+                <% }) %>
+            
+            
+        </section>
+    </main>
+
+
+
+
+    <footer class="home__footer">
+        <%- include('./partials/footer') %> 
+    </footer>
+    
+</body>
+</html>

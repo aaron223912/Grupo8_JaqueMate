@@ -94,7 +94,7 @@ module.exports = {
 
         Promise.all([productsSerch, categories])
 			.then(([productsSerch, categories]) => {
-				return res.render('products', {
+				return res.render('result', {
 					products : productsSerch,
 					keywords,
                     categories
