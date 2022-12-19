@@ -1,7 +1,28 @@
 const db= require("../database/models")
 const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
 const { validationResult, Result} = require("express-validator");
-const {error} = require("console")
+const {error} = require("console");
+const { Op } = require('sequelize');
+const { Sequelize } = require("../database/models");
+
+
+const getOptions = (req) => {
+	return {
+		include : [
+			{
+				association : 'images',
+				attributes : {
+					exclude : ['createdAt','updatedAt', 'deletedAt', 'productId'],
+				}
+			},
+			{
+				association : 'category',
+				attributes : ['name']
+			}
+		]
+	}
+	
+}
 
 
 module.exports = {
@@ -19,14 +40,31 @@ module.exports = {
                 ]
             
         })
+
+        let productosRelacionados= db.Product.findAll({
+            order: Sequelize.literal('rand()'),
+            limit: 4,
+            attributes:["id","name","price","discount","description"],
+            include:[
+
+                {
+                    association:"category",
+                    attributes:["id","name"],
+                },
+                 {association:"images"}
+            ],
+            
+        })
+
         let categories = db.Category.findAll()
 
     
-        Promise.all([product,categories])
-        .then(([product,categories]) => {
+        Promise.all([product,categories,productosRelacionados])
+        .then(([product,categories,productosRelacionados]) => {
             return res.render("detalleDeProducto",{
             product,
-            categories
+            categories,
+            productosRelacionados
 
         })})
         .catch(error=> console.log(error));
@@ -34,7 +72,18 @@ module.exports = {
     },
     editar : (req, res) => {
 
-        let product = db.Product.findByPk(req.params.id);
+        let product = db.Product.findByPk(req.params.id,{
+           
+            
+            include:[
+
+                {
+                    association:"category"
+                },
+                {association:"images"},
+            ]
+        
+    })
 
         let categories = db.Category.findAll({
             attributes : ['id','name'],
@@ -70,7 +119,42 @@ module.exports = {
         //     .catch(error=> console.log(error));
         
     },
-    update : (req, res) => {
+    update :  (req, res) => {
+
+        // try {
+
+			
+
+		// 	const {name, price,discount, description, category} = req.body;
+
+		// 	let product = await db.Product.findByPk(req.params.id, getOptions(req));
+
+		// 	product.name = name.trim() || product.name;
+		// 	product.price = price || product.price;
+		// 	product.discount = discount || product.discount;
+		// 	product.description = description.trim() || product.description;
+		// 	product.categoryId = category || product.categoryId;
+
+		// 	await product.save();
+
+		// 	if(req.files && req.files.length){
+		// 		req.files.forEach(async (file, index) => {
+		// 			if(product.images[index]){
+		// 				fs.existsSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file))
+
+		// 				product.images[index].file = file.filename;
+						
+		// 				await product.images[index].save();
+
+		// 			}
+		// 		});
+		// 	};
+			
+		// } catch (error) {
+		// 	console.log(error)
+        //     ;
+		// }
+
         db.Product.update({
 
             name: req.body.name,
@@ -91,7 +175,7 @@ module.exports = {
                 productId:product.id,
                 createdAt:new Date()
             }))
-           await db.Image.bulkCreate(images,{
+           await db.Image.update(images,{
                         validate:true
                     })
                     
