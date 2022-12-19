@@ -162,8 +162,8 @@
                 <% } %>
                 <% if (category.id == 5) { %>
                     <% productsRandomYerbero.forEach(product => { %>
-                        <article class="img_product"> <a href="/products/detalle/<%= product.id %>">
-                            <div>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
                             <div class="descrip">

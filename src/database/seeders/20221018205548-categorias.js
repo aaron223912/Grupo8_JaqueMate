@@ -1,5 +1,5 @@
 'use strict';
-const categorias = ["Mates","Bombillas","Termos","Porta Mates","Yerberos y Azucareras","Accesorios"]
+const categorias = ["Mates","Bombillas","Termos","Porta Mates","Yerberos y Azucareras"]
 const categories = categorias.map(category =>{
   return{
     name: category,
