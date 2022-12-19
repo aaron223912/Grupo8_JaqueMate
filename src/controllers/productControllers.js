@@ -1,7 +1,9 @@
 const db= require("../database/models")
 const {loadProducts,loadCategories,storeProduct} = require('../data/db_moduls');
 const { validationResult, Result} = require("express-validator");
-const {error} = require("console")
+const {error} = require("console");
+const { Op } = require('sequelize');
+const { Sequelize } = require("../database/models");
 
 
 const getOptions = (req) => {
@@ -38,14 +40,31 @@ module.exports = {
                 ]
             
         })
+
+        let productosRelacionados= db.Product.findAll({
+            order: Sequelize.literal('rand()'),
+            limit: 4,
+            attributes:["id","name","price","discount","description"],
+            include:[
+
+                {
+                    association:"category",
+                    attributes:["id","name"],
+                },
+                 {association:"images"}
+            ],
+            
+        })
+
         let categories = db.Category.findAll()
 
     
-        Promise.all([product,categories])
-        .then(([product,categories]) => {
+        Promise.all([product,categories,productosRelacionados])
+        .then(([product,categories,productosRelacionados]) => {
             return res.render("detalleDeProducto",{
             product,
-            categories
+            categories,
+            productosRelacionados
 
         })})
         .catch(error=> console.log(error));
@@ -135,10 +154,6 @@ module.exports = {
 		// 	console.log(error)
         //     ;
 		// }
-
-
-
-
 
         db.Product.update({
 

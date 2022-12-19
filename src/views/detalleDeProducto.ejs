@@ -58,16 +58,6 @@
                 <section class="detalle__main__section__descripcion"><div class="detalle__main__section__article__descripcion">
                     <h6>Descripcion</h6>
                     <p><%= product.description %> </p>
-                    <h6>Caracteristicas</h6>
-                    <ul>
-                        <li>Mantiene el calor 30 minutos despues empieza a bajar su temperatura</li>
-                        <li>- Alto: 9.5 cm</li>
-                        <li>- Diámetro: 10 cm</li>
-                        <li>- Apto Solo Mates</li>
-                        <li>- Liempie con agua caliente.</li>
-                        <li>- Borde Alpaca</li>
-                        <li>- Sin BPA</li>
-                    </ul>
                          
                         
                 </div>
@@ -90,41 +80,28 @@
                 </div>
                 
         </section>
-        <section class="contenedor__carrucel">
-            <section class="carrucel">
-                <article class="detalle__main__section__article__pagos__producto"> 
-                    <div class="detalle__main__section__article__pagos__producto__imagencarrucel">
-                        <img src="/images/mate_produc.png" alt="">
-                    </div>
-                    <div class="detalle__main__section__article__pagos__producto__descripcioncarrucel">
-                        <h6>Mate Imperial</h6>
-                        <h4>$1000</h4>
-                    </div>
+        
+    
+            <section class="home__main__masBuscados">
+                
+                <% productosRelacionados.forEach(product => { %>
+                    <article> 
+                        <a href="/products/detalle/<%= product.id %>" class="productoRelacionado">
+                        <div>
+                            <img src="/images/<%= product.images[0].file %>" alt="">
+                        </div>
+                        <div class="descrip">
+                            <p class="product_name"><%= product.name %></p>
+                            <p class="product_price"><%= product.price %></p>
+                        </div>
+                    </a>
                 </article>
+                <% }) %>
+                
             </section>
-            <section class="carrucel carrucel__2">
-                <article class="detalle__main__section__article__pagos__producto"> 
-                    <div class="detalle__main__section__article__pagos__producto__imagencarrucel">
-                        <img src="/images/mate_produc.png" alt="">
-                    </div>
-                    <div class="detalle__main__section__article__pagos__producto__descripcioncarrucel">
-                        <h6>Mate Imperial</h6>
-                        <h4>$1000</h4>
-                    </div>
-                </article>
-            </section>
-            <section class="carrucel  carrucel__3" >
-                <article class="detalle__main__section__article__pagos__producto"> 
-                    <div class="detalle__main__section__article__pagos__producto__imagencarrucel">
-                        <img src="/images/mate_produc.png" alt="">
-                    </div>
-                    <div class="detalle__main__section__article__pagos__producto__descripcioncarrucel">
-                        <h6>Mate Imperial</h6>
-                        <h4>$1000</h4>
-                    </div>
-                </article>
-            </section>
-        </section>
+        
+
+        
     </main>
 
 
