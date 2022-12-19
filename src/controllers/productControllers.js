@@ -4,6 +4,25 @@ const { validationResult, Result} = require("express-validator");
 const {error} = require("console")
 
 
+const getOptions = (req) => {
+	return {
+		include : [
+			{
+				association : 'images',
+				attributes : {
+					exclude : ['createdAt','updatedAt', 'deletedAt', 'productId'],
+				}
+			},
+			{
+				association : 'category',
+				attributes : ['name']
+			}
+		]
+	}
+	
+}
+
+
 module.exports = {
     detalle : (req, res) => {
 
@@ -34,7 +53,18 @@ module.exports = {
     },
     editar : (req, res) => {
 
-        let product = db.Product.findByPk(req.params.id);
+        let product = db.Product.findByPk(req.params.id,{
+           
+            
+            include:[
+
+                {
+                    association:"category"
+                },
+                {association:"images"},
+            ]
+        
+    })
 
         let categories = db.Category.findAll({
             attributes : ['id','name'],
@@ -70,7 +100,46 @@ module.exports = {
         //     .catch(error=> console.log(error));
         
     },
-    update : (req, res) => {
+    update :  (req, res) => {
+
+        // try {
+
+			
+
+		// 	const {name, price,discount, description, category} = req.body;
+
+		// 	let product = await db.Product.findByPk(req.params.id, getOptions(req));
+
+		// 	product.name = name.trim() || product.name;
+		// 	product.price = price || product.price;
+		// 	product.discount = discount || product.discount;
+		// 	product.description = description.trim() || product.description;
+		// 	product.categoryId = category || product.categoryId;
+
+		// 	await product.save();
+
+		// 	if(req.files && req.files.length){
+		// 		req.files.forEach(async (file, index) => {
+		// 			if(product.images[index]){
+		// 				fs.existsSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file))
+
+		// 				product.images[index].file = file.filename;
+						
+		// 				await product.images[index].save();
+
+		// 			}
+		// 		});
+		// 	};
+			
+		// } catch (error) {
+		// 	console.log(error)
+        //     ;
+		// }
+
+
+
+
+
         db.Product.update({
 
             name: req.body.name,
@@ -91,7 +160,7 @@ module.exports = {
                 productId:product.id,
                 createdAt:new Date()
             }))
-           await db.Image.bulkCreate(images,{
+           await db.Image.update(images,{
                         validate:true
                     })
                     

@@ -14,21 +14,29 @@
   <main>
     <h1 class="titulo-form">Edita tu producto</h1>
     <section class="form">
+
+      <div class="detalle__main__section__article__imagenes__prinsipal__editar">
+        <img id="imagePreviewProduct" src="/images/<%= product.images[0].file %>" alt="">
+    </div>
+    
       <form method="post" action="/products/update/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
         <div>
           <label for="name" class="form-label">Nombre del producto</label>
           <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>">
+          <small id="errorName"></small>
         </div>
         <div>
           <label for="description" class="form-label">Descripcion</label>
           <input type="text" class="form-control" id="description" name="description" value="<%= product.description %>">
+          <small id="errorDescription"></small>
         </div>
         <div class="conteiner-relative">
           <label for="imagen" class="form-label">Imagen</label>
           <div class="relative">
 
-            <label for="" class="label-imagen form-label">Ingresar imagen</label>
-            <input type="file"  class="form-imagen" name="imageProduct" >
+            <label for="" class="label-imagen form-label"><%=product.images[0].file%></label>
+            <input type="file"  class="form-imagen" name="file" id="imageProduct" value="<%=product.images[0].file%> ">
+            <small id="errorImageProduct"></small>
           </div>
         </div>
         <div>
@@ -47,11 +55,13 @@
 
         <div>
           <label for="price" class="form-label">Precio</label>
-          <input type="number" class="form-control" id="price" name="price" value="<%= product.price %>">
+          <input type="text" class="form-control" id="price" name="price" value="<%= product.price %>">
+          <small id="errorPrice"></small>
         </div>
         <div>
           <label for="discount" class="form-label">Descuento</label>
-          <input type="number" max="100" class="form-control" id="discount" name="discount" value="<%= product.discount %>">
+          <input type="text" max="100" class="form-control" id="discount" name="discount" value="<%= product.discount %>">
+          <small id="errorDiscount"></small>
         </div>
 
         <input type="submit" name="confirm" value="Confirmar">
@@ -61,7 +71,7 @@
   <footer class="home__footer">
     <%- include('./partials/footer') %>
   </footer>
-
+<script src="/javascripts/editarProducts.js"></script>
 </body>
 
 </html>

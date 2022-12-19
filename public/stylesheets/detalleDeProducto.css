@@ -31,7 +31,18 @@
     
 }
 .detalle__main__section__article__imagenes__prinsipal img{
-    width:300px;
+    width:300px; 
+}
+
+.detalle__main__section__article__imagenes__prinsipal__editar{
+    width: 100%;
+    text-align: center;
+    
+}
+.detalle__main__section__article__imagenes__prinsipal__editar img{
+    width:280px; 
+    height:280px;
+    object-fit:contain;
     
     
 }
