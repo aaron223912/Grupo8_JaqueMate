@@ -19,6 +19,7 @@ module.exports = {
         })
 
         let productsDiscount = db.Product.findAll({
+            order: Sequelize.literal('rand()'),
             where:{
                 discount: {
 					[Op.gt]: 10
@@ -63,15 +64,108 @@ module.exports = {
         let category_id = categoryRandom.id
 
 
-       /* let productsCategoryRandom = db.Product.findAll({
-            where:{categoryId: category_id}
-        })*/
+       //random Mate
+
+       let productsRandomMate= db.Product.findAll({
+        order: Sequelize.literal('rand()'),
+        where:{
+            categoryId : 1
+        },
+        limit: 4,
+        attributes:["id","name","price","discount","description"],
+        include:[
+
+            {
+                association:"category",
+                attributes:["id","name"],
+            },
+             {association:"images"}
+        ]
+    })
+
+    //random Bombilla 
+
+    let productsRandomBombilla= db.Product.findAll({
+        order: Sequelize.literal('rand()'),
+        where:{
+            categoryId : 2
+        },
+        limit: 4,
+        attributes:["id","name","price","discount","description"],
+        include:[
+
+            {
+                association:"category",
+                attributes:["id","name"],
+            },
+             {association:"images"}
+        ]
+    })
+
+    //random Termo 
+
+    let productsRandomTermo= db.Product.findAll({
+        order: Sequelize.literal('rand()'),
+        where:{
+            categoryId : 3
+        },
+        limit: 4,
+        attributes:["id","name","price","discount","description"],
+        include:[
+
+            {
+                association:"category",
+                attributes:["id","name"],
+            },
+             {association:"images"}
+        ]
+    })
+
+    //random porta mates 
+
+    let productsRandomPortaMates= db.Product.findAll({
+        order: Sequelize.literal('rand()'),
+        where:{
+            categoryId : 4
+        },
+        limit: 4,
+        attributes:["id","name","price","discount","description"],
+        include:[
+
+            {
+                association:"category",
+                attributes:["id","name"],
+            },
+             {association:"images"}
+        ]
+    })
+
+    //random Yerbero
+
+    let productsRandomYerbero= db.Product.findAll({
+        order: Sequelize.literal('rand()'),
+        where:{
+            categoryId : 5
+        },
+        limit: 4,
+        attributes:["id","name","price","discount","description"],
+        include:[
+
+            {
+                association:"category",
+                attributes:["id","name"],
+            },
+             {association:"images"}
+        ]
+    })
 
         
 
        
-        Promise.all([products,categories,  productsDiscount, categoryRandom, productsRandom ])
-        .then(([products,categories,  productsDiscount, categoryRandom, productsRandom]) => {
+        Promise.all([products,categories,  productsDiscount, categoryRandom, productsRandom, productsRandomYerbero, productsRandomBombilla,
+            productsRandomPortaMates, productsRandomTermo, productsRandomMate ])
+        .then(([products,categories,  productsDiscount, categoryRandom, productsRandom, productsRandomYerbero, productsRandomBombilla,
+            productsRandomPortaMates, productsRandomTermo, productsRandomMate]) => {
             console.log('------------------------');
             //return res.send(productsCategoryRandom)
             res.render("index",{
@@ -79,7 +173,12 @@ module.exports = {
             categories,
             productsDiscount,
             categoryRandom,
-            productsRandom
+            productsRandom,
+            productsRandomYerbero,
+            productsRandomPortaMates,
+            productsRandomTermo,
+            productsRandomBombilla,
+            productsRandomMate
             
 
         })})
@@ -123,7 +222,16 @@ module.exports = {
     
 
     carrito : (req, res) => {
-        return res.render('carrito')
+
+        let categories = db.Category.findAll()
+
+        .then(categories => {
+            return res.render('carrito',{
+                categories
+            })
+        })
+        .catch(error => console.log(error))
+
     }
 }
 

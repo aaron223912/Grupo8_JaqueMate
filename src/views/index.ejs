@@ -34,7 +34,6 @@
       
           <% }else{ %>
             <nav class="home__header__nav">
-                <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
                 <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
                 <a href="/users/registro" class="ingresar"><p >Registro</p></a>
             </nav>
@@ -98,26 +97,87 @@
             
         </section>
 
+        <% categoryRandom.forEach(category => { %>
+
         <section class="home__main__masBuscados">
-            <% categoryRandom.forEach(category => { %>
+           
                 <h4><%= category.name %></h4>
-            <% }) %>
-            
-            <% products.forEach(product => { %>
-                <article> <a href="/products/detalle/<%= product.id %>">
-                    <div>
-                        <img src="/images/<%= product.images[0].file%>" alt="">
-                    </div>
-                    <div class="descrip">
-                        <p class="product_name"><%= product.name %></p>
-                        <p class="product_price"><%= product.price %></p>
-                    </div>
-                </a>
-            </article>
-            <% }) %>
-            
+                <% if (category.id == 1) { %>
+                    <% productsRandomMate.forEach(product => { %>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div class="img_product">
+                                <img src="/images/<%= product.images[0].file%>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price"><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                <% } %>
+               
+                <% if (category.id == 2) { %>
+                    <% productsRandomBombilla.forEach(product => { %>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div class="img_product">
+                                <img src="/images/<%= product.images[0].file%>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price"><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                <% } %>
+                <% if (category.id == 3) { %>
+                    <% productsRandomTermo.forEach(product => { %>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div class="img_product">
+                                <img src="/images/<%= product.images[0].file%>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price"><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                <% } %>
+                
+                <% if (category.id == 4) { %>
+                    <% productsRandomPortaMates.forEach(product => { %>
+                        <article> <a href="/products/detalle/<%= product.id %>">
+                            <div class="img_product">
+                                <img src="/images/<%= product.images[0].file%>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price"><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                <% } %>
+                <% if (category.id == 5) { %>
+                    <% productsRandomYerbero.forEach(product => { %>
+                        <article class="img_product"> <a href="/products/detalle/<%= product.id %>">
+                            <div>
+                                <img src="/images/<%= product.images[0].file%>" alt="">
+                            </div>
+                            <div class="descrip">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price"><%= product.price %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                <% } %>
             
         </section>
+
+        <% }) %>
 
 
     </main>

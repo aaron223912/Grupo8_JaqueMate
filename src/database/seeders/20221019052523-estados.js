@@ -1,5 +1,5 @@
 'use strict';
-const estados = ["Tarjeta de credito","Efectivo","Debito","Mercado pago"]
+const estados = ["Pendiente","Finalizado","Cancelado"]
 const states = estados.map(estado =>{
   return{
     state: estado,

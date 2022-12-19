@@ -129,7 +129,21 @@
 
 .home__main__masBuscados article {
     width: 45%;
+
 }
+.home__main__masBuscados .img_product {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    padding: 5px;
+    height: 150px;
+    margin: auto;
+}
+.home__main__masBuscados .img_product img{
+    width: 100%;
+    margin: auto;
+}
+
 
 .home__main__masBuscados div{
     width: 100%;

@@ -82,6 +82,52 @@ processLogin: (req,res) => {
                     maxAge : 1000 * 120
                 })
             }
+
+            //carrito
+
+            db.Order.findOne({
+                where : {
+                    userId: req.session.userId.id,
+                    stateId: 1
+                },
+                include : [
+                    {
+                        association : 'carts',
+                        atrributes : ['id', 'quantity'],
+                        include: [
+                            {
+                                association : 'product',
+                                atrributes : ['id', 'name', 'price', 'discount'],
+                                include : ['images']
+                            }
+                        ]
+                    }
+                ]
+            }).then(order => {
+                if (order) {
+                    req.session.orderCart = {
+                        id : order.id,
+                        total : order.total,
+                        items : order.carts
+                    }
+                }else{
+                    db.Order.create({
+                        date : new Date(),
+                        total : 0,
+                        userId : req.session.userLogin.id,
+                        stateId: 1
+                    }).then(order => {
+
+                        req.session.orderCart = {
+                            id : order.id,
+                            total : order.total,
+                            items : []
+                        }
+                    })
+                }
+            })
+
+
     
             return res.redirect("/")
         }).catch(error => console.log(error))
