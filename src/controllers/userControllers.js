@@ -97,7 +97,7 @@ processLogin: (req,res) => {
                         include: [
                             {
                                 association : 'product',
-                                atrributes : ['id', 'name', 'price', 'discount'],
+                                attributes : ['id', 'name', 'price', 'discount'],
                                 include : ['images']
                             }
                         ]
