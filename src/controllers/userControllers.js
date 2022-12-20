@@ -84,7 +84,7 @@ processLogin: (req,res) => {
             }
 
             //carrito
-
+/*
             db.Order.findOne({
                 where : {
                     userId: req.session.userId.id,
@@ -127,7 +127,7 @@ processLogin: (req,res) => {
                 }
             })
 
-
+*/
     
             return res.redirect("/")
         }).catch(error => console.log(error))

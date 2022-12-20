@@ -19,7 +19,6 @@ module.exports = [
         .notEmpty().withMessage("Ingresa un precio acorde al producto").bail()
         .isNumeric().withMessage("solo numeros"),
         
-     check("imageProduct")
-        .notEmpty().withMessage("Selecciona una imagen").bail(),
+
 
 ]
