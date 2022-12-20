@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       this.belongsTo(models.State, {
-        foreignKey : 'statusId',
+        foreignKey : 'stateId',
         as : 'status'
       });
     }
