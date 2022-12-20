@@ -30,22 +30,28 @@
         </section>       
             <section class="detalle__main__section__descripcion">
                 
-                <div class="detalle__main__section__article__imagenes__titulo">
-                    <h4><%= product.name %>.</h4>
-                    <h4>  $ <%= product.price %> </h4>
+                <div class="detalle__main__section__article__imagenes__titulo" style="padding: 20px;">
+                   
+                    <h2 style="font-size: 30px;"><%= product.name %>.</h2>
+                    <h4 style="font-size: 42px;">  $ <%= product.price %> </h4>
                     
-                    <div class="detalle__main__section__article__imagenes__miniaturas">
-                         
-                        <img src="/images/mate negro.jpeg" alt="">
-                        <img src="/images/mate rojo.jpeg" alt="">
-                        <img src="/images/mate marron claro.jpeg" alt="">
-                    
+                    <div class="detalle__main__section__article__descripcion">
+                        <h6>Descripcion</h6>
+                        <p><%= product.description %> </p>
+                             
+                    <div style="display: flex; align-items: center; gap: 5px; margin-top: 30px;" class="detalle__main__section__article__pagos">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                        <img style="margin-top: 5px;" src="/images/icons8-mercado-pago.svg" alt="">
+                    </div>  
                     </div>
                     
                 </div>
                 <div class="detalle__main__section__article__button">
-                    <button>Comprar</button>
-                    <button>Agregar Al Carrito</button>
+                    <% if (locals.userLogin) { %>
+                    <button style="cursor: pointer;" onclick="addCartItem('<%=product.id%>')">Agregar Al Carrito</button>
+                    <% } %>
                     <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
                     <a href="/products/editarProducto/<%= product.id %>" class="a-button">Editar Producto</a>
                     <form action="/products/remove/<%= product.id %>?_method=DELETE" method="POST">
@@ -55,31 +61,7 @@
                     
                 </div> 
             </section>
-                <section class="detalle__main__section__descripcion"><div class="detalle__main__section__article__descripcion">
-                    <h6>Descripcion</h6>
-                    <p><%= product.description %> </p>
-                         
-                        
-                </div>
-                </section>
-                <section  class="detalle__main__section__descripcion">
-                <div class="detalle__main__section__article__pagos">
-                    <h6>Medios de pago</h6>
-                        <h6>Tarjetas de crédito</h6>
-                        
-                        <i class="fa-brands fa-cc-visa"></i>
-                        <i class="fa-brands fa-cc-mastercard"></i>
-                        <i class="fa-brands fa-cc-amex"></i>
-                    <h6>Tarjetas de débito</h6>
-                    <i class="fa-brands fa-cc-visa"></i>
-                    <i class="fa-brands fa-cc-mastercard"></i>
-                    <i class="fa-brands fa-cc-amex"></i>
-                    <h6>Efectivo/Mercado Pago</h6>
-                    <img src="/images/icons8-mercado-pago.svg" alt="">
-
-                </div>
-                
-        </section>
+               
         
     
             <section class="home__main__masBuscados">
@@ -108,6 +90,7 @@
     <footer class="home__footer">
         <%- include('./partials/footer') %> 
     </footer>
+    <script src="/javascripts/cart.js"></script>
 </body>
 
 </html>

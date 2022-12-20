@@ -14,8 +14,8 @@
 
     <% if (locals.userLogin) { %>
       <nav class="home__header__nav">
-          <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
-          <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
+        <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+        <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
           <a href="/users/logout" class="ingresar"><p >Salir</p></a>
           <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
        
@@ -27,7 +27,6 @@
 
     <% }else{ %>
       <nav class="home__header__nav">
-          <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
           <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
           <a href="/users/registro" class="ingresar"><p >Registro</p></a>
       </nav>

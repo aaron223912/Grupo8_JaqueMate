@@ -223,11 +223,12 @@ module.exports = {
 
     carrito : (req, res) => {
 
-        let categories = db.Category.findAll()
-
+        db.Category.findAll()
+        
         .then(categories => {
             return res.render('carrito',{
-                categories
+                categories,
+                items : req.session.orderCart.items
             })
         })
         .catch(error => console.log(error))

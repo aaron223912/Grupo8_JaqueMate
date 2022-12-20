@@ -84,10 +84,10 @@ processLogin: (req,res) => {
             }
 
             //carrito
-/*
+
             db.Order.findOne({
                 where : {
-                    userId: req.session.userId.id,
+                    userId: req.session.userLogin.id,
                     stateId: 1
                 },
                 include : [
@@ -104,6 +104,7 @@ processLogin: (req,res) => {
                     }
                 ]
             }).then(order => {
+                console.log('ORDER', order);
                 if (order) {
                     req.session.orderCart = {
                         id : order.id,
@@ -112,7 +113,6 @@ processLogin: (req,res) => {
                     }
                 }else{
                     db.Order.create({
-                        date : new Date(),
                         total : 0,
                         userId : req.session.userLogin.id,
                         stateId: 1
@@ -125,11 +125,11 @@ processLogin: (req,res) => {
                         }
                     })
                 }
+                return res.redirect("/")
+
             })
 
-*/
     
-            return res.redirect("/")
         }).catch(error => console.log(error))
         
 
