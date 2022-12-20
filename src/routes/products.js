@@ -8,7 +8,7 @@ const adminCheck = require('../middlewares/adminCheck')
 router
     .get('/detalle/:id', detalle)
     .get('/editarProducto/:id',adminCheck, editar)
-    .put('/update/:id', uploat.array('imageProduct'), update)
+    .put('/update/:id', uploat.array('file'), update)
     .get('/crearProducto', crear)
     .post('/store',uploat.array('imageProduct'),productValidation, store)
     

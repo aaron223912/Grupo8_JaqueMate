@@ -4,6 +4,8 @@ const { validationResult, Result} = require("express-validator");
 const {error} = require("console");
 const { Op } = require('sequelize');
 const { Sequelize } = require("../database/models");
+const fs = require("fs")
+const path = require("path")
 
 
 const getOptions = (req) => {
@@ -119,73 +121,122 @@ module.exports = {
         //     .catch(error=> console.log(error));
         
     },
-    update :  (req, res) => {
 
-        // try {
 
-			
+    update: async (req, res) => {
+		// Do the magic
+		try {
 
-		// 	const {name, price,discount, description, category} = req.body;
+			const {name, price,discount, description, category} = req.body;
 
-		// 	let product = await db.Product.findByPk(req.params.id, getOptions(req));
+			let product = await db.Product.findByPk(req.params.id, getOptions(req));
 
-		// 	product.name = name.trim() || product.name;
-		// 	product.price = price || product.price;
-		// 	product.discount = discount || product.discount;
-		// 	product.description = description.trim() || product.description;
-		// 	product.categoryId = category || product.categoryId;
+			product.name = name.trim() || product.name;
+			product.price = price || product.price;
+			product.discount = discount || product.discount;
+			product.description = description.trim() || product.description;
+			product.categoryId = category || product.categoryId;
 
-		// 	await product.save();
+			await product.save();
 
-		// 	if(req.files && req.files.length){
-		// 		req.files.forEach(async (file, index) => {
-		// 			if(product.images[index]){
-		// 				fs.existsSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file))
+			if(req.files && req.files.length){
+				req.files.forEach(async (file, index) => {
+					if(product.images[index]){
+						fs.existsSync(path.join(__dirname,'..','..','public','images',product.images[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images',product.images[index].file))
 
-		// 				product.images[index].file = file.filename;
+						product.images[index].file = file.filename;
 						
-		// 				await product.images[index].save();
+						await product.images[index].save();
 
-		// 			}
-		// 		});
-		// 	};
+					}
+				});
+			}
+
+return await res.redirect("/products/detalle/" + req.params.id)
+			// return res.status(201).json({
+			// 	ok : true,
+			// 	data : product,
+			// });
 			
-		// } catch (error) {
-		// 	console.log(error)
-        //     ;
-		// }
+		} catch (error) {
+			console.log(error)
+            return res.status(error.status || 500).json({
+                ok: false,
+                errors : error.message,
+            });
+		}
 
-        db.Product.update({
+	},
 
-            name: req.body.name,
-            price: req.body.price,
-            discount: req.body.discount,
-            description:req.body.description,
-            categoryId:req.body.category
 
-        },{
-            where : {
-                id : req.params.id
-            }
-        })
-        .then(async(product)=>{
-          if (req.files.length) {
-            let images = req.files.map(file=>({
-                file:file.filename,
-                productId:product.id,
-                createdAt:new Date()
-            }))
-           await db.Image.update(images,{
-                        validate:true
-                    })
+
+    // update :  (req, res) => {
+
+    //     // try {
+
+			
+
+	// 	// 	const {name, price,discount, description, category} = req.body;
+
+	// 	// 	let product = await db.Product.findByPk(req.params.id, getOptions(req));
+
+	// 	// 	product.name = name.trim() || product.name;
+	// 	// 	product.price = price || product.price;
+	// 	// 	product.discount = discount || product.discount;
+	// 	// 	product.description = description.trim() || product.description;
+	// 	// 	product.categoryId = category || product.categoryId;
+
+	// 	// 	await product.save();
+
+	// 	// 	if(req.files && req.files.length){
+	// 	// 		req.files.forEach(async (file, index) => {
+	// 	// 			if(product.images[index]){
+	// 	// 				fs.existsSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','products',product.images[index].file))
+
+	// 	// 				product.images[index].file = file.filename;
+						
+	// 	// 				await product.images[index].save();
+
+	// 	// 			}
+	// 	// 		});
+	// 	// 	};
+			
+	// 	// } catch (error) {
+	// 	// 	console.log(error)
+    //     //     ;
+	// 	// }
+
+    //     db.Product.update({
+
+    //         name: req.body.name,
+    //         price: req.body.price,
+    //         discount: req.body.discount,
+    //         description:req.body.description,
+    //         categoryId:req.body.category
+
+    //     },{
+    //         where : {
+    //             id : req.params.id
+    //         }
+    //     })
+    //     .then(async(product)=>{
+    //       if (req.files.length) {
+    //         let images = req.files.map(file=>({
+    //             file:file.filename,
+    //             productId:product.id,
+    //             createdAt:new Date()
+    //         }))
+    //        await db.Image.update(images,{
+    //                     validate:true
+    //                 })
                     
-        }  
-        return res.redirect("/products/detalle/" + req.params.id)
-        })
-        .catch(error => console.log(error))
+    //     }  
+    //     return res.redirect("/products/detalle/" + req.params.id)
+    //     })
+    //     .catch(error => console.log(error))
 
        
-    },
+    // },
     
     crear : (req, res) => {
         

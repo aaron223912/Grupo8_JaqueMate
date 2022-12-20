@@ -11,9 +11,15 @@ const storage = multer.diskStorage({
         cb(null, "producto"+ '-' + Date.now() + path.extname(file.originalname))
 
     }
-})
+});
+
+
+
+
 const uploat = multer({
-    storage:storage}
+    storage:storage,
+    
+}
 )
 module.exports={uploat}
 
