@@ -95,14 +95,15 @@
 }
 .home__header__burger_menu {
     display: none;
-    width: 0;
+    width: 0%;
     overflow: hidden;
-    transition: width 2.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
   }
   
   .home__header__burger_menu.menu-open {
-    display: block;
+    width: 0;
     width: 90%;
+    display: block;
     overflow: auto;
     background-color: var(--grisOscuro);
     height: 100%;
@@ -250,9 +251,24 @@
 .descrip{
     padding: 3px;
 }
-
+.descrip-discount{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product_name{
+    width: 100%;
+}
 .product_price {
     margin-top: 5px;
+    width: 100%;
+}
+.product_price-anterior{
+    width: 45%;
+    text-decoration: line-through;
+}
+.product_discount{
+    width: 45%;
 }
 
 /*FOOTER*/
@@ -308,9 +324,6 @@
         right: 11px;
         top: 30px;
     }
-    .home__header__burger_menu.menu-open {
-        top: 18%;
-      }
 
     /*MAIN*/
     .home__main__masBuscados {
