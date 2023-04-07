@@ -31,9 +31,43 @@
           <a href="/users/registro" class="ingresar"><p >Registro</p></a>
       </nav>
     <% } %>
-    <div class="home__header__burger">
-      <i class="fas fa-bars">
+    <div class="home__header__burger" id="burger">
+      <i class="fa-solid fa-bars" id="menu">
       </i>
+    </div>
+    <div  class="home__header__burger_menu">
+      <% if (locals.userLogin) { %>
+        <nav class="home__header__nav_burger">
+          <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+          <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
+            <a href="/users/logout" class="ingresar"><p >Salir</p></a>
+            <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
+         
+                <a href="/products/crearProducto" class="ingresar"><p >Agregar</p></a>     
+        <% } %>
+        </nav>
+        
+  
+  
+      <% }else{ %>
+        <nav class="home__header__nav_burger">
+            <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
+            <a href="/users/registro" class="ingresar"><p >Registro</p></a>
+        </nav>
+        <% } %>
+
+        <nav class="carrito__header__categorias_burguer">
+          <ul>
+    
+    <%categories.forEach(category => { %>
+      <li><a href="/products/category/<%=category.id%>"><%=category.name%></a></li>
+    <% }) %>
+    
+          </ul>
+        </nav>
+
+
+
     </div>
 
     <nav class="carrito__header__categorias">
@@ -50,6 +84,7 @@
         <li><a href=""></a>Pavas</li> -->
       </ul>
     </nav>
+    <script src="/javascripts/menuBurger.js"></script>
 
 
 

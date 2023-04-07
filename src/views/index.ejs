@@ -7,13 +7,13 @@
 
 <body class="home">
     <header class="home__header">
-        <div class="home__header__logo">
+        <div class="carrito__header__logo">
             <a href="/"><img src="/images/jaqueMate.png" alt=""></a>
         </div>
         <div class="home__header__busqueda">
             <form action="/search" method="GET" class="search-form">
             <input type="text" name="keywords" placeholder="Buscar productos, marcas y más"><br>
-            <button type="submit">
+            <button class="button-search" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
@@ -38,10 +38,44 @@
             </nav>
           <% } %>
 
-        <div class="home__header__burger">
-            <i class="fas fa-bars">
+        <div class="home__header__burger" id="burger">
+            <i class="fa-solid fa-bars" id="menu">
             </i>
         </div>
+        <div  class="home__header__burger_menu">
+            <% if (locals.userLogin) { %>
+              <nav class="home__header__nav_burger">
+                <p><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></p>
+                <a href="/users/profile/<%= userLogin.id %>" class="ingresar"><p ><%= userLogin.nombre %></p></a>
+                  <a href="/users/logout" class="ingresar"><p >Salir</p></a>
+                  <% if (locals.userLogin && userLogin.categoria === "Admin" || locals.userLogin && userLogin.categoria === "SuperAdmin") { %>
+               
+                      <a href="/products/crearProducto" class="ingresar"><p >Agregar</p></a>     
+              <% } %>
+              </nav>
+              
+        
+        
+            <% }else{ %>
+              <nav class="home__header__nav_burger">
+                  <a href="/users/login" class="ingresar"><p >Ingresar</p></a>
+                  <a href="/users/registro" class="ingresar"><p >Registro</p></a>
+              </nav>
+              <% } %>
+      
+              <nav class="carrito__header__categorias_burguer">
+                <ul>
+          
+          <%categories.forEach(category => { %>
+            <li><a href="/products/category/<%=category.id%>"><%=category.name%></a></li>
+          <% }) %>
+          
+                </ul>
+              </nav>
+      
+      
+      
+          </div>
         <nav class="home__header__categorias">
             <ul>
                 <% categories.forEach(category => { %>
@@ -52,9 +86,6 @@
         <div class="home__header__promo">
             <a>Promociones</a>
         </div>
-
-
-
     </header>
     <main class="home__main">
         <section class="home__main__banner">
@@ -66,7 +97,7 @@
             <h4>Descuentos</h4>
             <% productsDiscount.forEach(product => { %>
                 <article> <a href="/products/detalle/<%= product.id %>">
-                    <div>
+                    <div class="img_product">
                         <img src="/images/<%= product.images[0].file%>" alt="">
                     </div>
                     <div class="descrip">
@@ -183,6 +214,7 @@
     <footer class="home__footer">
         <%- include('./partials/footer') %> 
     </footer>
+    <script src="javascripts/menuBurger.js"></script>
 </body>
 
 </html>

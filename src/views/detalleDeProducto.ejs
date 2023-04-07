@@ -63,13 +63,16 @@
             </section>
                
         
-    
+            
             <section class="home__main__masBuscados">
+                
+                <h4>Otros productos</h4>
+
                 
                 <% productosRelacionados.forEach(product => { %>
                     <article> 
                         <a href="/products/detalle/<%= product.id %>" class="productoRelacionado">
-                        <div>
+                        <div class="img_product">
                             <img src="/images/<%= product.images[0].file %>" alt="">
                         </div>
                         <div class="descrip">
