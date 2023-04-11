@@ -32,8 +32,21 @@
                 
                 <div class="detalle__main__section__article__imagenes__titulo" style="padding: 20px;">
                    
-                    <h2 style="font-size: 30px;"><%= product.name %>.</h2>
-                    <h4 style="font-size: 42px;">  $ <%= product.price %> </h4>
+                    <% if (product.discount > 0) { %>
+                        <div>
+                            <h1 style="padding-bottom: 10px;"><%= product.name %></h2>
+                            <h5 style=" text-decoration: line-through;" >$<%= product.price %></h5>
+                            <h6 >%<%= product.discount %></h6>
+                            <h4 >$<%= Math.round(product.price - (product.price * product.discount / 100)) %></h4>
+                        </div>
+                     
+                    <% } else { %>
+                     
+                    <div class="descrip">
+                        <h1 ><%= product.name %></h1>
+                        <h4 >$<%= product.price %></h4>
+                    </div>
+                    <% } %>
                     
                     <div class="detalle__main__section__article__descripcion">
                         <h6>Descripcion</h6>
@@ -75,10 +88,21 @@
                         <div class="img_product">
                             <img src="/images/<%= product.images[0].file %>" alt="">
                         </div>
+                        <% if (product.discount > 0) { %>
+                            <div class="descrip-discount">
+                                <p class="product_name"><%= product.name %></p>
+                                <p class="product_price-anterior">$<%= product.price %></p>
+                                <p class="product_discount">%<%= product.discount %></p>
+                                <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                            </div>
+                         
+                        <% } else { %>
+                         
                         <div class="descrip">
                             <p class="product_name"><%= product.name %></p>
                             <p class="product_price"><%= product.price %></p>
                         </div>
+                        <% } %>
                     </a>
                 </article>
                 <% }) %>

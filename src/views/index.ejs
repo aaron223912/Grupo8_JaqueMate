@@ -84,7 +84,9 @@
             </ul>
         </nav>
         <div class="home__header__promo">
-            <a>Promociones</a>
+            <h3>
+                JaqueMate
+            </h3>
         </div>
     </header>
     <main class="home__main">
@@ -100,12 +102,21 @@
                     <div class="img_product">
                         <img src="/images/<%= product.images[0].file%>" alt="">
                     </div>
-                    <div class="descrip-discount">
+                    <% if (product.discount > 0) { %>
+                        <div class="descrip-discount">
+                            <p class="product_name"><%= product.name %></p>
+                            <p class="product_price-anterior">$<%= product.price %></p>
+                            <p class="product_discount">%<%= product.discount %></p>
+                            <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                        </div>
+                     
+                    <% } else { %>
+                     
+                    <div class="descrip">
                         <p class="product_name"><%= product.name %></p>
-                        <p class="product_price-anterior">$<%= product.price %></p>
-                        <p class="product_discount">%<%= product.discount %></p>
-                        <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                        <p class="product_price"><%= product.price %></p>
                     </div>
+                    <% } %>
                 </a>
             </article>
             <% }) %>
@@ -119,10 +130,21 @@
                     <div class="img_product">
                         <img src="/images/<%= product.images[0].file %>" alt="">
                     </div>
+                    <% if (product.discount > 0) { %>
+                        <div class="descrip-discount">
+                            <p class="product_name"><%= product.name %></p>
+                            <p class="product_price-anterior">$<%= product.price %></p>
+                            <p class="product_discount">%<%= product.discount %></p>
+                            <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                        </div>
+                     
+                    <% } else { %>
+                     
                     <div class="descrip">
                         <p class="product_name"><%= product.name %></p>
-                        <p class="product_price">$<%= product.price %></p>
+                        <p class="product_price"><%= product.price %></p>
                     </div>
+                    <% } %>
                 </a>
             </article>
             <% }) %>
@@ -140,10 +162,21 @@
                             <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
+                            <% if (product.discount > 0) { %>
+                                <div class="descrip-discount">
+                                    <p class="product_name"><%= product.name %></p>
+                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_discount">%<%= product.discount %></p>
+                                    <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                                </div>
+                             
+                            <% } else { %>
+                             
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price">$<%= product.price %></p>
+                                <p class="product_price"><%= product.price %></p>
                             </div>
+                            <% } %>
                         </a>
                     </article>
                     <% }) %>
@@ -155,10 +188,21 @@
                             <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
+                            <% if (product.discount > 0) { %>
+                                <div class="descrip-discount">
+                                    <p class="product_name"><%= product.name %></p>
+                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_discount">%<%= product.discount %></p>
+                                    <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                                </div>
+                             
+                            <% } else { %>
+                             
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price">$<%= product.price %></p>
+                                <p class="product_price"><%= product.price %></p>
                             </div>
+                            <% } %>
                         </a>
                     </article>
                     <% }) %>
@@ -169,10 +213,21 @@
                             <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
+                            <% if (product.discount > 0) { %>
+                                <div class="descrip-discount">
+                                    <p class="product_name"><%= product.name %></p>
+                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_discount">%<%= product.discount %></p>
+                                    <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                                </div>
+                             
+                            <% } else { %>
+                             
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price">$<%= product.price %></p>
+                                <p class="product_price"><%= product.price %></p>
                             </div>
+                            <% } %>
                         </a>
                     </article>
                     <% }) %>
@@ -184,10 +239,21 @@
                             <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
+                            <% if (product.discount > 0) { %>
+                                <div class="descrip-discount">
+                                    <p class="product_name"><%= product.name %></p>
+                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_discount">%<%= product.discount %></p>
+                                    <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                                </div>
+                             
+                            <% } else { %>
+                             
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price">$<%= product.price %></p>
+                                <p class="product_price"><%= product.price %></p>
                             </div>
+                            <% } %>
                         </a>
                     </article>
                     <% }) %>
@@ -198,10 +264,21 @@
                             <div class="img_product">
                                 <img src="/images/<%= product.images[0].file%>" alt="">
                             </div>
+                            <% if (product.discount > 0) { %>
+                                <div class="descrip-discount">
+                                    <p class="product_name"><%= product.name %></p>
+                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_discount">%<%= product.discount %></p>
+                                    <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
+                                </div>
+                             
+                            <% } else { %>
+                             
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price">$<%= product.price %></p>
+                                <p class="product_price"><%= product.price %></p>
                             </div>
+                            <% } %>
                         </a>
                     </article>
                     <% }) %>

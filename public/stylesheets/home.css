@@ -101,7 +101,6 @@
   }
   
   .home__header__burger_menu.menu-open {
-    width: 0;
     width: 90%;
     display: block;
     overflow: auto;
@@ -258,6 +257,7 @@
 }
 .product_name{
     width: 100%;
+    padding-bottom: 5px;
 }
 .product_price {
     margin-top: 5px;
