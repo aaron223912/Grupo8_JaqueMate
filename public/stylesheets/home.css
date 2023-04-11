@@ -254,6 +254,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: auto;
 }
 .product_name{
     width: 100%;

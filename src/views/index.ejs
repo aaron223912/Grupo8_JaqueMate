@@ -112,7 +112,7 @@
                      
                     <div class="descrip">
                         <p class="product_name"><%= product.name %></p>
-                        <p class="product_price"><%= product.price %></p>
+                        <p class="product_price">$<%= product.price %></p>
                     </div>
                     <% } %>
                 </a>
@@ -140,7 +140,7 @@
                      
                     <div class="descrip">
                         <p class="product_name"><%= product.name %></p>
-                        <p class="product_price"><%= product.price %></p>
+                        <p class="product_price">$<%= product.price %></p>
                     </div>
                     <% } %>
                 </a>
@@ -172,7 +172,7 @@
                              
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price"><%= product.price %></p>
+                                <p class="product_price">$<%= product.price %></p>
                             </div>
                             <% } %>
                         </a>
@@ -189,7 +189,7 @@
                             <% if (product.discount > 0) { %>
                                 <div class="descrip-discount">
                                     <p class="product_name"><%= product.name %></p>
-                                    <p class="product_price-anterior">$<%= product.price %></p>
+                                    <p class="product_price-anterior">$ <%= product.price %></p>
                                     <p class="product_discount">%<%= product.discount %></p>
                                     <p class="product_price">$<%= Math.round(product.price - (product.price * product.discount / 100)) %></p>
                                 </div>
@@ -198,7 +198,7 @@
                              
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price"><%= product.price %></p>
+                                <p class="product_price">$<%= product.price %></p>
                             </div>
                             <% } %>
                         </a>
@@ -223,7 +223,7 @@
                              
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price"><%= product.price %></p>
+                                <p class="product_price">$<%= product.price %></p>
                             </div>
                             <% } %>
                         </a>
@@ -249,7 +249,7 @@
                              
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price"><%= product.price %></p>
+                                <p class="product_price">$<%= product.price %></p>
                             </div>
                             <% } %>
                         </a>
@@ -274,7 +274,7 @@
                              
                             <div class="descrip">
                                 <p class="product_name"><%= product.name %></p>
-                                <p class="product_price"><%= product.price %></p>
+                                <p class="product_price">$<%= product.price %></p>
                             </div>
                             <% } %>
                         </a>
